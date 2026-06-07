@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { waLink } from "@/lib/site";
 import { useAuth } from "@/hooks/useAuth";
+import { BRAND } from "@/assets/brand";
 
 const NAV = [
   { to: "/", label: "Inicio" },
@@ -22,13 +23,8 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="container-fortux flex h-16 items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <span className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-primary-foreground font-display font-bold">
-            F
-          </span>
-          <span className="font-display text-lg font-bold tracking-tight text-foreground">
-            Fortux
-          </span>
+        <Link to="/" className="flex items-center" onClick={() => setOpen(false)} aria-label="Fortux — Inicio">
+          <img src={BRAND.horizontal} alt="Fortux" className="h-9 md:h-10 w-auto" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">

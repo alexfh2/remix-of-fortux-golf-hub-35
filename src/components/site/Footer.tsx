@@ -1,16 +1,16 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Youtube, Mail, Phone } from "lucide-react";
 import { SITE } from "@/lib/site";
+import { BRAND } from "@/assets/brand";
 
 export function Footer() {
   return (
     <footer className="mt-20 bg-primary text-primary-foreground">
       <div className="container-fortux py-14 grid gap-10 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="grid h-10 w-10 place-items-center rounded-lg bg-secondary text-secondary-foreground font-display font-bold">F</span>
-            <span className="font-display text-xl font-bold">Fortux</span>
-          </div>
+          <Link to="/" className="inline-flex mb-5" aria-label="Fortux — Inicio">
+            <img src={BRAND.horizontalWhite} alt="Fortux" className="h-12 w-auto" />
+          </Link>
           <p className="max-w-md text-sm text-primary-foreground/80 leading-relaxed">
             Reparación, mantenimiento, personalización, venta de material y formación. La referencia integral para todo lo que rodea al golf.
           </p>
