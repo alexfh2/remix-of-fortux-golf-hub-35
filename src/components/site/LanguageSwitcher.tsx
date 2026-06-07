@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Globe } from "lucide-react";
 import {
   DropdownMenu,
@@ -6,29 +5,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
-const LANGS = [
-  { code: "es", label: "Español" },
-  { code: "ca", label: "Català" },
-  { code: "en", label: "English" },
-  { code: "fr", label: "Français" },
-] as const;
-
-type Code = (typeof LANGS)[number]["code"];
+import { LANGS, useI18n } from "@/lib/i18n";
 
 export function LanguageSwitcher() {
-  const [lang, setLang] = useState<Code>("es");
-
-  useEffect(() => {
-    const stored = (typeof window !== "undefined" && localStorage.getItem("fortux:lang")) as Code | null;
-    if (stored && LANGS.some((l) => l.code === stored)) setLang(stored);
-  }, []);
-
-  const select = (code: Code) => {
-    setLang(code);
-    if (typeof window !== "undefined") localStorage.setItem("fortux:lang", code);
-  };
-
+  const { lang, setLang } = useI18n();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="inline-flex h-9 items-center gap-1.5 rounded-md border border-border bg-background px-3 text-sm font-medium text-foreground hover:bg-muted transition-colors">
@@ -37,7 +17,7 @@ export function LanguageSwitcher() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         {LANGS.map((l) => (
-          <DropdownMenuItem key={l.code} onClick={() => select(l.code)}>
+          <DropdownMenuItem key={l.code} onClick={() => setLang(l.code)}>
             {l.label}
           </DropdownMenuItem>
         ))}
