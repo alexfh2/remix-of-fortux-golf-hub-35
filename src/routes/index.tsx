@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, Wrench, Hammer, Sparkles, GraduationCap, ShoppingBag, Trophy, MessageCircle, Star, Calendar, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { SITE, waLink } from "@/lib/site";
+import { supabase } from "@/integrations/supabase/client";
 import heroImg from "@/assets/hero-fortux.jpg";
 import circuitoImg from "@/assets/circuito-hero.jpg";
 
@@ -37,13 +39,20 @@ const UPCOMING = [
   { date: "23 NOV", name: "Final de Circuito", place: "P&P Papalús", status: "Final" },
 ];
 
-const REVIEWS = [
-  { name: "Jordi M.", rating: 5, text: "Reparación impecable y rapidísima. Mis hierros volvieron como nuevos." },
-  { name: "Anna P.", rating: 5, text: "El fitting cambió mi juego. Atención muy profesional." },
-  { name: "Marc R.", rating: 5, text: "Los grips premium se notan. Volveré seguro." },
-];
-
 function Home() {
+  const { data: reviews = [] } = useQuery({
+    queryKey: ["reviews-home"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("reviews")
+        .select("id,author_name,rating,content")
+        .eq("is_published", true)
+        .order("sort_order")
+        .limit(3);
+      if (error) throw error;
+      return data;
+    },
+  });
   return (
     <>
       {/* HERO */}
@@ -206,15 +215,15 @@ function Home() {
             align="center"
           />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {REVIEWS.map((r) => (
-              <article key={r.name} className="rounded-2xl border border-border bg-card p-7 shadow-soft">
+            {reviews.map((r) => (
+              <article key={r.id} className="rounded-2xl border border-border bg-card p-7 shadow-soft">
                 <div className="flex gap-0.5 text-secondary-foreground">
                   {Array.from({ length: r.rating }).map((_, i) => (
                     <Star key={i} className="h-4 w-4 fill-secondary text-secondary" />
                   ))}
                 </div>
-                <p className="mt-4 text-foreground/90 leading-relaxed">"{r.text}"</p>
-                <div className="mt-5 font-semibold text-primary">{r.name}</div>
+                <p className="mt-4 text-foreground/90 leading-relaxed">"{r.content}"</p>
+                <div className="mt-5 font-semibold text-primary">{r.author_name}</div>
               </article>
             ))}
           </div>
