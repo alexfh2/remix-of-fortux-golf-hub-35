@@ -17,14 +17,15 @@ export const Route = createFileRoute("/_authenticated/admin")({
   component: AdminLayout,
 });
 
-const ITEMS = [
+type NavItem = { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean; roles?: string[] };
+const ITEMS: NavItem[] = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { to: "/admin/productos", label: "Productos", icon: Package },
   { to: "/admin/noticias", label: "Noticias", icon: Newspaper },
   { to: "/admin/resenas", label: "Reseñas", icon: Star },
   { to: "/admin/galeria", label: "Galería", icon: ImageIcon },
   { to: "/admin/usuarios", label: "Usuarios", icon: Users, roles: ["super_admin"] },
-] as const;
+];
 
 function AdminLayout() {
   const { user } = Route.useRouteContext() as { user: { id: string; email?: string } };
@@ -67,7 +68,7 @@ function AdminLayout() {
     navigate({ to: "/auth", replace: true });
   };
 
-  const visible = ITEMS.filter((i) => !("roles" in i) || (i.roles as readonly string[]).some((r) => roles.includes(r)));
+  const visible = ITEMS.filter((i) => !i.roles || i.roles.some((r) => (roles as string[]).includes(r)));
 
   return (
     <SidebarProvider>
