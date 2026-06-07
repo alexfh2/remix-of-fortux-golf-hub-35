@@ -22,6 +22,10 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as AuthenticatedAdminResenasRouteImport } from './routes/_authenticated/admin.resenas'
+import { Route as AuthenticatedAdminProductosRouteImport } from './routes/_authenticated/admin.productos'
+import { Route as AuthenticatedAdminNoticiasRouteImport } from './routes/_authenticated/admin.noticias'
+import { Route as AuthenticatedAdminGaleriaRouteImport } from './routes/_authenticated/admin.galeria'
 import { Route as AuthenticatedAdminCambiarContrasenaRouteImport } from './routes/_authenticated/admin.cambiar-contrasena'
 
 const TiendaRoute = TiendaRouteImport.update({
@@ -88,6 +92,30 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const AuthenticatedAdminResenasRoute =
+  AuthenticatedAdminResenasRouteImport.update({
+    id: '/resenas',
+    path: '/resenas',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminProductosRoute =
+  AuthenticatedAdminProductosRouteImport.update({
+    id: '/productos',
+    path: '/productos',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminNoticiasRoute =
+  AuthenticatedAdminNoticiasRouteImport.update({
+    id: '/noticias',
+    path: '/noticias',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminGaleriaRoute =
+  AuthenticatedAdminGaleriaRouteImport.update({
+    id: '/galeria',
+    path: '/galeria',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminCambiarContrasenaRoute =
   AuthenticatedAdminCambiarContrasenaRouteImport.update({
     id: '/cambiar-contrasena',
@@ -108,6 +136,10 @@ export interface FileRoutesByFullPath {
   '/tienda': typeof TiendaRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
+  '/admin/galeria': typeof AuthenticatedAdminGaleriaRoute
+  '/admin/noticias': typeof AuthenticatedAdminNoticiasRoute
+  '/admin/productos': typeof AuthenticatedAdminProductosRoute
+  '/admin/resenas': typeof AuthenticatedAdminResenasRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -122,6 +154,10 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tienda': typeof TiendaRoute
   '/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
+  '/admin/galeria': typeof AuthenticatedAdminGaleriaRoute
+  '/admin/noticias': typeof AuthenticatedAdminNoticiasRoute
+  '/admin/productos': typeof AuthenticatedAdminProductosRoute
+  '/admin/resenas': typeof AuthenticatedAdminResenasRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
@@ -139,6 +175,10 @@ export interface FileRoutesById {
   '/tienda': typeof TiendaRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/_authenticated/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
+  '/_authenticated/admin/galeria': typeof AuthenticatedAdminGaleriaRoute
+  '/_authenticated/admin/noticias': typeof AuthenticatedAdminNoticiasRoute
+  '/_authenticated/admin/productos': typeof AuthenticatedAdminProductosRoute
+  '/_authenticated/admin/resenas': typeof AuthenticatedAdminResenasRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -156,6 +196,10 @@ export interface FileRouteTypes {
     | '/tienda'
     | '/admin'
     | '/admin/cambiar-contrasena'
+    | '/admin/galeria'
+    | '/admin/noticias'
+    | '/admin/productos'
+    | '/admin/resenas'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -170,6 +214,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/tienda'
     | '/admin/cambiar-contrasena'
+    | '/admin/galeria'
+    | '/admin/noticias'
+    | '/admin/productos'
+    | '/admin/resenas'
     | '/admin'
   id:
     | '__root__'
@@ -186,6 +234,10 @@ export interface FileRouteTypes {
     | '/tienda'
     | '/_authenticated/admin'
     | '/_authenticated/admin/cambiar-contrasena'
+    | '/_authenticated/admin/galeria'
+    | '/_authenticated/admin/noticias'
+    | '/_authenticated/admin/productos'
+    | '/_authenticated/admin/resenas'
     | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
@@ -296,6 +348,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/resenas': {
+      id: '/_authenticated/admin/resenas'
+      path: '/resenas'
+      fullPath: '/admin/resenas'
+      preLoaderRoute: typeof AuthenticatedAdminResenasRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/productos': {
+      id: '/_authenticated/admin/productos'
+      path: '/productos'
+      fullPath: '/admin/productos'
+      preLoaderRoute: typeof AuthenticatedAdminProductosRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/noticias': {
+      id: '/_authenticated/admin/noticias'
+      path: '/noticias'
+      fullPath: '/admin/noticias'
+      preLoaderRoute: typeof AuthenticatedAdminNoticiasRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/galeria': {
+      id: '/_authenticated/admin/galeria'
+      path: '/galeria'
+      fullPath: '/admin/galeria'
+      preLoaderRoute: typeof AuthenticatedAdminGaleriaRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/cambiar-contrasena': {
       id: '/_authenticated/admin/cambiar-contrasena'
       path: '/cambiar-contrasena'
@@ -308,12 +388,20 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminCambiarContrasenaRoute: typeof AuthenticatedAdminCambiarContrasenaRoute
+  AuthenticatedAdminGaleriaRoute: typeof AuthenticatedAdminGaleriaRoute
+  AuthenticatedAdminNoticiasRoute: typeof AuthenticatedAdminNoticiasRoute
+  AuthenticatedAdminProductosRoute: typeof AuthenticatedAdminProductosRoute
+  AuthenticatedAdminResenasRoute: typeof AuthenticatedAdminResenasRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
 
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminCambiarContrasenaRoute:
     AuthenticatedAdminCambiarContrasenaRoute,
+  AuthenticatedAdminGaleriaRoute: AuthenticatedAdminGaleriaRoute,
+  AuthenticatedAdminNoticiasRoute: AuthenticatedAdminNoticiasRoute,
+  AuthenticatedAdminProductosRoute: AuthenticatedAdminProductosRoute,
+  AuthenticatedAdminResenasRoute: AuthenticatedAdminResenasRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
 }
 
@@ -347,3 +435,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
