@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
 import { SectionHeading } from "@/components/site/SectionHeading";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/noticias")({
   head: () => ({
@@ -15,40 +17,57 @@ export const Route = createFileRoute("/noticias")({
   component: Page,
 });
 
-const NEWS = [
-  { cat: "Circuito", title: "Arranca la nueva temporada del circuito P&P", date: "01 Oct 2026", excerpt: "Más pruebas, nuevos campos y un calendario lleno de competiciones." },
-  { cat: "Academia", title: "Nuevo programa de iniciación para adultos", date: "22 Sep 2026", excerpt: "Aprende los fundamentos del golf en sesiones grupales semanales." },
-  { cat: "Productos", title: "Llegan los nuevos grips Tour Velvet Pro", date: "10 Sep 2026", excerpt: "Disponibles en taller con cambio inmediato mientras esperas." },
-  { cat: "Fortux", title: "Ampliamos taller con nuevas máquinas de fitting", date: "01 Sep 2026", excerpt: "Mejoramos nuestro servicio con tecnología de última generación." },
-];
-
-const CATS = ["Todos", "Fortux", "Circuito", "Academia", "Competiciones", "Productos"] as const;
+type News = {
+  id: string;
+  title: string;
+  excerpt: string | null;
+  cover_url: string | null;
+  published_at: string | null;
+};
 
 function Page() {
+  const { data: news = [], isLoading } = useQuery({
+    queryKey: ["news"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("news")
+        .select("id,title,excerpt,cover_url,published_at")
+        .eq("is_published", true)
+        .order("published_at", { ascending: false });
+      if (error) throw error;
+      return data as News[];
+    },
+  });
+
   return (
     <section className="py-20 md:py-28">
       <div className="container-fortux">
         <SectionHeading eyebrow="Noticias" title="Actualidad de Fortux" subtitle="Lo último del taller, la academia, los productos y el circuito." />
-        <div className="mt-8 flex flex-wrap gap-2">
-          {CATS.map((c) => (
-            <span key={c} className="rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-foreground">{c}</span>
-          ))}
-        </div>
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
-          {NEWS.map((n) => (
-            <article key={n.title} className="group rounded-2xl border border-border bg-card overflow-hidden transition-all hover:-translate-y-1 hover:shadow-elegant">
-              <div className="aspect-[16/9] bg-gradient-hero" />
-              <div className="p-7">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-semibold uppercase tracking-wider text-primary">{n.cat}</span>
-                  <span className="text-muted-foreground">{n.date}</span>
+        {isLoading ? (
+          <p className="mt-10 text-muted-foreground">Cargando noticias…</p>
+        ) : (
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            {news.map((n) => (
+              <article key={n.id} className="group rounded-2xl border border-border bg-card overflow-hidden transition-all hover:-translate-y-1 hover:shadow-elegant">
+                <div className="aspect-[16/9] bg-gradient-hero">
+                  {n.cover_url && <img src={n.cover_url} alt={n.title} className="h-full w-full object-cover" loading="lazy" />}
                 </div>
-                <h3 className="mt-3 font-display text-xl md:text-2xl font-bold">{n.title}</h3>
-                <p className="mt-2 text-muted-foreground">{n.excerpt}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+                <div className="p-7">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-semibold uppercase tracking-wider text-primary">Fortux</span>
+                    {n.published_at && (
+                      <span className="text-muted-foreground">
+                        {new Date(n.published_at).toLocaleDateString("es-ES", { day: "2-digit", month: "short", year: "numeric" })}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="mt-3 font-display text-xl md:text-2xl font-bold">{n.title}</h3>
+                  {n.excerpt && <p className="mt-2 text-muted-foreground">{n.excerpt}</p>}
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
