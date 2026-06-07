@@ -1,4 +1,4 @@
-import { createFileRoute, Outlet, Link, useNavigate, useRouterState, redirect } from "@tanstack/react-router";
+import { createFileRoute, Outlet, Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import {
@@ -90,7 +90,7 @@ function AdminLayout() {
                     return (
                       <SidebarMenuItem key={item.to}>
                         <SidebarMenuButton asChild isActive={active}>
-                          <Link to={item.to} className="flex items-center gap-2">
+                          <Link to={item.to as string} className="flex items-center gap-2">
                             <item.icon className="h-4 w-4" />
                             <span>{item.label}</span>
                           </Link>
