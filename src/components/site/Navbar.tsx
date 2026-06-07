@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn, LayoutDashboard } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { waLink } from "@/lib/site";
+import { useAuth } from "@/hooks/useAuth";
 
 const NAV = [
   { to: "/", label: "Inicio" },
@@ -17,6 +18,7 @@ const NAV = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const { user } = useAuth();
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="container-fortux flex h-16 items-center justify-between gap-4">
@@ -45,6 +47,15 @@ export function Navbar() {
 
         <div className="hidden lg:flex items-center gap-2">
           <LanguageSwitcher />
+          {user ? (
+            <Button asChild variant="outline" size="sm">
+              <Link to="/admin"><LayoutDashboard className="mr-2 h-4 w-4" /> Admin</Link>
+            </Button>
+          ) : (
+            <Button asChild variant="ghost" size="sm">
+              <Link to="/auth"><LogIn className="mr-2 h-4 w-4" /> Acceder</Link>
+            </Button>
+          )}
           <Button asChild variant="default" className="bg-primary hover:bg-primary-glow">
             <a href={waLink("Hola, querría solicitar un presupuesto.")} target="_blank" rel="noopener">
               Solicitar Presupuesto

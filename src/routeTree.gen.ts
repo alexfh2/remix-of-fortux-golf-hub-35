@@ -16,8 +16,18 @@ import { Route as NoticiasRouteImport } from './routes/noticias'
 import { Route as GaleriaRouteImport } from './routes/galeria'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as CircuitoRouteImport } from './routes/circuito'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AcademiaRouteImport } from './routes/academia'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as AuthenticatedAdminUsuariosRouteImport } from './routes/_authenticated/admin.usuarios'
+import { Route as AuthenticatedAdminResenasRouteImport } from './routes/_authenticated/admin.resenas'
+import { Route as AuthenticatedAdminProductosRouteImport } from './routes/_authenticated/admin.productos'
+import { Route as AuthenticatedAdminNoticiasRouteImport } from './routes/_authenticated/admin.noticias'
+import { Route as AuthenticatedAdminGaleriaRouteImport } from './routes/_authenticated/admin.galeria'
+import { Route as AuthenticatedAdminCambiarContrasenaRouteImport } from './routes/_authenticated/admin.cambiar-contrasena'
 
 const TiendaRoute = TiendaRouteImport.update({
   id: '/tienda',
@@ -54,9 +64,18 @@ const CircuitoRoute = CircuitoRouteImport.update({
   path: '/circuito',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AcademiaRoute = AcademiaRouteImport.update({
   id: '/academia',
   path: '/academia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -64,10 +83,57 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminUsuariosRoute =
+  AuthenticatedAdminUsuariosRouteImport.update({
+    id: '/usuarios',
+    path: '/usuarios',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminResenasRoute =
+  AuthenticatedAdminResenasRouteImport.update({
+    id: '/resenas',
+    path: '/resenas',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminProductosRoute =
+  AuthenticatedAdminProductosRouteImport.update({
+    id: '/productos',
+    path: '/productos',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminNoticiasRoute =
+  AuthenticatedAdminNoticiasRouteImport.update({
+    id: '/noticias',
+    path: '/noticias',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminGaleriaRoute =
+  AuthenticatedAdminGaleriaRouteImport.update({
+    id: '/galeria',
+    path: '/galeria',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminCambiarContrasenaRoute =
+  AuthenticatedAdminCambiarContrasenaRouteImport.update({
+    id: '/cambiar-contrasena',
+    path: '/cambiar-contrasena',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/academia': typeof AcademiaRoute
+  '/auth': typeof AuthRoute
   '/circuito': typeof CircuitoRoute
   '/contacto': typeof ContactoRoute
   '/galeria': typeof GaleriaRoute
@@ -75,10 +141,19 @@ export interface FileRoutesByFullPath {
   '/servicios': typeof ServiciosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tienda': typeof TiendaRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
+  '/admin/galeria': typeof AuthenticatedAdminGaleriaRoute
+  '/admin/noticias': typeof AuthenticatedAdminNoticiasRoute
+  '/admin/productos': typeof AuthenticatedAdminProductosRoute
+  '/admin/resenas': typeof AuthenticatedAdminResenasRoute
+  '/admin/usuarios': typeof AuthenticatedAdminUsuariosRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/academia': typeof AcademiaRoute
+  '/auth': typeof AuthRoute
   '/circuito': typeof CircuitoRoute
   '/contacto': typeof ContactoRoute
   '/galeria': typeof GaleriaRoute
@@ -86,11 +161,20 @@ export interface FileRoutesByTo {
   '/servicios': typeof ServiciosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tienda': typeof TiendaRoute
+  '/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
+  '/admin/galeria': typeof AuthenticatedAdminGaleriaRoute
+  '/admin/noticias': typeof AuthenticatedAdminNoticiasRoute
+  '/admin/productos': typeof AuthenticatedAdminProductosRoute
+  '/admin/resenas': typeof AuthenticatedAdminResenasRoute
+  '/admin/usuarios': typeof AuthenticatedAdminUsuariosRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/academia': typeof AcademiaRoute
+  '/auth': typeof AuthRoute
   '/circuito': typeof CircuitoRoute
   '/contacto': typeof ContactoRoute
   '/galeria': typeof GaleriaRoute
@@ -98,12 +182,21 @@ export interface FileRoutesById {
   '/servicios': typeof ServiciosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tienda': typeof TiendaRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/_authenticated/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
+  '/_authenticated/admin/galeria': typeof AuthenticatedAdminGaleriaRoute
+  '/_authenticated/admin/noticias': typeof AuthenticatedAdminNoticiasRoute
+  '/_authenticated/admin/productos': typeof AuthenticatedAdminProductosRoute
+  '/_authenticated/admin/resenas': typeof AuthenticatedAdminResenasRoute
+  '/_authenticated/admin/usuarios': typeof AuthenticatedAdminUsuariosRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/academia'
+    | '/auth'
     | '/circuito'
     | '/contacto'
     | '/galeria'
@@ -111,10 +204,19 @@ export interface FileRouteTypes {
     | '/servicios'
     | '/sitemap.xml'
     | '/tienda'
+    | '/admin'
+    | '/admin/cambiar-contrasena'
+    | '/admin/galeria'
+    | '/admin/noticias'
+    | '/admin/productos'
+    | '/admin/resenas'
+    | '/admin/usuarios'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/academia'
+    | '/auth'
     | '/circuito'
     | '/contacto'
     | '/galeria'
@@ -122,10 +224,19 @@ export interface FileRouteTypes {
     | '/servicios'
     | '/sitemap.xml'
     | '/tienda'
+    | '/admin/cambiar-contrasena'
+    | '/admin/galeria'
+    | '/admin/noticias'
+    | '/admin/productos'
+    | '/admin/resenas'
+    | '/admin/usuarios'
+    | '/admin'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/academia'
+    | '/auth'
     | '/circuito'
     | '/contacto'
     | '/galeria'
@@ -133,11 +244,21 @@ export interface FileRouteTypes {
     | '/servicios'
     | '/sitemap.xml'
     | '/tienda'
+    | '/_authenticated/admin'
+    | '/_authenticated/admin/cambiar-contrasena'
+    | '/_authenticated/admin/galeria'
+    | '/_authenticated/admin/noticias'
+    | '/_authenticated/admin/productos'
+    | '/_authenticated/admin/resenas'
+    | '/_authenticated/admin/usuarios'
+    | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AcademiaRoute: typeof AcademiaRoute
+  AuthRoute: typeof AuthRoute
   CircuitoRoute: typeof CircuitoRoute
   ContactoRoute: typeof ContactoRoute
   GaleriaRoute: typeof GaleriaRoute
@@ -198,11 +319,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CircuitoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/academia': {
       id: '/academia'
       path: '/academia'
       fullPath: '/academia'
       preLoaderRoute: typeof AcademiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -212,12 +347,105 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/usuarios': {
+      id: '/_authenticated/admin/usuarios'
+      path: '/usuarios'
+      fullPath: '/admin/usuarios'
+      preLoaderRoute: typeof AuthenticatedAdminUsuariosRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/resenas': {
+      id: '/_authenticated/admin/resenas'
+      path: '/resenas'
+      fullPath: '/admin/resenas'
+      preLoaderRoute: typeof AuthenticatedAdminResenasRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/productos': {
+      id: '/_authenticated/admin/productos'
+      path: '/productos'
+      fullPath: '/admin/productos'
+      preLoaderRoute: typeof AuthenticatedAdminProductosRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/noticias': {
+      id: '/_authenticated/admin/noticias'
+      path: '/noticias'
+      fullPath: '/admin/noticias'
+      preLoaderRoute: typeof AuthenticatedAdminNoticiasRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/galeria': {
+      id: '/_authenticated/admin/galeria'
+      path: '/galeria'
+      fullPath: '/admin/galeria'
+      preLoaderRoute: typeof AuthenticatedAdminGaleriaRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/cambiar-contrasena': {
+      id: '/_authenticated/admin/cambiar-contrasena'
+      path: '/cambiar-contrasena'
+      fullPath: '/admin/cambiar-contrasena'
+      preLoaderRoute: typeof AuthenticatedAdminCambiarContrasenaRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
   }
 }
 
+interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminCambiarContrasenaRoute: typeof AuthenticatedAdminCambiarContrasenaRoute
+  AuthenticatedAdminGaleriaRoute: typeof AuthenticatedAdminGaleriaRoute
+  AuthenticatedAdminNoticiasRoute: typeof AuthenticatedAdminNoticiasRoute
+  AuthenticatedAdminProductosRoute: typeof AuthenticatedAdminProductosRoute
+  AuthenticatedAdminResenasRoute: typeof AuthenticatedAdminResenasRoute
+  AuthenticatedAdminUsuariosRoute: typeof AuthenticatedAdminUsuariosRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+}
+
+const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminCambiarContrasenaRoute:
+    AuthenticatedAdminCambiarContrasenaRoute,
+  AuthenticatedAdminGaleriaRoute: AuthenticatedAdminGaleriaRoute,
+  AuthenticatedAdminNoticiasRoute: AuthenticatedAdminNoticiasRoute,
+  AuthenticatedAdminProductosRoute: AuthenticatedAdminProductosRoute,
+  AuthenticatedAdminResenasRoute: AuthenticatedAdminResenasRoute,
+  AuthenticatedAdminUsuariosRoute: AuthenticatedAdminUsuariosRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+}
+
+const AuthenticatedAdminRouteWithChildren =
+  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AcademiaRoute: AcademiaRoute,
+  AuthRoute: AuthRoute,
   CircuitoRoute: CircuitoRoute,
   ContactoRoute: ContactoRoute,
   GaleriaRoute: GaleriaRoute,
