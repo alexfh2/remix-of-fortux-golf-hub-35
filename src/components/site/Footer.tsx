@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Facebook, Youtube, Mail, Phone } from "lucide-react";
+import { Instagram, Facebook, Youtube, Mail, Phone, Lock } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { BRAND } from "@/assets/brand";
+import { useAuth } from "@/hooks/useAuth";
+
 
 export function Footer() {
   return (
@@ -48,15 +50,17 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-primary-foreground/10">
-        <div className="container-fortux py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-primary-foreground/70">
+        <div className="container-fortux py-5 flex flex-col items-center gap-3 text-xs text-primary-foreground/70">
           <p>© {new Date().getFullYear()} Fortux. Todos los derechos reservados.</p>
           <div className="flex gap-4">
             <a href="#" className="hover:text-secondary">Aviso legal</a>
             <a href="#" className="hover:text-secondary">Privacidad</a>
             <a href="#" className="hover:text-secondary">Cookies</a>
           </div>
+          <AdminLink />
         </div>
       </div>
+
     </footer>
   );
 }
