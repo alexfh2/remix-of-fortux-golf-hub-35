@@ -141,6 +141,11 @@ function AdminLayout() {
             </div>
           </header>
           <main className="flex-1 p-6">
+            {profile?.must_change_password && (
+              <div className="mb-6 rounded-md border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+                <strong>Acción requerida:</strong> debes cambiar la contraseña inicial antes de poder navegar por el panel.
+              </div>
+            )}
             <Outlet />
           </main>
         </div>
