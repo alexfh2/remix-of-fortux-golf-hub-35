@@ -39,13 +39,20 @@ const UPCOMING = [
   { date: "23 NOV", name: "Final de Circuito", place: "P&P Papalús", status: "Final" },
 ];
 
-const REVIEWS = [
-  { name: "Jordi M.", rating: 5, text: "Reparación impecable y rapidísima. Mis hierros volvieron como nuevos." },
-  { name: "Anna P.", rating: 5, text: "El fitting cambió mi juego. Atención muy profesional." },
-  { name: "Marc R.", rating: 5, text: "Los grips premium se notan. Volveré seguro." },
-];
-
 function Home() {
+  const { data: reviews = [] } = useQuery({
+    queryKey: ["reviews-home"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("reviews")
+        .select("id,author_name,rating,content")
+        .eq("is_published", true)
+        .order("sort_order")
+        .limit(3);
+      if (error) throw error;
+      return data;
+    },
+  });
   return (
     <>
       {/* HERO */}
