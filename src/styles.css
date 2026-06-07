@@ -34,69 +34,69 @@
   --color-whatsapp: var(--whatsapp);
   --color-whatsapp-foreground: var(--whatsapp-foreground);
 
-  --font-display: "Manrope", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.75rem;
+  --radius: 0.5rem;
 
-  /* Brand: navy #002F5F, lime #B9D986 */
-  --background: oklch(0.99 0.005 240);
-  --foreground: oklch(0.18 0.04 250);
+  /* Brand: Luxury Club Editorial — onyx black + champagne gold */
+  --background: oklch(0.99 0.003 80);          /* warm off-white */
+  --foreground: oklch(0.16 0.01 60);           /* near-black */
 
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.04 250);
+  --card-foreground: oklch(0.16 0.01 60);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.04 250);
+  --popover-foreground: oklch(0.16 0.01 60);
 
-  --primary: oklch(0.30 0.10 250);          /* #002F5F navy */
-  --primary-foreground: oklch(0.99 0.005 240);
-  --primary-glow: oklch(0.42 0.14 250);
+  --primary: oklch(0.16 0.01 60);              /* onyx black */
+  --primary-foreground: oklch(0.99 0.003 80);
+  --primary-glow: oklch(0.28 0.01 60);
 
-  --secondary: oklch(0.86 0.13 130);        /* #B9D986 lime */
-  --secondary-foreground: oklch(0.22 0.06 250);
+  --secondary: oklch(0.76 0.13 85);            /* champagne gold #D4AF37 */
+  --secondary-foreground: oklch(0.16 0.01 60);
 
-  --accent: oklch(0.86 0.13 130);
-  --accent-foreground: oklch(0.22 0.06 250);
+  --accent: oklch(0.76 0.13 85);
+  --accent-foreground: oklch(0.16 0.01 60);
 
-  --muted: oklch(0.96 0.01 240);
-  --muted-foreground: oklch(0.45 0.03 250);
+  --muted: oklch(0.96 0.005 80);
+  --muted-foreground: oklch(0.45 0.01 60);
 
   --destructive: oklch(0.58 0.22 27);
-  --destructive-foreground: oklch(0.99 0.005 240);
+  --destructive-foreground: oklch(0.99 0.003 80);
 
-  --border: oklch(0.91 0.01 240);
-  --input: oklch(0.91 0.01 240);
-  --ring: oklch(0.42 0.14 250);
+  --border: oklch(0.92 0.005 80);
+  --input: oklch(0.92 0.005 80);
+  --ring: oklch(0.76 0.13 85);
 
   --whatsapp: oklch(0.68 0.17 150);
   --whatsapp-foreground: oklch(0.99 0 0);
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.22 0.08 250) 0%, oklch(0.30 0.10 250) 55%, oklch(0.42 0.14 250) 100%);
-  --gradient-accent: linear-gradient(135deg, oklch(0.86 0.13 130) 0%, oklch(0.78 0.16 138) 100%);
-  --gradient-overlay: linear-gradient(180deg, oklch(0.15 0.05 250 / 0.55) 0%, oklch(0.15 0.05 250 / 0.85) 100%);
+  --gradient-hero: linear-gradient(135deg, oklch(0.10 0.005 60) 0%, oklch(0.16 0.01 60) 55%, oklch(0.22 0.01 60) 100%);
+  --gradient-accent: linear-gradient(135deg, oklch(0.76 0.13 85) 0%, oklch(0.68 0.14 80) 100%);
+  --gradient-overlay: linear-gradient(180deg, oklch(0.08 0 0 / 0.55) 0%, oklch(0.08 0 0 / 0.88) 100%);
 
-  --shadow-elegant: 0 20px 60px -20px oklch(0.18 0.05 250 / 0.35);
-  --shadow-soft: 0 10px 30px -12px oklch(0.18 0.05 250 / 0.18);
-  --shadow-glow: 0 0 60px oklch(0.86 0.13 130 / 0.35);
+  --shadow-elegant: 0 24px 60px -24px oklch(0.10 0 0 / 0.45);
+  --shadow-soft: 0 10px 30px -12px oklch(0.10 0 0 / 0.18);
+  --shadow-glow: 0 0 60px oklch(0.76 0.13 85 / 0.30);
 
   --transition-base: 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .dark {
-  --background: oklch(0.16 0.04 250);
-  --foreground: oklch(0.98 0.005 240);
-  --card: oklch(0.22 0.05 250);
-  --card-foreground: oklch(0.98 0.005 240);
-  --popover: oklch(0.22 0.05 250);
-  --popover-foreground: oklch(0.98 0.005 240);
-  --primary: oklch(0.86 0.13 130);
-  --primary-foreground: oklch(0.18 0.05 250);
-  --secondary: oklch(0.30 0.10 250);
-  --secondary-foreground: oklch(0.98 0.005 240);
-  --muted: oklch(0.26 0.04 250);
-  --muted-foreground: oklch(0.72 0.02 240);
+  --background: oklch(0.10 0.005 60);
+  --foreground: oklch(0.98 0.003 80);
+  --card: oklch(0.16 0.01 60);
+  --card-foreground: oklch(0.98 0.003 80);
+  --popover: oklch(0.16 0.01 60);
+  --popover-foreground: oklch(0.98 0.003 80);
+  --primary: oklch(0.76 0.13 85);
+  --primary-foreground: oklch(0.10 0.005 60);
+  --secondary: oklch(0.22 0.01 60);
+  --secondary-foreground: oklch(0.98 0.003 80);
+  --muted: oklch(0.20 0.005 60);
+  --muted-foreground: oklch(0.72 0.01 80);
   --border: oklch(1 0 0 / 0.10);
   --input: oklch(1 0 0 / 0.15);
 }
@@ -112,7 +112,7 @@
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
   }
 }
 
