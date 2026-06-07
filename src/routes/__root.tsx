@@ -84,6 +84,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Fortux" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Fortux — Reparación, mantenimiento y soluciones de golf" },
+      { name: "twitter:title", content: "Fortux — Reparación, mantenimiento y soluciones de golf" },
+      { property: "og:description", content: "Expertos en reparación, mantenimiento, personalización y venta de material de golf. Clases, asesoramiento y Circuito Pitch & Putt." },
+      { name: "twitter:description", content: "Expertos en reparación, mantenimiento, personalización y venta de material de golf. Clases, asesoramiento y Circuito Pitch & Putt." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/07ab8232-2255-4e6f-aaa8-9be7f8f74c80/id-preview-dd0a23ef--9e31c477-d17e-4d5a-86da-941ee01299f2.lovable.app-1780856450532.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/07ab8232-2255-4e6f-aaa8-9be7f8f74c80/id-preview-dd0a23ef--9e31c477-d17e-4d5a-86da-941ee01299f2.lovable.app-1780856450532.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
