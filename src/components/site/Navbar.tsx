@@ -1,26 +1,24 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X, LogIn } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { waLink } from "@/lib/site";
-import { useAuth } from "@/hooks/useAuth";
 import { BRAND } from "@/assets/brand";
-
-
-const NAV = [
-  { to: "/", label: "Inicio" },
-  { to: "/servicios", label: "Servicios" },
-  { to: "/tienda", label: "Tienda" },
-  { to: "/academia", label: "Academia" },
-  { to: "/circuito", label: "Circuito P&P" },
-  { to: "/noticias", label: "Noticias" },
-  { to: "/contacto", label: "Contacto" },
-] as const;
+import { useI18n } from "@/lib/i18n";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
-  const { user } = useAuth();
+  const { t } = useI18n();
+  const NAV = [
+    { to: "/", label: t("nav.home") },
+    { to: "/servicios", label: t("nav.services") },
+    { to: "/tienda", label: t("nav.shop") },
+    { to: "/academia", label: t("nav.academy") },
+    { to: "/circuito", label: t("nav.circuit") },
+    { to: "/noticias", label: t("nav.news") },
+    { to: "/contacto", label: t("nav.contact") },
+  ] as const;
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="container-fortux flex h-16 items-center justify-between gap-4">
@@ -44,21 +42,15 @@ export function Navbar() {
 
         <div className="hidden lg:flex items-center gap-2">
           <LanguageSwitcher />
-          {!user && (
-            <Button asChild variant="ghost" size="sm">
-              <Link to="/auth"><LogIn className="mr-2 h-4 w-4" /> Acceder</Link>
-            </Button>
-          )}
           <Button asChild variant="default" className="bg-primary hover:bg-primary-glow">
             <a href={waLink("Hola, querría solicitar un presupuesto.")} target="_blank" rel="noopener">
-              Solicitar Presupuesto
+              {t("cta.quote")}
             </a>
           </Button>
         </div>
 
-
         <button
-          aria-label="Abrir menú"
+          aria-label="Menu"
           className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground hover:bg-muted"
           onClick={() => setOpen((v) => !v)}
         >
@@ -84,7 +76,7 @@ export function Navbar() {
               <LanguageSwitcher />
               <Button asChild className="flex-1 bg-primary hover:bg-primary-glow">
                 <a href={waLink("Hola, querría solicitar un presupuesto.")} target="_blank" rel="noopener">
-                  Solicitar Presupuesto
+                  {t("cta.quote")}
                 </a>
               </Button>
             </div>
