@@ -215,15 +215,15 @@ function Home() {
             align="center"
           />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {REVIEWS.map((r) => (
-              <article key={r.name} className="rounded-2xl border border-border bg-card p-7 shadow-soft">
+            {reviews.map((r) => (
+              <article key={r.id} className="rounded-2xl border border-border bg-card p-7 shadow-soft">
                 <div className="flex gap-0.5 text-secondary-foreground">
                   {Array.from({ length: r.rating }).map((_, i) => (
                     <Star key={i} className="h-4 w-4 fill-secondary text-secondary" />
                   ))}
                 </div>
-                <p className="mt-4 text-foreground/90 leading-relaxed">"{r.text}"</p>
-                <div className="mt-5 font-semibold text-primary">{r.name}</div>
+                <p className="mt-4 text-foreground/90 leading-relaxed">"{r.content}"</p>
+                <div className="mt-5 font-semibold text-primary">{r.author_name}</div>
               </article>
             ))}
           </div>
