@@ -5,6 +5,7 @@ import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { waLink } from "@/lib/site";
 import { supabase } from "@/integrations/supabase/client";
+import { useI18n } from "@/lib/i18n";
 import tiendaImg from "@/assets/tienda.jpg";
 
 export const Route = createFileRoute("/tienda")({
@@ -31,7 +32,8 @@ type Product = {
 };
 
 function Page() {
-  const [active, setActive] = useState<string>("Todos");
+  const { t } = useI18n();
+  const [active, setActive] = useState<string>(t("shop.all"));
 
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["products"],
@@ -46,11 +48,12 @@ function Page() {
     },
   });
 
+  const ALL = t("shop.all");
   const categories = useMemo(
-    () => ["Todos", ...Array.from(new Set(products.map((p) => p.category)))],
-    [products]
+    () => [ALL, ...Array.from(new Set(products.map((p) => p.category)))],
+    [products, ALL]
   );
-  const list = active === "Todos" ? products : products.filter((p) => p.category === active);
+  const list = active === ALL ? products : products.filter((p) => p.category === active);
 
   return (
     <>
@@ -58,8 +61,8 @@ function Page() {
         <img src={tiendaImg} alt="Catálogo Fortux Golf" width={1600} height={600} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-overlay" />
         <div className="container-fortux relative py-20 md:py-28 text-primary-foreground">
-          <h1 className="font-display text-4xl md:text-6xl font-bold text-balance max-w-2xl">Tienda Fortux Golf</h1>
-          <p className="mt-4 max-w-xl text-primary-foreground/85">Material seleccionado por golfistas, para golfistas. Consulta cualquier producto por WhatsApp.</p>
+          <h1 className="font-display text-4xl md:text-6xl font-bold text-balance max-w-2xl">{t("shop.title")}</h1>
+          <p className="mt-4 max-w-xl text-primary-foreground/85">{t("shop.subtitle")}</p>
         </div>
       </section>
 
@@ -80,7 +83,7 @@ function Page() {
           </div>
 
           {isLoading ? (
-            <p className="mt-10 text-muted-foreground">Cargando productos…</p>
+            <p className="mt-10 text-muted-foreground">{t("shop.loading")}</p>
           ) : (
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {list.map((p) => (
@@ -100,7 +103,7 @@ function Page() {
                     {p.description && <p className="mt-1 text-sm text-muted-foreground">{p.description}</p>}
                     <Button asChild size="sm" className="mt-4 w-full bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp/90">
                       <a href={waLink(`Hola, me interesa el producto: ${p.name}.`)} target="_blank" rel="noopener">
-                        <MessageCircle className="mr-1.5 h-4 w-4" /> Consultar
+                        <MessageCircle className="mr-1.5 h-4 w-4" /> {t("cta.consult")}
                       </a>
                     </Button>
                   </div>

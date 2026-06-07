@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { supabase } from "@/integrations/supabase/client";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/galeria")({
   head: () => ({
@@ -21,7 +22,8 @@ export const Route = createFileRoute("/galeria")({
 type Media = { id: string; title: string | null; url: string; category: string | null };
 
 function Page() {
-  const [active, setActive] = useState<string>("Todos");
+  const { t } = useI18n();
+  const [active, setActive] = useState<string>(t("shop.all"));
 
   const { data: items = [], isLoading } = useQuery({
     queryKey: ["media"],
@@ -36,16 +38,17 @@ function Page() {
     },
   });
 
+  const ALL = t("shop.all");
   const filters = useMemo(
-    () => ["Todos", ...Array.from(new Set(items.map((i) => i.category).filter(Boolean) as string[]))],
-    [items]
+    () => [ALL, ...Array.from(new Set(items.map((i) => i.category).filter(Boolean) as string[]))],
+    [items, ALL]
   );
-  const list = active === "Todos" ? items : items.filter((i) => i.category === active);
+  const list = active === ALL ? items : items.filter((i) => i.category === active);
 
   return (
     <section className="py-20 md:py-28">
       <div className="container-fortux">
-        <SectionHeading eyebrow="Galería" title="Momentos Fortux" />
+        <SectionHeading eyebrow={t("gal.eyebrow")} title={t("gal.title")} />
         <div className="mt-8 flex flex-wrap gap-2">
           {filters.map((f) => (
             <button
@@ -58,7 +61,7 @@ function Page() {
           ))}
         </div>
         {isLoading ? (
-          <p className="mt-10 text-muted-foreground">Cargando galería…</p>
+          <p className="mt-10 text-muted-foreground">{t("gal.loading")}</p>
         ) : (
           <div className="mt-10 grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {list.map((m) => (

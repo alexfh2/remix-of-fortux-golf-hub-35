@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { supabase } from "@/integrations/supabase/client";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/noticias")({
   head: () => ({
@@ -26,6 +27,7 @@ type News = {
 };
 
 function Page() {
+  const { t, lang } = useI18n();
   const { data: news = [], isLoading } = useQuery({
     queryKey: ["news"],
     queryFn: async () => {
@@ -42,9 +44,9 @@ function Page() {
   return (
     <section className="py-20 md:py-28">
       <div className="container-fortux">
-        <SectionHeading eyebrow="Noticias" title="Actualidad de Fortux" subtitle="Lo último del taller, la academia, los productos y el circuito." />
+        <SectionHeading eyebrow={t("news.eyebrow")} title={t("news.title")} subtitle={t("news.subtitle")} />
         {isLoading ? (
-          <p className="mt-10 text-muted-foreground">Cargando noticias…</p>
+          <p className="mt-10 text-muted-foreground">{t("news.loading")}</p>
         ) : (
           <div className="mt-10 grid gap-5 md:grid-cols-2">
             {news.map((n) => (
@@ -57,7 +59,7 @@ function Page() {
                     <span className="font-semibold uppercase tracking-wider text-primary">Fortux</span>
                     {n.published_at && (
                       <span className="text-muted-foreground">
-                        {new Date(n.published_at).toLocaleDateString("es-ES", { day: "2-digit", month: "short", year: "numeric" })}
+                        {new Date(n.published_at).toLocaleDateString(lang === "ca" ? "ca-ES" : "es-ES", { day: "2-digit", month: "short", year: "numeric" })}
                       </span>
                     )}
                   </div>

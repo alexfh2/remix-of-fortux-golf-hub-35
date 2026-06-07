@@ -3,6 +3,7 @@ import { ArrowRight, Trophy, Calendar, MapPin, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { SITE } from "@/lib/site";
+import { useI18n } from "@/lib/i18n";
 import circuitoImg from "@/assets/circuito-hero.jpg";
 
 export const Route = createFileRoute("/circuito")({
@@ -35,6 +36,7 @@ const UPCOMING = [
 ];
 
 function Page() {
+  const { t } = useI18n();
   return (
     <>
       <section className="relative isolate overflow-hidden">
@@ -42,17 +44,17 @@ function Page() {
         <div className="absolute inset-0 bg-gradient-overlay" />
         <div className="container-fortux relative py-24 md:py-32 text-primary-foreground">
           <span className="inline-block rounded-full bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary-foreground">
-            <Trophy className="inline mr-1 h-3.5 w-3.5" /> Circuito P&amp;P
+            <Trophy className="inline mr-1 h-3.5 w-3.5" /> {t("nav.circuit")}
           </span>
           <h1 className="mt-4 font-display text-4xl md:text-6xl lg:text-7xl font-bold text-balance max-w-3xl">
-            El circuito Pitch &amp; Putt de referencia
+            {t("cir.hero.title")}
           </h1>
           <p className="mt-5 max-w-xl text-lg text-primary-foreground/85">
-            Pruebas en los mejores campos, ranking actualizado y experiencia competitiva premium.
+            {t("cir.hero.subtitle")}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
-              <a href={SITE.circuitUrl} target="_blank" rel="noopener">Acceder al Circuito <ArrowRight className="ml-1.5 h-4 w-4" /></a>
+              <a href={SITE.circuitUrl} target="_blank" rel="noopener">{t("cta.accessCircuit")} <ArrowRight className="ml-1.5 h-4 w-4" /></a>
             </Button>
           </div>
         </div>
@@ -61,7 +63,7 @@ function Page() {
       <section className="py-20 md:py-28">
         <div className="container-fortux grid gap-12 lg:grid-cols-2">
           <div>
-            <SectionHeading eyebrow="Ranking" title="Top 5 actual" subtitle="Clasificación actualizada desde la plataforma del circuito." />
+            <SectionHeading eyebrow={t("cir.ranking.eyebrow")} title={t("cir.ranking.title")} subtitle={t("cir.ranking.subtitle")} />
             <ol className="mt-8 divide-y divide-border rounded-2xl border border-border bg-card overflow-hidden">
               {RANKING.map((r) => (
                 <li key={r.pos} className="flex items-center justify-between gap-4 px-5 py-4">
@@ -76,12 +78,12 @@ function Page() {
               ))}
             </ol>
             <Button asChild variant="link" className="mt-4 px-0">
-              <a href={SITE.circuitUrl} target="_blank" rel="noopener">Ver ranking completo <TrendingUp className="ml-1.5 h-4 w-4" /></a>
+              <a href={SITE.circuitUrl} target="_blank" rel="noopener">{t("cta.viewFullRanking")} <TrendingUp className="ml-1.5 h-4 w-4" /></a>
             </Button>
           </div>
 
           <div>
-            <SectionHeading eyebrow="Calendario" title="Próximos torneos" />
+            <SectionHeading eyebrow={t("cir.cal.eyebrow")} title={t("cir.cal.title")} />
             <div className="mt-8 space-y-3">
               {UPCOMING.map((c) => (
                 <article key={c.name} className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5">
