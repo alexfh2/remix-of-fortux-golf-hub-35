@@ -5,6 +5,19 @@ import { BRAND } from "@/assets/brand";
 import { useAuth } from "@/hooks/useAuth";
 
 
+function AdminLink() {
+  const { user } = useAuth();
+  return (
+    <Link
+      to="/admin"
+      className="inline-flex items-center gap-1.5 hover:text-secondary transition-colors"
+    >
+      <Lock className="h-3 w-3" />
+      Admin
+    </Link>
+  );
+}
+
 export function Footer() {
   return (
     <footer className="mt-20 bg-primary text-primary-foreground">
