@@ -11,6 +11,7 @@ import {
   SidebarHeader, SidebarFooter,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
+import { BRAND } from "@/assets/brand";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({ meta: [{ title: "Admin · Fortux" }, { name: "robots", content: "noindex" }] }),
@@ -75,10 +76,10 @@ function AdminLayout() {
       <div className="flex min-h-[calc(100vh-8rem)] w-full">
         <Sidebar collapsible="icon">
           <SidebarHeader>
-            <div className="flex items-center gap-2 px-2 py-1">
-              <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground font-display font-bold">F</span>
-              <span className="font-display font-semibold">Fortux Admin</span>
-            </div>
+            <Link to="/admin" className="flex items-center gap-2 px-2 py-2">
+              <img src={BRAND.icon} alt="Fortux" className="h-8 w-8 object-contain" />
+              <span className="font-display font-semibold tracking-tight">Fortux Admin</span>
+            </Link>
           </SidebarHeader>
           <SidebarContent>
             <SidebarGroup>
