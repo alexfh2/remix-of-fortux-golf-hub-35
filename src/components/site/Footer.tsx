@@ -2,11 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Youtube, Mail, Phone, Lock } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { BRAND } from "@/assets/brand";
-import { useAuth } from "@/hooks/useAuth";
-
 
 function AdminLink() {
-  const { user } = useAuth();
   return (
     <Link
       to="/admin"
