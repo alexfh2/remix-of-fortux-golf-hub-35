@@ -16,6 +16,7 @@ import { Footer } from "@/components/site/Footer";
 import { WhatsAppFloat } from "@/components/site/WhatsAppFloat";
 import { Toaster } from "@/components/ui/sonner";
 import { BRAND } from "@/assets/brand";
+import { I18nProvider } from "@/lib/i18n";
 
 function NotFoundComponent() {
   return (
@@ -137,15 +138,17 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col">
-        <Navbar />
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <Footer />
-        <WhatsAppFloat />
-        <Toaster position="top-right" />
-      </div>
+      <I18nProvider>
+        <div className="flex min-h-screen flex-col">
+          <Navbar />
+          <main className="flex-1">
+            <Outlet />
+          </main>
+          <Footer />
+          <WhatsAppFloat />
+          <Toaster position="top-right" />
+        </div>
+      </I18nProvider>
     </QueryClientProvider>
   );
 }

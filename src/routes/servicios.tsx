@@ -3,6 +3,7 @@ import { Wrench, Hammer, Sparkles, ShoppingBag, GraduationCap, ShieldCheck, Sett
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { waLink } from "@/lib/site";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/servicios")({
   head: () => ({
@@ -29,10 +30,11 @@ const ITEMS = [
 ];
 
 function Page() {
+  const { t } = useI18n();
   return (
     <section className="py-20 md:py-28">
       <div className="container-fortux">
-        <SectionHeading eyebrow="Servicios" title="Todo el cuidado que tu equipo necesita" subtitle="Desde una reparación puntual hasta un mantenimiento integral anual." />
+        <SectionHeading eyebrow={t("svc.eyebrow")} title={t("svc.title")} subtitle={t("svc.subtitle")} />
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {ITEMS.map((s) => (
             <article key={s.t} className="rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:shadow-elegant">
@@ -42,7 +44,7 @@ function Page() {
               <h3 className="mt-5 font-display text-xl font-bold">{s.t}</h3>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.d}</p>
               <Button asChild variant="link" className="mt-4 px-0 text-primary">
-                <a href={waLink(`Hola, me interesa: ${s.t}.`)} target="_blank" rel="noopener">Solicitar por WhatsApp</a>
+                <a href={waLink(`Hola, me interesa: ${s.t}.`)} target="_blank" rel="noopener">{t("cta.requestWa")}</a>
               </Button>
             </article>
           ))}

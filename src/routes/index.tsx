@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { SITE, waLink } from "@/lib/site";
 import { supabase } from "@/integrations/supabase/client";
+import { useI18n } from "@/lib/i18n";
 import heroImg from "@/assets/hero-fortux.jpg";
 import circuitoImg from "@/assets/circuito-hero.jpg";
 
@@ -40,6 +41,7 @@ const UPCOMING = [
 ];
 
 function Home() {
+  const { t } = useI18n();
   const { data: reviews = [] } = useQuery({
     queryKey: ["reviews-home"],
     queryFn: async () => {
@@ -67,28 +69,28 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-overlay" />
         <div className="container-fortux relative py-24 md:py-32 lg:py-40 text-primary-foreground animate-fade-up">
           <span className="inline-block rounded-full bg-secondary/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary-foreground">
-            Servicios integrales de golf
+            {t("home.hero.eyebrow")}
           </span>
           <h1 className="mt-5 max-w-3xl font-display text-4xl md:text-6xl lg:text-7xl font-bold text-balance">
-            Expertos en reparación, mantenimiento y soluciones para golfistas
+            {t("home.hero.title")}
           </h1>
           <p className="mt-6 max-w-xl text-lg md:text-xl text-primary-foreground/85">
-            Reparación, fitting, personalización, clases y venta de material. Todo lo que necesitas en un único lugar.
+            {t("home.hero.subtitle")}
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
               <a href={waLink("Hola, querría reparar mi equipo.")} target="_blank" rel="noopener">
-                Reparar Equipo <ArrowRight className="ml-1.5 h-4 w-4" />
+                {t("cta.repair")} <ArrowRight className="ml-1.5 h-4 w-4" />
               </a>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20">
               <a href={waLink("Hola, querría solicitar un presupuesto.")} target="_blank" rel="noopener">
-                Solicitar Presupuesto
+                {t("cta.quote")}
               </a>
             </Button>
             <Button asChild size="lg" className="bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp/90">
               <a href={waLink()} target="_blank" rel="noopener">
-                <MessageCircle className="mr-1.5 h-4 w-4" /> WhatsApp
+                <MessageCircle className="mr-1.5 h-4 w-4" /> {t("cta.whatsapp")}
               </a>
             </Button>
           </div>
@@ -107,9 +109,9 @@ function Home() {
       <section className="py-20 md:py-28">
         <div className="container-fortux">
           <SectionHeading
-            eyebrow="Servicios destacados"
-            title="Todo el cuidado que tu equipo merece"
-            subtitle="Trabajamos cada palo como si fuese nuestro. Materiales premium, técnicas profesionales y resultados garantizados."
+            eyebrow={t("home.services.eyebrow")}
+            title={t("home.services.title")}
+            subtitle={t("home.services.subtitle")}
           />
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s) => (
@@ -127,7 +129,7 @@ function Home() {
           </div>
           <div className="mt-10 text-center">
             <Button asChild variant="outline">
-              <Link to="/servicios">Ver todos los servicios <ArrowRight className="ml-1.5 h-4 w-4" /></Link>
+              <Link to="/servicios">{t("cta.viewAll")} <ArrowRight className="ml-1.5 h-4 w-4" /></Link>
             </Button>
           </div>
         </div>
@@ -147,29 +149,29 @@ function Home() {
         <div className="container-fortux relative py-24 md:py-32 grid gap-10 lg:grid-cols-2 items-center text-primary-foreground">
           <div>
             <span className="inline-block rounded-full bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary-foreground">
-              Circuito Pitch &amp; Putt
+              {t("home.circuit.eyebrow")}
             </span>
             <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl font-bold text-balance">
-              El circuito de referencia para amateurs y federados
+              {t("home.circuit.title")}
             </h2>
             <p className="mt-5 max-w-xl text-lg text-primary-foreground/85">
-              Pruebas en los mejores campos, ranking actualizado, clasificaciones y la mejor experiencia competitiva.
+              {t("home.circuit.subtitle")}
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
-                <a href={SITE.circuitUrl} target="_blank" rel="noopener">Acceder al Circuito <ArrowRight className="ml-1.5 h-4 w-4" /></a>
+                <a href={SITE.circuitUrl} target="_blank" rel="noopener">{t("cta.accessCircuit")} <ArrowRight className="ml-1.5 h-4 w-4" /></a>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20">
-                <Link to="/circuito">Ver Clasificaciones</Link>
+                <Link to="/circuito">{t("cta.viewRankings")}</Link>
               </Button>
             </div>
           </div>
 
           <div className="grid grid-cols-3 gap-4">
             {[
-              { v: "+24", l: "Pruebas" },
-              { v: "+850", l: "Jugadores" },
-              { v: "12", l: "Campos" },
+              { v: "+24", l: t("home.stat.tests") },
+              { v: "+850", l: t("home.stat.players") },
+              { v: "12", l: t("home.stat.courses") },
             ].map((s) => (
               <div key={s.l} className="rounded-2xl border border-primary-foreground/15 bg-primary/40 backdrop-blur p-5 text-center">
                 <div className="font-display text-3xl md:text-4xl font-bold text-secondary">{s.v}</div>
@@ -184,9 +186,9 @@ function Home() {
       <section className="py-20 md:py-28 bg-muted/40">
         <div className="container-fortux">
           <SectionHeading
-            eyebrow="Próximas competiciones"
-            title="Calendario del circuito"
-            subtitle="Información en directo desde la plataforma del circuito."
+            eyebrow={t("home.upcoming.eyebrow")}
+            title={t("home.upcoming.title")}
+            subtitle={t("home.upcoming.subtitle")}
           />
           <div className="mt-12 grid gap-4 md:grid-cols-3">
             {UPCOMING.map((c) => (
@@ -210,8 +212,8 @@ function Home() {
       <section className="py-20 md:py-28">
         <div className="container-fortux">
           <SectionHeading
-            eyebrow="Opiniones"
-            title="Lo que dicen nuestros clientes"
+            eyebrow={t("home.reviews.eyebrow")}
+            title={t("home.reviews.title")}
             align="center"
           />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -234,16 +236,16 @@ function Home() {
       <section className="py-20 md:py-24">
         <div className="container-fortux">
           <div className="rounded-3xl bg-gradient-hero p-10 md:p-16 text-primary-foreground text-center shadow-elegant">
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-balance">¿Listo para devolverle vida a tu equipo?</h2>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-balance">{t("home.cta.title")}</h2>
             <p className="mt-4 max-w-xl mx-auto text-primary-foreground/85">
-              Pide tu presupuesto sin compromiso. Te respondemos en menos de 24 h.
+              {t("home.cta.subtitle")}
             </p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
               <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
-                <a href={waLink("Hola, querría solicitar un presupuesto.")} target="_blank" rel="noopener">Solicitar Presupuesto</a>
+                <a href={waLink("Hola, querría solicitar un presupuesto.")} target="_blank" rel="noopener">{t("cta.quote")}</a>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20">
-                <Link to="/contacto">Contactar</Link>
+                <Link to="/contacto">{t("cta.contact")}</Link>
               </Button>
             </div>
           </div>
