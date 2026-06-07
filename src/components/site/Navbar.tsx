@@ -1,11 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X, LogIn, LayoutDashboard } from "lucide-react";
+import { Menu, X, LogIn } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { waLink } from "@/lib/site";
 import { useAuth } from "@/hooks/useAuth";
 import { BRAND } from "@/assets/brand";
+
 
 const NAV = [
   { to: "/", label: "Inicio" },
@@ -43,11 +44,7 @@ export function Navbar() {
 
         <div className="hidden lg:flex items-center gap-2">
           <LanguageSwitcher />
-          {user ? (
-            <Button asChild variant="outline" size="sm">
-              <Link to="/admin"><LayoutDashboard className="mr-2 h-4 w-4" /> Admin</Link>
-            </Button>
-          ) : (
+          {!user && (
             <Button asChild variant="ghost" size="sm">
               <Link to="/auth"><LogIn className="mr-2 h-4 w-4" /> Acceder</Link>
             </Button>
@@ -58,6 +55,7 @@ export function Navbar() {
             </a>
           </Button>
         </div>
+
 
         <button
           aria-label="Abrir menú"
