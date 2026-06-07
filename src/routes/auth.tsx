@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { BRAND } from "@/assets/brand";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({ meta: [{ title: "Acceso · Fortux" }, { name: "robots", content: "noindex" }] }),
@@ -41,7 +42,8 @@ function AuthPage() {
   return (
     <div className="flex min-h-[calc(100vh-8rem)] items-center justify-center px-4 py-12">
       <Card className="w-full max-w-md shadow-elegant">
-        <CardHeader>
+        <CardHeader className="text-center">
+          <img src={BRAND.vertical} alt="Fortux" className="mx-auto h-24 w-auto mb-4" />
           <CardTitle className="font-display text-2xl">Acceso al panel</CardTitle>
           <CardDescription>Introduce tus credenciales para gestionar la web de Fortux.</CardDescription>
         </CardHeader>
