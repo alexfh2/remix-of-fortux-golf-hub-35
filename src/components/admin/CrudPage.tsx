@@ -173,7 +173,7 @@ export function CrudPage<T extends { id: string }>({
               <TableRow><TableCell colSpan={listFields.length + 1} className="text-center text-muted-foreground py-8">Sin registros</TableCell></TableRow>
             )}
             {data.map((row) => {
-              const overrides = renderRow?.(row) ?? {};
+              const overrides = (renderRow?.(row) ?? {}) as Record<string, React.ReactNode>;
               return (
                 <TableRow key={row.id}>
                   {listFields.map((f) => (
