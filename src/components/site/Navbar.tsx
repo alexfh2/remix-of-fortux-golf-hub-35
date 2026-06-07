@@ -44,9 +44,11 @@ export function Navbar() {
 
         <div className="hidden lg:flex items-center gap-2">
           <LanguageSwitcher />
-          <Button asChild variant="ghost" size="sm">
-            <Link to="/auth"><LogIn className="mr-2 h-4 w-4" /> Acceder</Link>
-          </Button>
+          {!user && (
+            <Button asChild variant="ghost" size="sm">
+              <Link to="/auth"><LogIn className="mr-2 h-4 w-4" /> Acceder</Link>
+            </Button>
+          )}
           <Button asChild variant="default" className="bg-primary hover:bg-primary-glow">
             <a href={waLink("Hola, querría solicitar un presupuesto.")} target="_blank" rel="noopener">
               Solicitar Presupuesto
