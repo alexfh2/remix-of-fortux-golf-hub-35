@@ -80,7 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#002F5F" },
+      { name: "theme-color", content: "#0A0A0A" },
       { title: "Fortux — Reparación, mantenimiento y soluciones de golf" },
       { name: "description", content: "Expertos en reparación, mantenimiento, personalización y venta de material de golf. Clases, asesoramiento y Circuito Pitch & Putt." },
       { property: "og:site_name", content: "Fortux" },
