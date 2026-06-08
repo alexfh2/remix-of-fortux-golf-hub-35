@@ -29,11 +29,7 @@ const RANKING = [
   { pos: 5, name: "Pol Serra", pts: 1035 },
 ];
 
-const UPCOMING = [
-  { date: "12 OCT", name: "Open de Otoño", place: "P&P Vall d'Or" },
-  { date: "02 NOV", name: "Trofeo Fortux", place: "P&P Llavaneres" },
-  { date: "23 NOV", name: "Final de Circuito", place: "P&P Papalús" },
-];
+const UPCOMING = ["1", "2", "3"];
 
 function Page() {
   const { t } = useI18n();
