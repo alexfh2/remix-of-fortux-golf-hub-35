@@ -238,7 +238,7 @@ function Page() {
       <section className="py-20 md:py-28">
         <div className="container-fortux grid gap-12 lg:grid-cols-2 lg:items-center">
           <img
-            src="https://fortuxgolf.com/wp-content/uploads/2024/10/team.png"
+            src={teamImg.url}
             alt="Equipo Fortux Golf — Marc Fortuny y Gerard Rubio"
             loading="lazy"
             className="w-full rounded-2xl shadow-elegant"
