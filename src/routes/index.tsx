@@ -119,11 +119,11 @@ function Home() {
       </section>
 
       {/* CIRCUIT EMBED — live external site, navbar cropped */}
-      <section className="py-12 md:py-16 bg-muted/40">
+      <section className="pb-12 md:pb-16">
         <div className="container-fortux">
           <div
-            className="relative w-full overflow-hidden rounded-2xl border border-border bg-card shadow-elegant"
-            style={{ height: "min(1600px, 180vh)" }}
+            className="relative w-full overflow-hidden"
+            style={{ height: "950px" }}
           >
             <iframe
               src="https://fortux.fairwaystudio.ai/"
@@ -133,8 +133,12 @@ function Home() {
               style={{ top: "-90px", height: "calc(100% + 90px)" }}
             />
           </div>
+
+          {/* Quick access tabs */}
+          <CircuitTabs />
         </div>
       </section>
+
 
 
       {/* SERVICIOS */}
