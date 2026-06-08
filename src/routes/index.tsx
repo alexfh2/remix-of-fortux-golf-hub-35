@@ -10,6 +10,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/lib/i18n";
 import teamPhoto from "@/assets/gerard-marc-cutout.png";
 import circuitoImg from "@/assets/circuito-hero.jpg";
+import fortuxMulligan from "@/assets/fortux-mulligan.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -132,8 +133,19 @@ function Home() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-background [clip-path:polygon(0_100%,100%_100%,100%_0,0_60%)]" />
       </section>
 
+      {/* PARTNERSHIP LOGO */}
+      <section className="pt-12 md:pt-16">
+        <div className="container-fortux flex justify-center">
+          <img
+            src={fortuxMulligan.url}
+            alt="Fortux x Mulligan Pitch & Putt Club"
+            className="h-auto w-full max-w-md md:max-w-lg lg:max-w-xl"
+          />
+        </div>
+      </section>
+
       {/* CIRCUIT EMBED — live external site, navbar cropped */}
-      <section className="pb-12 md:pb-16">
+      <section className="pb-12 md:pb-16 pt-8 md:pt-10">
         <div className="container-fortux">
           <div
             className="relative w-full overflow-hidden"
