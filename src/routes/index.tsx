@@ -103,14 +103,11 @@ function Home() {
 
             {/* Team photo */}
             <div className="relative lg:col-span-5">
-              <div className="relative mx-auto max-w-md">
-                {/* decorative glow ring behind */}
-                <div className="absolute -inset-6 rounded-full bg-gradient-to-br from-secondary/40 via-primary-glow/20 to-transparent blur-2xl" />
-                <div className="absolute -inset-2 rounded-full bg-secondary/20 blur-xl" />
+              <div className="relative mx-auto max-w-md rounded-3xl border border-primary-foreground/10 bg-primary-foreground/5 p-2 shadow-2xl">
                 <img
                   src={teamPhoto.url}
                   alt="Gerard y Marc — equipo Fortux"
-                  className="relative w-full h-auto drop-shadow-2xl animate-fade-up"
+                  className="relative w-full h-auto rounded-2xl drop-shadow-lg animate-fade-up"
                 />
               </div>
             </div>
