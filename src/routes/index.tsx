@@ -59,11 +59,14 @@ function Home() {
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-gradient-hero text-primary-foreground">
         {/* glow accents */}
-        <div className="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full bg-secondary/30 blur-3xl" />
+        {/* glow accents — green wash top-left, complementary glow bottom-right, plus halo behind silhouette */}
+        <div className="pointer-events-none absolute -top-40 -left-40 h-[34rem] w-[34rem] rounded-full bg-secondary/40 blur-3xl" />
+        <div className="pointer-events-none absolute top-1/3 -left-20 h-80 w-80 rounded-full bg-secondary/25 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-24 right-0 h-[28rem] w-[28rem] rounded-full bg-primary-glow/20 blur-3xl" />
+        <div className="pointer-events-none absolute right-0 top-1/4 h-[32rem] w-[32rem] rounded-full bg-secondary/20 blur-3xl" />
 
         <div className="container-fortux relative py-20 md:py-28 lg:py-32 animate-fade-up">
-          <div className="relative grid items-center gap-12 lg:grid-cols-12">
+          <div className="relative grid items-end gap-12 lg:grid-cols-12">
             <div className="relative lg:col-span-7 z-10">
               <span className="inline-block rounded-full bg-secondary/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-secondary-foreground">
                 {t("home.hero.eyebrow")}
@@ -101,13 +104,15 @@ function Home() {
               </div>
             </div>
 
-            {/* Team photo */}
-            <div className="relative lg:col-span-5">
-              <div className="relative mx-auto max-w-md rounded-3xl border border-primary-foreground/10 bg-primary-foreground/5 p-2 shadow-2xl">
+            {/* Team silhouette — no frame, large, blended into background */}
+            <div className="relative lg:col-span-5 lg:-mr-8 xl:-mr-16 self-end">
+              <div className="relative">
+                {/* soft halo behind the silhouette */}
+                <div className="pointer-events-none absolute inset-0 -z-10 mx-auto h-full w-[85%] translate-y-6 rounded-full bg-secondary/30 blur-3xl" />
                 <img
-                  src={teamPhoto.url}
+                  src={teamPhoto}
                   alt="Gerard y Marc — equipo Fortux"
-                  className="relative w-full h-auto rounded-2xl drop-shadow-lg animate-fade-up"
+                  className="relative w-full h-auto max-w-none scale-110 lg:scale-125 origin-bottom drop-shadow-[0_25px_40px_rgba(0,0,0,0.45)] animate-fade-up"
                 />
               </div>
             </div>
