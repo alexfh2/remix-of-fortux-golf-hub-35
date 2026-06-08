@@ -20,6 +20,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AcademiaRouteImport } from './routes/academia'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServiciosIndexRouteImport } from './routes/servicios.index'
 import { Route as ServiciosReemplazoDelGripRouteImport } from './routes/servicios.reemplazo-del-grip'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
@@ -83,6 +84,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ServiciosIndexRoute = ServiciosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServiciosRoute,
 } as any)
 const ServiciosReemplazoDelGripRoute =
   ServiciosReemplazoDelGripRouteImport.update({
@@ -150,6 +156,7 @@ export interface FileRoutesByFullPath {
   '/tienda': typeof TiendaRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
+  '/servicios/': typeof ServiciosIndexRoute
   '/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
   '/admin/galeria': typeof AuthenticatedAdminGaleriaRoute
   '/admin/noticias': typeof AuthenticatedAdminNoticiasRoute
@@ -166,10 +173,10 @@ export interface FileRoutesByTo {
   '/contacto': typeof ContactoRoute
   '/galeria': typeof GaleriaRoute
   '/noticias': typeof NoticiasRoute
-  '/servicios': typeof ServiciosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tienda': typeof TiendaRoute
   '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
+  '/servicios': typeof ServiciosIndexRoute
   '/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
   '/admin/galeria': typeof AuthenticatedAdminGaleriaRoute
   '/admin/noticias': typeof AuthenticatedAdminNoticiasRoute
@@ -193,6 +200,7 @@ export interface FileRoutesById {
   '/tienda': typeof TiendaRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
+  '/servicios/': typeof ServiciosIndexRoute
   '/_authenticated/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
   '/_authenticated/admin/galeria': typeof AuthenticatedAdminGaleriaRoute
   '/_authenticated/admin/noticias': typeof AuthenticatedAdminNoticiasRoute
@@ -216,6 +224,7 @@ export interface FileRouteTypes {
     | '/tienda'
     | '/admin'
     | '/servicios/reemplazo-del-grip'
+    | '/servicios/'
     | '/admin/cambiar-contrasena'
     | '/admin/galeria'
     | '/admin/noticias'
@@ -232,10 +241,10 @@ export interface FileRouteTypes {
     | '/contacto'
     | '/galeria'
     | '/noticias'
-    | '/servicios'
     | '/sitemap.xml'
     | '/tienda'
     | '/servicios/reemplazo-del-grip'
+    | '/servicios'
     | '/admin/cambiar-contrasena'
     | '/admin/galeria'
     | '/admin/noticias'
@@ -258,6 +267,7 @@ export interface FileRouteTypes {
     | '/tienda'
     | '/_authenticated/admin'
     | '/servicios/reemplazo-del-grip'
+    | '/servicios/'
     | '/_authenticated/admin/cambiar-contrasena'
     | '/_authenticated/admin/galeria'
     | '/_authenticated/admin/noticias'
@@ -359,6 +369,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/servicios/': {
+      id: '/servicios/'
+      path: '/'
+      fullPath: '/servicios/'
+      preLoaderRoute: typeof ServiciosIndexRouteImport
+      parentRoute: typeof ServiciosRoute
     }
     '/servicios/reemplazo-del-grip': {
       id: '/servicios/reemplazo-del-grip'
@@ -463,10 +480,12 @@ const AuthenticatedRouteRouteWithChildren =
 
 interface ServiciosRouteChildren {
   ServiciosReemplazoDelGripRoute: typeof ServiciosReemplazoDelGripRoute
+  ServiciosIndexRoute: typeof ServiciosIndexRoute
 }
 
 const ServiciosRouteChildren: ServiciosRouteChildren = {
   ServiciosReemplazoDelGripRoute: ServiciosReemplazoDelGripRoute,
+  ServiciosIndexRoute: ServiciosIndexRoute,
 }
 
 const ServiciosRouteWithChildren = ServiciosRoute._addFileChildren(
