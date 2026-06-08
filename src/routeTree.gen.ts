@@ -22,6 +22,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServiciosIndexRouteImport } from './routes/servicios.index'
 import { Route as ServiciosReemplazoDelGripRouteImport } from './routes/servicios.reemplazo-del-grip'
+import { Route as ServiciosAjustesDeVarillasRouteImport } from './routes/servicios.ajustes-de-varillas'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedAdminUsuariosRouteImport } from './routes/_authenticated/admin.usuarios'
@@ -96,6 +97,12 @@ const ServiciosReemplazoDelGripRoute =
     path: '/reemplazo-del-grip',
     getParentRoute: () => ServiciosRoute,
   } as any)
+const ServiciosAjustesDeVarillasRoute =
+  ServiciosAjustesDeVarillasRouteImport.update({
+    id: '/ajustes-de-varillas',
+    path: '/ajustes-de-varillas',
+    getParentRoute: () => ServiciosRoute,
+  } as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -155,6 +162,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tienda': typeof TiendaRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/servicios/ajustes-de-varillas': typeof ServiciosAjustesDeVarillasRoute
   '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
   '/servicios/': typeof ServiciosIndexRoute
   '/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
@@ -175,6 +183,7 @@ export interface FileRoutesByTo {
   '/noticias': typeof NoticiasRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tienda': typeof TiendaRoute
+  '/servicios/ajustes-de-varillas': typeof ServiciosAjustesDeVarillasRoute
   '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
   '/servicios': typeof ServiciosIndexRoute
   '/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
@@ -199,6 +208,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tienda': typeof TiendaRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/servicios/ajustes-de-varillas': typeof ServiciosAjustesDeVarillasRoute
   '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
   '/servicios/': typeof ServiciosIndexRoute
   '/_authenticated/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
@@ -223,6 +233,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/tienda'
     | '/admin'
+    | '/servicios/ajustes-de-varillas'
     | '/servicios/reemplazo-del-grip'
     | '/servicios/'
     | '/admin/cambiar-contrasena'
@@ -243,6 +254,7 @@ export interface FileRouteTypes {
     | '/noticias'
     | '/sitemap.xml'
     | '/tienda'
+    | '/servicios/ajustes-de-varillas'
     | '/servicios/reemplazo-del-grip'
     | '/servicios'
     | '/admin/cambiar-contrasena'
@@ -266,6 +278,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/tienda'
     | '/_authenticated/admin'
+    | '/servicios/ajustes-de-varillas'
     | '/servicios/reemplazo-del-grip'
     | '/servicios/'
     | '/_authenticated/admin/cambiar-contrasena'
@@ -384,6 +397,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiciosReemplazoDelGripRouteImport
       parentRoute: typeof ServiciosRoute
     }
+    '/servicios/ajustes-de-varillas': {
+      id: '/servicios/ajustes-de-varillas'
+      path: '/ajustes-de-varillas'
+      fullPath: '/servicios/ajustes-de-varillas'
+      preLoaderRoute: typeof ServiciosAjustesDeVarillasRouteImport
+      parentRoute: typeof ServiciosRoute
+    }
     '/_authenticated/admin': {
       id: '/_authenticated/admin'
       path: '/admin'
@@ -479,11 +499,13 @@ const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 interface ServiciosRouteChildren {
+  ServiciosAjustesDeVarillasRoute: typeof ServiciosAjustesDeVarillasRoute
   ServiciosReemplazoDelGripRoute: typeof ServiciosReemplazoDelGripRoute
   ServiciosIndexRoute: typeof ServiciosIndexRoute
 }
 
 const ServiciosRouteChildren: ServiciosRouteChildren = {
+  ServiciosAjustesDeVarillasRoute: ServiciosAjustesDeVarillasRoute,
   ServiciosReemplazoDelGripRoute: ServiciosReemplazoDelGripRoute,
   ServiciosIndexRoute: ServiciosIndexRoute,
 }

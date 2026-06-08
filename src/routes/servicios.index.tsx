@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Wrench, ArrowRight } from "lucide-react";
+import { Wrench, ArrowRight, Cog } from "lucide-react";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import heroImg from "@/assets/servicios/reemplazo-del-grip.png.asset.json";
+import varillasImg from "@/assets/servicios/ajustes-de-varillas.png.asset.json";
 
 export const Route = createFileRoute("/servicios/")({
   head: () => ({
@@ -21,6 +22,13 @@ const SERVICES = [
     desc: "Servicio profesional de cambio de grips para recuperar control y sensación en cada swing.",
     img: heroImg.url,
     icon: Wrench,
+  },
+  {
+    to: "/servicios/ajustes-de-varillas" as const,
+    title: "Ajustes de varillas",
+    desc: "Reparamos, ajustamos y cambiamos varillas de driver, hierros y putters — grafito o acero.",
+    img: varillasImg.url,
+    icon: Cog,
   },
 ];
 
