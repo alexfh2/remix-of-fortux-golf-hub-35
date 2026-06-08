@@ -1,0 +1,1 @@
+ALTER TABLE public.reviews ADD COLUMN IF NOT EXISTS avatar_url text, ADD COLUMN IF NOT EXISTS review_date date;
