@@ -338,11 +338,12 @@ function CircuitTabs() {
       {TABS.map((tab) => (
         <Collapsible key={tab.key} open={open === tab.key}>
           <CollapsibleContent className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
-            <div className="relative w-full overflow-hidden mt-4" style={{ height: "900px" }}>
+            <div className="relative w-full overflow-hidden mt-4" style={{ height: "2200px" }}>
               <iframe
                 src={tab.url}
                 title={tab.label}
                 loading="lazy"
+                scrolling="no"
                 className="absolute left-0 w-full border-0"
                 style={{ top: "-90px", height: "calc(100% + 90px)" }}
               />
