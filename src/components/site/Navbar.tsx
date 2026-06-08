@@ -32,7 +32,7 @@ export function Navbar() {
               key={item.to}
               to={item.to}
               activeOptions={{ exact: item.to === "/" }}
-              className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
+              className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-foreground whitespace-pre-line text-center"
               activeProps={{ className: "text-primary bg-muted" }}
             >
               {item.label}
@@ -66,7 +66,7 @@ export function Navbar() {
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-3 text-base font-medium text-foreground/90 hover:bg-muted"
+                className="rounded-md px-3 py-3 text-base font-medium text-foreground/90 hover:bg-muted whitespace-pre-line"
                 activeProps={{ className: "text-primary bg-muted" }}
               >
                 {item.label}

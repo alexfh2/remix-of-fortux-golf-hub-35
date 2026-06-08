@@ -122,7 +122,7 @@ function Home() {
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-secondary/40 text-primary group-hover:bg-secondary transition-colors">
                   <s.icon className="h-6 w-6" />
                 </div>
-                <h3 className="mt-5 font-display text-xl font-bold text-foreground">{s.title}</h3>
+                <h3 className="mt-5 font-display text-xl font-bold text-foreground whitespace-pre-line">{s.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
               </article>
             ))}
