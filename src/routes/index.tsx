@@ -10,7 +10,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/lib/i18n";
 import teamPhoto from "@/assets/gerard-marc-cutout.png";
 import circuitoImg from "@/assets/circuito-hero.jpg";
-import fortuxMulligan from "@/assets/fortux-mulligan.png.asset.json";
+import fortuxLogo from "@/assets/fortux-logo.png.asset.json";
+import mulliganLogo from "@/assets/mulligan-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
