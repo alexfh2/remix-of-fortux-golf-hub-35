@@ -25,6 +25,7 @@ import { Route as ServiciosSwingWeightRouteImport } from './routes/servicios.swi
 import { Route as ServiciosReemplazoDelGripRouteImport } from './routes/servicios.reemplazo-del-grip'
 import { Route as ServiciosLieLoftRouteImport } from './routes/servicios.lie-loft'
 import { Route as ServiciosAjustesDeVarillasRouteImport } from './routes/servicios.ajustes-de-varillas'
+import { Route as NoticiasSlugRouteImport } from './routes/noticias.$slug'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedAdminUsuariosRouteImport } from './routes/_authenticated/admin.usuarios'
@@ -115,6 +116,11 @@ const ServiciosAjustesDeVarillasRoute =
     path: '/ajustes-de-varillas',
     getParentRoute: () => ServiciosRoute,
   } as any)
+const NoticiasSlugRoute = NoticiasSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => NoticiasRoute,
+} as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -169,11 +175,12 @@ export interface FileRoutesByFullPath {
   '/circuito': typeof CircuitoRoute
   '/contacto': typeof ContactoRoute
   '/galeria': typeof GaleriaRoute
-  '/noticias': typeof NoticiasRoute
+  '/noticias': typeof NoticiasRouteWithChildren
   '/servicios': typeof ServiciosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tienda': typeof TiendaRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/noticias/$slug': typeof NoticiasSlugRoute
   '/servicios/ajustes-de-varillas': typeof ServiciosAjustesDeVarillasRoute
   '/servicios/lie-loft': typeof ServiciosLieLoftRoute
   '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
@@ -194,9 +201,10 @@ export interface FileRoutesByTo {
   '/circuito': typeof CircuitoRoute
   '/contacto': typeof ContactoRoute
   '/galeria': typeof GaleriaRoute
-  '/noticias': typeof NoticiasRoute
+  '/noticias': typeof NoticiasRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tienda': typeof TiendaRoute
+  '/noticias/$slug': typeof NoticiasSlugRoute
   '/servicios/ajustes-de-varillas': typeof ServiciosAjustesDeVarillasRoute
   '/servicios/lie-loft': typeof ServiciosLieLoftRoute
   '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
@@ -219,11 +227,12 @@ export interface FileRoutesById {
   '/circuito': typeof CircuitoRoute
   '/contacto': typeof ContactoRoute
   '/galeria': typeof GaleriaRoute
-  '/noticias': typeof NoticiasRoute
+  '/noticias': typeof NoticiasRouteWithChildren
   '/servicios': typeof ServiciosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tienda': typeof TiendaRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/noticias/$slug': typeof NoticiasSlugRoute
   '/servicios/ajustes-de-varillas': typeof ServiciosAjustesDeVarillasRoute
   '/servicios/lie-loft': typeof ServiciosLieLoftRoute
   '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
@@ -251,6 +260,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/tienda'
     | '/admin'
+    | '/noticias/$slug'
     | '/servicios/ajustes-de-varillas'
     | '/servicios/lie-loft'
     | '/servicios/reemplazo-del-grip'
@@ -274,6 +284,7 @@ export interface FileRouteTypes {
     | '/noticias'
     | '/sitemap.xml'
     | '/tienda'
+    | '/noticias/$slug'
     | '/servicios/ajustes-de-varillas'
     | '/servicios/lie-loft'
     | '/servicios/reemplazo-del-grip'
@@ -300,6 +311,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/tienda'
     | '/_authenticated/admin'
+    | '/noticias/$slug'
     | '/servicios/ajustes-de-varillas'
     | '/servicios/lie-loft'
     | '/servicios/reemplazo-del-grip'
@@ -322,7 +334,7 @@ export interface RootRouteChildren {
   CircuitoRoute: typeof CircuitoRoute
   ContactoRoute: typeof ContactoRoute
   GaleriaRoute: typeof GaleriaRoute
-  NoticiasRoute: typeof NoticiasRoute
+  NoticiasRoute: typeof NoticiasRouteWithChildren
   ServiciosRoute: typeof ServiciosRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TiendaRoute: typeof TiendaRoute
@@ -442,6 +454,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiciosAjustesDeVarillasRouteImport
       parentRoute: typeof ServiciosRoute
     }
+    '/noticias/$slug': {
+      id: '/noticias/$slug'
+      path: '/$slug'
+      fullPath: '/noticias/$slug'
+      preLoaderRoute: typeof NoticiasSlugRouteImport
+      parentRoute: typeof NoticiasRoute
+    }
     '/_authenticated/admin': {
       id: '/_authenticated/admin'
       path: '/admin'
@@ -536,6 +555,18 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
+interface NoticiasRouteChildren {
+  NoticiasSlugRoute: typeof NoticiasSlugRoute
+}
+
+const NoticiasRouteChildren: NoticiasRouteChildren = {
+  NoticiasSlugRoute: NoticiasSlugRoute,
+}
+
+const NoticiasRouteWithChildren = NoticiasRoute._addFileChildren(
+  NoticiasRouteChildren,
+)
+
 interface ServiciosRouteChildren {
   ServiciosAjustesDeVarillasRoute: typeof ServiciosAjustesDeVarillasRoute
   ServiciosLieLoftRoute: typeof ServiciosLieLoftRoute
@@ -564,7 +595,7 @@ const rootRouteChildren: RootRouteChildren = {
   CircuitoRoute: CircuitoRoute,
   ContactoRoute: ContactoRoute,
   GaleriaRoute: GaleriaRoute,
-  NoticiasRoute: NoticiasRoute,
+  NoticiasRoute: NoticiasRouteWithChildren,
   ServiciosRoute: ServiciosRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TiendaRoute: TiendaRoute,
