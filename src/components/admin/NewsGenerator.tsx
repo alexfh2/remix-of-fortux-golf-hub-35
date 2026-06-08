@@ -179,8 +179,8 @@ export function NewsGenerator({ onSaved, onBack }: { onSaved: () => void; onBack
     return (
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <button onClick={onBack} className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
-            <ChevronLeft className="h-4 w-4" /> Volver
+          <button onClick={() => setStep("input")} className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
+            <ChevronLeft className="h-4 w-4" /> Volver a editar
           </button>
           <div className="flex gap-2">
             {generated ? (
