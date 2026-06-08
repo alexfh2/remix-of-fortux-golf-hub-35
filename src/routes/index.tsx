@@ -134,13 +134,19 @@ function Home() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-background [clip-path:polygon(0_100%,100%_100%,100%_0,0_60%)]" />
       </section>
 
-      {/* PARTNERSHIP LOGO */}
+      {/* PARTNERSHIP LOGOS */}
       <section className="pt-12 md:pt-16">
-        <div className="container-fortux flex justify-center">
+        <div className="container-fortux flex items-center justify-center gap-8 md:gap-16">
           <img
-            src={fortuxMulligan.url}
-            alt="Fortux x Mulligan Pitch & Putt Club"
-            className="h-auto w-full max-w-md md:max-w-lg lg:max-w-xl"
+            src={fortuxLogo.url}
+            alt="Fortux — Golf Repairs & Solutions"
+            className="h-28 md:h-40 lg:h-48 w-auto object-contain"
+          />
+          <span className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-muted-foreground/70">×</span>
+          <img
+            src={mulliganLogo.url}
+            alt="Mulligan Pitch & Putt Club"
+            className="h-28 md:h-40 lg:h-48 w-auto object-contain"
           />
         </div>
       </section>
