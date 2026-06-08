@@ -20,6 +20,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AcademiaRouteImport } from './routes/academia'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServiciosReemplazoDelGripRouteImport } from './routes/servicios.reemplazo-del-grip'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedAdminUsuariosRouteImport } from './routes/_authenticated/admin.usuarios'
@@ -83,6 +84,12 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServiciosReemplazoDelGripRoute =
+  ServiciosReemplazoDelGripRouteImport.update({
+    id: '/reemplazo-del-grip',
+    path: '/reemplazo-del-grip',
+    getParentRoute: () => ServiciosRoute,
+  } as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -138,10 +145,11 @@ export interface FileRoutesByFullPath {
   '/contacto': typeof ContactoRoute
   '/galeria': typeof GaleriaRoute
   '/noticias': typeof NoticiasRoute
-  '/servicios': typeof ServiciosRoute
+  '/servicios': typeof ServiciosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tienda': typeof TiendaRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
   '/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
   '/admin/galeria': typeof AuthenticatedAdminGaleriaRoute
   '/admin/noticias': typeof AuthenticatedAdminNoticiasRoute
@@ -158,9 +166,10 @@ export interface FileRoutesByTo {
   '/contacto': typeof ContactoRoute
   '/galeria': typeof GaleriaRoute
   '/noticias': typeof NoticiasRoute
-  '/servicios': typeof ServiciosRoute
+  '/servicios': typeof ServiciosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tienda': typeof TiendaRoute
+  '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
   '/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
   '/admin/galeria': typeof AuthenticatedAdminGaleriaRoute
   '/admin/noticias': typeof AuthenticatedAdminNoticiasRoute
@@ -179,10 +188,11 @@ export interface FileRoutesById {
   '/contacto': typeof ContactoRoute
   '/galeria': typeof GaleriaRoute
   '/noticias': typeof NoticiasRoute
-  '/servicios': typeof ServiciosRoute
+  '/servicios': typeof ServiciosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tienda': typeof TiendaRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
   '/_authenticated/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
   '/_authenticated/admin/galeria': typeof AuthenticatedAdminGaleriaRoute
   '/_authenticated/admin/noticias': typeof AuthenticatedAdminNoticiasRoute
@@ -205,6 +215,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/tienda'
     | '/admin'
+    | '/servicios/reemplazo-del-grip'
     | '/admin/cambiar-contrasena'
     | '/admin/galeria'
     | '/admin/noticias'
@@ -224,6 +235,7 @@ export interface FileRouteTypes {
     | '/servicios'
     | '/sitemap.xml'
     | '/tienda'
+    | '/servicios/reemplazo-del-grip'
     | '/admin/cambiar-contrasena'
     | '/admin/galeria'
     | '/admin/noticias'
@@ -245,6 +257,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/tienda'
     | '/_authenticated/admin'
+    | '/servicios/reemplazo-del-grip'
     | '/_authenticated/admin/cambiar-contrasena'
     | '/_authenticated/admin/galeria'
     | '/_authenticated/admin/noticias'
@@ -263,7 +276,7 @@ export interface RootRouteChildren {
   ContactoRoute: typeof ContactoRoute
   GaleriaRoute: typeof GaleriaRoute
   NoticiasRoute: typeof NoticiasRoute
-  ServiciosRoute: typeof ServiciosRoute
+  ServiciosRoute: typeof ServiciosRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TiendaRoute: typeof TiendaRoute
 }
@@ -346,6 +359,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/servicios/reemplazo-del-grip': {
+      id: '/servicios/reemplazo-del-grip'
+      path: '/reemplazo-del-grip'
+      fullPath: '/servicios/reemplazo-del-grip'
+      preLoaderRoute: typeof ServiciosReemplazoDelGripRouteImport
+      parentRoute: typeof ServiciosRoute
     }
     '/_authenticated/admin': {
       id: '/_authenticated/admin'
@@ -441,6 +461,18 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
+interface ServiciosRouteChildren {
+  ServiciosReemplazoDelGripRoute: typeof ServiciosReemplazoDelGripRoute
+}
+
+const ServiciosRouteChildren: ServiciosRouteChildren = {
+  ServiciosReemplazoDelGripRoute: ServiciosReemplazoDelGripRoute,
+}
+
+const ServiciosRouteWithChildren = ServiciosRoute._addFileChildren(
+  ServiciosRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
@@ -450,10 +482,20 @@ const rootRouteChildren: RootRouteChildren = {
   ContactoRoute: ContactoRoute,
   GaleriaRoute: GaleriaRoute,
   NoticiasRoute: NoticiasRoute,
-  ServiciosRoute: ServiciosRoute,
+  ServiciosRoute: ServiciosRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TiendaRoute: TiendaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
