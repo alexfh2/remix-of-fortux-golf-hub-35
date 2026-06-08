@@ -22,10 +22,10 @@ export const Route = createFileRoute("/academia")({
 });
 
 const PLANS = [
-  { icon: User, t: "Clase individual", d: "Sesión 1 a 1 con plan de mejora personalizado." },
-  { icon: Users, t: "Clase grupal", d: "Aprende en grupo, entrenamiento dinámico y económico." },
-  { icon: Target, t: "Formación técnica", d: "Análisis de swing, control de bola y juego corto." },
-  { icon: Trophy, t: "Entrenamiento competitivo", d: "Plan personalizado para jugadores federados." },
+  { icon: User, k: "1" },
+  { icon: Users, k: "2" },
+  { icon: Target, k: "3" },
+  { icon: Trophy, k: "4" },
 ];
 
 function Page() {
