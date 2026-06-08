@@ -119,6 +119,27 @@ function Home() {
         </div>
       </section>
 
+      {/* CIRCUIT PREVIEW */}
+      <section className="py-16 md:py-20 bg-muted/40">
+        <div className="container-fortux">
+          <a
+            href="https://fortux.fairwaystudio.ai/"
+            target="_blank"
+            rel="noopener"
+            className="block overflow-hidden rounded-2xl border border-border bg-card shadow-elegant transition-transform hover:-translate-y-1"
+          >
+            <img
+              src={circuitPreview.url}
+              alt="Vista previa del Circuit Fortux x Mulligan 2026"
+              width={1905}
+              height={1364}
+              loading="lazy"
+              className="block w-full h-auto"
+            />
+          </a>
+        </div>
+      </section>
+
       {/* SERVICIOS */}
       <section className="py-20 md:py-28">
         <div className="container-fortux">
