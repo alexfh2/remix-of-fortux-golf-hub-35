@@ -125,12 +125,13 @@ function Home() {
         <div className="container-fortux">
           <div
             className="relative w-full overflow-hidden"
-            style={{ height: "950px" }}
+            style={{ height: "1700px" }}
           >
             <iframe
               src="https://fortux.fairwaystudio.ai/"
               title="Circuit Fortux x Mulligan 2026"
               loading="lazy"
+              scrolling="no"
               className="absolute left-0 w-full border-0"
               style={{ top: "-90px", height: "calc(100% + 90px)" }}
             />
