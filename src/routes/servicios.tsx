@@ -179,7 +179,7 @@ function Page() {
           </div>
           <div className="relative">
             <img
-              src={`${CDN}/academy-tarifas-bonos-fortux-golf.png`}
+              src={bonosImg.url}
               alt="Bonos de clases de golf Fortux"
               loading="lazy"
               className="w-full rounded-2xl shadow-elegant"
