@@ -174,33 +174,39 @@ export type Database = {
         Row: {
           author_location: string | null
           author_name: string
+          avatar_url: string | null
           content: string
           created_at: string
           id: string
           is_published: boolean
           rating: number
+          review_date: string | null
           sort_order: number
           updated_at: string
         }
         Insert: {
           author_location?: string | null
           author_name: string
+          avatar_url?: string | null
           content: string
           created_at?: string
           id?: string
           is_published?: boolean
           rating?: number
+          review_date?: string | null
           sort_order?: number
           updated_at?: string
         }
         Update: {
           author_location?: string | null
           author_name?: string
+          avatar_url?: string | null
           content?: string
           created_at?: string
           id?: string
           is_published?: boolean
           rating?: number
+          review_date?: string | null
           sort_order?: number
           updated_at?: string
         }
