@@ -125,7 +125,7 @@ function Home() {
         <div className="container-fortux">
           <div
             className="relative w-full overflow-hidden"
-            style={{ height: "1700px" }}
+            style={{ height: "1380px" }}
           >
             <iframe
               src="https://fortux.fairwaystudio.ai/"
