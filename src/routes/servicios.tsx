@@ -20,13 +20,13 @@ export const Route = createFileRoute("/servicios")({
 });
 
 const ITEMS = [
-  { icon: Wrench, t: "Reparación de palos", d: "Pegado de cabezas, reparación de shafts, soldaduras y restauraciones." },
-  { icon: Hammer, t: "Cambio de grips", d: "Amplio catálogo de grips premium. Cambio mientras esperas." },
-  { icon: Settings2, t: "Ajustes y fitting", d: "Lie, loft, longitud, swingweight y análisis de bola." },
-  { icon: Sparkles, t: "Personalización", d: "Stamping, pintura, customización completa de wedges y putters." },
-  { icon: ShieldCheck, t: "Mantenimiento integral", d: "Limpieza profunda, regrooving y puesta a punto estacional." },
-  { icon: GraduationCap, t: "Clases de golf", d: "Formación individual, grupal y de iniciación." },
-  { icon: ShoppingBag, t: "Venta de material", d: "Palos, grips, bolas, accesorios y material técnico." },
+  { icon: Wrench, k: "1" },
+  { icon: Hammer, k: "2" },
+  { icon: Settings2, k: "3" },
+  { icon: Sparkles, k: "4" },
+  { icon: ShieldCheck, k: "5" },
+  { icon: GraduationCap, k: "6" },
+  { icon: ShoppingBag, k: "7" },
 ];
 
 function Page() {
