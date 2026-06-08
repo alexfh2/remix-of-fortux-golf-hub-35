@@ -31,7 +31,7 @@ const SERVICES = [
   { icon: Sparkles, title: "Fitting y ajustes", desc: "Lie, loft, longitud y swingweight ajustados a tu juego." },
   { icon: ShoppingBag, title: "Personalización", desc: "Stamping, pintura y acabados únicos." },
   { icon: GraduationCap, title: "Clases de golf", desc: "Formación individual y grupal en nuestra academia." },
-  { icon: Trophy, title: "Circuito P&P", desc: "Compite en el circuito Pitch & Putt de referencia." },
+  { icon: Trophy, title: "CIRCUIT FORTUX\nX MULLIGAN 2026", desc: "Compite en el circuito Pitch & Putt de referencia." },
 ];
 
 const UPCOMING = [
