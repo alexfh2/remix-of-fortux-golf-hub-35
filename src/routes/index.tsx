@@ -120,7 +120,6 @@ function Home() {
         {/* angled divider to separate from next section */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-background [clip-path:polygon(0_100%,100%_100%,100%_0,0_60%)]" />
       </section>
-      </section>
 
       {/* CIRCUIT EMBED — live external site, navbar cropped */}
       <section className="pb-12 md:pb-16">
