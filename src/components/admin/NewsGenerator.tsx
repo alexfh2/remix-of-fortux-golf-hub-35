@@ -3,7 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import {
   Sparkles, Loader2, Copy, Check, ChevronLeft, Send, Clock,
-  MessageCircle, Instagram, RefreshCw, PenLine, Wand2, X, Plus,
+  MessageCircle, Instagram, RefreshCw, PenLine, Wand2, X, Plus, Upload,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
