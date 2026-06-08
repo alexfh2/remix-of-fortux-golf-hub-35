@@ -57,36 +57,30 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-background">
-        <div className="container-fortux relative py-16 md:py-24 lg:py-28 animate-fade-up">
-          <div className="relative grid items-center gap-10 lg:grid-cols-12">
-            {/* Van as background-integrated element on the right */}
-            <div className="pointer-events-none absolute inset-y-0 right-[-6%] w-[70%] hidden lg:block">
-              <div className="absolute inset-x-10 bottom-6 h-10 rounded-[50%] bg-black/20 blur-2xl" />
-              <img
-                src={vanImg}
-                alt="Furgoneta Fortux Golf — servicio a domicilio"
-                className="relative h-full w-full object-contain object-right"
-              />
-            </div>
+      <section className="relative isolate overflow-hidden bg-gradient-hero text-primary-foreground">
+        {/* glow accents */}
+        <div className="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full bg-secondary/30 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 right-0 h-[28rem] w-[28rem] rounded-full bg-primary-glow/20 blur-3xl" />
 
+        <div className="container-fortux relative py-20 md:py-28 lg:py-32 animate-fade-up">
+          <div className="relative grid items-center gap-12 lg:grid-cols-12">
             <div className="relative lg:col-span-7 z-10">
-              <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-secondary-foreground/80">
+              <span className="inline-block rounded-full bg-secondary/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-secondary-foreground">
                 {t("home.hero.eyebrow")}
               </span>
-              <h1 className="mt-4 font-display text-5xl md:text-6xl lg:text-7xl font-bold text-balance text-primary">
+              <h1 className="mt-5 font-display text-5xl md:text-6xl lg:text-7xl font-bold text-balance">
                 {t("home.hero.title")}
               </h1>
-              <p className="mt-6 max-w-xl text-lg md:text-xl text-muted-foreground">
+              <p className="mt-6 max-w-xl text-lg md:text-xl text-primary-foreground/85">
                 {t("home.hero.subtitle")}
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
                   <a href={waLink("Hola, querría reparar mi equipo.")} target="_blank" rel="noopener">
                     {t("cta.repair")} <ArrowRight className="ml-1.5 h-4 w-4" />
                   </a>
                 </Button>
-                <Button asChild size="lg" variant="outline">
+                <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20">
                   <a href={waLink("Hola, querría solicitar un presupuesto.")} target="_blank" rel="noopener">
                     {t("cta.quote")}
                   </a>
@@ -98,26 +92,34 @@ function Home() {
                 </Button>
               </div>
 
-              <div className="mt-10 grid grid-cols-2 md:grid-cols-5 gap-3 max-w-3xl">
+              <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-3 max-w-3xl">
                 {PILLS.map((b) => (
-                  <div key={b} className="rounded-lg border border-border bg-card px-3 py-2 text-center text-sm font-medium text-foreground">
+                  <div key={b} className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-3 py-2 text-center text-sm font-medium">
                     {t(b)}
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Mobile van */}
-            <div className="relative lg:hidden">
-              <div className="absolute inset-x-6 bottom-2 h-8 rounded-[50%] bg-black/20 blur-2xl" />
-              <img
-                src={vanImg}
-                alt="Furgoneta Fortux Golf — servicio a domicilio"
-                className="relative w-full h-auto"
-              />
+            {/* Team photo */}
+            <div className="relative lg:col-span-5">
+              <div className="relative mx-auto max-w-md">
+                {/* decorative glow ring behind */}
+                <div className="absolute -inset-6 rounded-full bg-gradient-to-br from-secondary/40 via-primary-glow/20 to-transparent blur-2xl" />
+                <div className="absolute -inset-2 rounded-full bg-secondary/20 blur-xl" />
+                <img
+                  src={teamPhoto.url}
+                  alt="Gerard y Marc — equipo Fortux"
+                  className="relative w-full h-auto drop-shadow-2xl animate-fade-up"
+                />
+              </div>
             </div>
           </div>
         </div>
+
+        {/* angled divider to separate from next section */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-background [clip-path:polygon(0_100%,100%_100%,100%_0,0_60%)]" />
+      </section>
       </section>
 
       {/* CIRCUIT EMBED — live external site, navbar cropped */}
