@@ -159,7 +159,7 @@ const TABS = [
 
 type TabId = (typeof TABS)[number]["id"];
 
-function ProductGrid({ items }: { items: { name: string; price: string; img: string }[] }) {
+function ProductGrid({ items, onImageClick }: { items: { name: string; price: string; img: string }[]; onImageClick: (img: string, name: string) => void }) {
   return (
     <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {items.map((p, i) => (
@@ -167,14 +167,21 @@ function ProductGrid({ items }: { items: { name: string; price: string; img: str
           key={`${p.name}-${i}`}
           className="group overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant"
         >
-          <div className="relative aspect-square overflow-hidden bg-secondary/20">
+          <button
+            onClick={() => onImageClick(p.img, p.name)}
+            className="relative aspect-square w-full overflow-hidden bg-secondary/20 cursor-zoom-in"
+            aria-label={`Ampliar imagen de ${p.name}`}
+          >
             <img
               src={p.img}
               alt={p.name}
               loading="lazy"
               className="absolute inset-0 h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
             />
-          </div>
+            <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/10">
+              <ZoomIn className="h-8 w-8 text-white opacity-0 drop-shadow-lg transition-opacity group-hover:opacity-100" />
+            </div>
+          </button>
           <div className="p-5">
             <h3 className="font-display text-base font-bold leading-snug min-h-[2.6rem]">{p.name}</h3>
             <div className="mt-3 flex items-center justify-between gap-2">
@@ -196,6 +203,43 @@ function ProductGrid({ items }: { items: { name: string; price: string; img: str
           </div>
         </article>
       ))}
+    </div>
+  );
+}
+
+function ImageModal({
+  img,
+  name,
+  onClose,
+}: {
+  img: string;
+  name: string;
+  onClose: () => void;
+}) {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+    >
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
+        aria-label="Cerrar"
+      >
+        <X className="h-6 w-6" />
+      </button>
+      <div
+        className="relative max-h-[85vh] max-w-[90vw]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img
+          src={img}
+          alt={name}
+          className="max-h-[85vh] max-w-[90vw] rounded-xl object-contain shadow-2xl"
+        />
+      </div>
     </div>
   );
 }
