@@ -32,7 +32,7 @@ export function Navbar() {
               key={item.to}
               to={item.to}
               activeOptions={{ exact: item.to === "/" }}
-              className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-foreground whitespace-pre-line text-center"
+              className="rounded-md px-3 py-2 text-sm font-medium uppercase text-foreground/80 transition-colors hover:bg-muted hover:text-foreground whitespace-pre-line text-center"
               activeProps={{ className: "text-primary bg-muted" }}
             >
               {item.label}
@@ -40,13 +40,13 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-2">
-          <LanguageSwitcher />
-          <Button asChild variant="default" className="bg-primary hover:bg-primary-glow">
+        <div className="hidden lg:flex items-center gap-3">
+          <Button asChild variant="default" className="bg-primary hover:bg-primary-glow uppercase">
             <a href={waLink("Hola, querría solicitar un presupuesto.")} target="_blank" rel="noopener">
               {t("cta.quote")}
             </a>
           </Button>
+          <LanguageSwitcher />
         </div>
 
         <button
@@ -66,19 +66,19 @@ export function Navbar() {
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-3 text-base font-medium text-foreground/90 hover:bg-muted whitespace-pre-line"
+                className="rounded-md px-3 py-3 text-base font-medium uppercase text-foreground/90 hover:bg-muted whitespace-pre-line"
                 activeProps={{ className: "text-primary bg-muted" }}
               >
                 {item.label}
               </Link>
             ))}
             <div className="mt-3 flex items-center justify-between gap-2">
-              <LanguageSwitcher />
-              <Button asChild className="flex-1 bg-primary hover:bg-primary-glow">
+              <Button asChild className="flex-1 bg-primary hover:bg-primary-glow uppercase">
                 <a href={waLink("Hola, querría solicitar un presupuesto.")} target="_blank" rel="noopener">
                   {t("cta.quote")}
                 </a>
               </Button>
+              <LanguageSwitcher />
             </div>
           </div>
         </div>
