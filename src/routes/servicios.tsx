@@ -338,11 +338,11 @@ function Page() {
           <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {COURSES.map((c) => (
               <div
-                key={c.file}
+                key={c.name}
                 className="flex aspect-square items-center justify-center rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-1 hover:shadow-elegant"
               >
                 <img
-                  src={`${CDN}/${c.file}`}
+                  src={c.url}
                   alt={`Campo de golf ${c.name}`}
                   loading="lazy"
                   className="max-h-full max-w-full object-contain"
