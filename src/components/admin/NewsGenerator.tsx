@@ -53,6 +53,40 @@ export function NewsGenerator({ onSaved, onBack }: { onSaved: () => void; onBack
   const [editWhats, setEditWhats] = useState("");
   const [editIg, setEditIg] = useState("");
 
+  const [uploading, setUploading] = useState<"cover" | "gallery" | null>(null);
+
+  const uploadFile = async (file: File): Promise<string> => {
+    const ext = file.name.split(".").pop() || "jpg";
+    const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+    const { error } = await supabase.storage.from("news-images").upload(path, file, {
+      cacheControl: "31536000", upsert: false, contentType: file.type,
+    });
+    if (error) throw error;
+    const { data, error: sErr } = await supabase.storage.from("news-images")
+      .createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
+    if (sErr || !data) throw sErr ?? new Error("No URL");
+    return data.signedUrl;
+  };
+
+  const handleCoverFile = async (file: File | null) => {
+    if (!file) return;
+    setUploading("cover");
+    try { setCoverUrl(await uploadFile(file)); toast.success("Portada subida"); }
+    catch (e) { toast.error("Error subiendo: " + (e instanceof Error ? e.message : "")); }
+    finally { setUploading(null); }
+  };
+
+  const handleGalleryFiles = async (files: FileList | null) => {
+    if (!files || files.length === 0) return;
+    setUploading("gallery");
+    try {
+      const urls = await Promise.all(Array.from(files).map(uploadFile));
+      setGallery((g) => [...g, ...urls]);
+      toast.success(`${urls.length} imagen(es) subida(s)`);
+    } catch (e) { toast.error("Error subiendo: " + (e instanceof Error ? e.message : "")); }
+    finally { setUploading(null); }
+  };
+
   const addGallery = () => {
     const url = galleryInput.trim();
     if (!url) return;
