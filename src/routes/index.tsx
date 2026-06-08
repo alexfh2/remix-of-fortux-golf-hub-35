@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/lib/i18n";
 import vanImg from "@/assets/fortux-van.png";
 import circuitoImg from "@/assets/circuito-hero.jpg";
+import circuitPreview from "@/assets/fortux-circuit-preview.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -115,6 +116,27 @@ function Home() {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* CIRCUIT PREVIEW */}
+      <section className="py-16 md:py-20 bg-muted/40">
+        <div className="container-fortux">
+          <a
+            href="https://fortux.fairwaystudio.ai/"
+            target="_blank"
+            rel="noopener"
+            className="block overflow-hidden rounded-2xl border border-border bg-card shadow-elegant transition-transform hover:-translate-y-1"
+          >
+            <img
+              src={circuitPreview.url}
+              alt="Vista previa del Circuit Fortux x Mulligan 2026"
+              width={1905}
+              height={1364}
+              loading="lazy"
+              className="block w-full h-auto"
+            />
+          </a>
         </div>
       </section>
 
