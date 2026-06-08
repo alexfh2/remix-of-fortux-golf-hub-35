@@ -391,6 +391,14 @@ function Page() {
           </form>
         </div>
       </section>
+
+      {selectedImage && (
+        <ImageModal
+          img={selectedImage.img}
+          name={selectedImage.name}
+          onClose={() => setSelectedImage(null)}
+        />
+      )}
     </>
   );
 }
