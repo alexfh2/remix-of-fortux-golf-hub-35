@@ -22,7 +22,10 @@ export function Navbar() {
     {
       to: "/servicios",
       label: t("nav.services"),
-      children: [{ to: "/servicios/reemplazo-del-grip", label: "Reemplazo del Grip" }],
+      children: [
+        { to: "/servicios/reemplazo-del-grip", label: "Reemplazo del Grip" },
+        { to: "/servicios/ajustes-de-varillas", label: "Ajustes de Varillas" },
+      ],
     },
     { to: "/tienda", label: t("nav.shop") },
     { to: "/academia", label: t("nav.academy") },
