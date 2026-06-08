@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { SITE, waLink } from "@/lib/site";
 import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/lib/i18n";
-import heroImg from "@/assets/hero-fortux.jpg";
+import vanImg from "@/assets/fortux-van.png";
 import circuitoImg from "@/assets/circuito-hero.jpg";
 
 export const Route = createFileRoute("/")({
