@@ -25,6 +25,7 @@ export function Navbar() {
       children: [
         { to: "/servicios/reemplazo-del-grip", label: "Reemplazo del Grip" },
         { to: "/servicios/ajustes-de-varillas", label: "Ajustes de Varillas" },
+        { to: "/servicios/swing-weight", label: "Swing Weight" },
       ],
     },
     { to: "/tienda", label: t("nav.shop") },

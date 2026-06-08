@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Wrench, ArrowRight, Cog } from "lucide-react";
+import { Wrench, ArrowRight, Cog, Scale } from "lucide-react";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import heroImg from "@/assets/servicios/reemplazo-del-grip.png.asset.json";
 import varillasImg from "@/assets/servicios/ajustes-de-varillas.png.asset.json";
+import swingWeightImg from "@/assets/servicios/swing-weight.png.asset.json";
 
 export const Route = createFileRoute("/servicios/")({
   head: () => ({
@@ -29,6 +30,13 @@ const SERVICES = [
     desc: "Reparamos, ajustamos y cambiamos varillas de driver, hierros y putters — grafito o acero.",
     img: varillasImg.url,
     icon: Cog,
+  },
+  {
+    to: "/servicios/swing-weight" as const,
+    title: "Swing Weight",
+    desc: "Ajustamos el equilibrio de tus palos para mejorar control, ritmo y prevenir lesiones.",
+    img: swingWeightImg.url,
+    icon: Scale,
   },
 ];
 
