@@ -248,6 +248,7 @@ function Page() {
   const [tab, setTab] = useState<TabId>("iron");
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "", accept: false });
   const [sending, setSending] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<{ img: string; name: string } | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
