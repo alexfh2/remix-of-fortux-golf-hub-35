@@ -114,6 +114,17 @@ function Home() {
                   alt="Gerard y Marc — equipo Fortux"
                   className="relative w-full h-auto max-w-none scale-110 lg:scale-125 origin-bottom drop-shadow-[0_25px_40px_rgba(0,0,0,0.45)] animate-fade-up"
                 />
+                {/* Names */}
+                <div className="pointer-events-none absolute bottom-2 left-4 lg:bottom-4 lg:left-8">
+                  <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-primary-foreground/70">
+                    Gerard Rubio
+                  </span>
+                </div>
+                <div className="pointer-events-none absolute bottom-2 right-4 lg:bottom-4 lg:right-8">
+                  <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-primary-foreground/70">
+                    Marc Fortuny
+                  </span>
+                </div>
               </div>
             </div>
           </div>
