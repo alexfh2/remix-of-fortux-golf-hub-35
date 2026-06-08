@@ -60,12 +60,16 @@ export type Database = {
           cover_url: string | null
           created_at: string
           excerpt: string | null
+          gallery_images: string[] | null
           id: string
+          instagram_text: string | null
           is_published: boolean
           published_at: string | null
+          scheduled_at: string | null
           slug: string
           title: string
           updated_at: string
+          whatsapp_text: string | null
         }
         Insert: {
           author_id?: string | null
@@ -73,12 +77,16 @@ export type Database = {
           cover_url?: string | null
           created_at?: string
           excerpt?: string | null
+          gallery_images?: string[] | null
           id?: string
+          instagram_text?: string | null
           is_published?: boolean
           published_at?: string | null
+          scheduled_at?: string | null
           slug: string
           title: string
           updated_at?: string
+          whatsapp_text?: string | null
         }
         Update: {
           author_id?: string | null
@@ -86,12 +94,16 @@ export type Database = {
           cover_url?: string | null
           created_at?: string
           excerpt?: string | null
+          gallery_images?: string[] | null
           id?: string
+          instagram_text?: string | null
           is_published?: boolean
           published_at?: string | null
+          scheduled_at?: string | null
           slug?: string
           title?: string
           updated_at?: string
+          whatsapp_text?: string | null
         }
         Relationships: []
       }
