@@ -113,14 +113,14 @@ function Home() {
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s) => (
               <article
-                key={s.title}
+                key={s.key}
                 className="group rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:shadow-elegant"
               >
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-secondary/40 text-primary group-hover:bg-secondary transition-colors">
                   <s.icon className="h-6 w-6" />
                 </div>
-                <h3 className="mt-5 font-display text-xl font-bold text-foreground whitespace-pre-line">{s.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                <h3 className="mt-5 font-display text-xl font-bold text-foreground whitespace-pre-line">{t(`home.svc.${s.key}.t`)}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t(`home.svc.${s.key}.d`)}</p>
               </article>
             ))}
           </div>
