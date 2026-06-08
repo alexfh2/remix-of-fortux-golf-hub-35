@@ -31,7 +31,7 @@ const SERVICES = [
   { icon: Sparkles, title: "Fitting y ajustes", desc: "Lie, loft, longitud y swingweight ajustados a tu juego." },
   { icon: ShoppingBag, title: "Personalización", desc: "Stamping, pintura y acabados únicos." },
   { icon: GraduationCap, title: "Clases de golf", desc: "Formación individual y grupal en nuestra academia." },
-  { icon: Trophy, title: "Circuito P&P", desc: "Compite en el circuito Pitch & Putt de referencia." },
+  { icon: Trophy, title: "CIRCUIT FORTUX\nX MULLIGAN 2026", desc: "Compite en el circuito Pitch & Putt de referencia." },
 ];
 
 const UPCOMING = [
@@ -122,7 +122,7 @@ function Home() {
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-secondary/40 text-primary group-hover:bg-secondary transition-colors">
                   <s.icon className="h-6 w-6" />
                 </div>
-                <h3 className="mt-5 font-display text-xl font-bold text-foreground">{s.title}</h3>
+                <h3 className="mt-5 font-display text-xl font-bold text-foreground whitespace-pre-line">{s.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
               </article>
             ))}
