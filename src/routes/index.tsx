@@ -188,17 +188,17 @@ function Home() {
             subtitle={t("home.upcoming.subtitle")}
           />
           <div className="mt-12 grid gap-4 md:grid-cols-3">
-            {UPCOMING.map((c) => (
-              <article key={c.name} className="rounded-2xl bg-card border border-border p-6 hover:shadow-soft transition-shadow">
+            {UPCOMING.map((k) => (
+              <article key={k} className="rounded-2xl bg-card border border-border p-6 hover:shadow-soft transition-shadow">
                 <div className="flex items-start justify-between">
                   <div className="rounded-lg bg-primary text-primary-foreground px-3 py-2 text-center">
                     <Calendar className="mx-auto h-4 w-4 mb-1 text-secondary" />
-                    <div className="text-xs font-bold">{c.date}</div>
+                    <div className="text-xs font-bold">{t(`comp.${k}.date`)}</div>
                   </div>
-                  <span className="text-xs font-semibold rounded-full bg-secondary/40 px-3 py-1 text-primary">{c.status}</span>
+                  <span className="text-xs font-semibold rounded-full bg-secondary/40 px-3 py-1 text-primary">{t(`comp.${k}.status`)}</span>
                 </div>
-                <h3 className="mt-5 font-display text-xl font-bold text-foreground">{c.name}</h3>
-                <p className="mt-1 inline-flex items-center gap-1 text-sm text-muted-foreground"><MapPin className="h-3.5 w-3.5" />{c.place}</p>
+                <h3 className="mt-5 font-display text-xl font-bold text-foreground">{t(`comp.${k}.name`)}</h3>
+                <p className="mt-1 inline-flex items-center gap-1 text-sm text-muted-foreground"><MapPin className="h-3.5 w-3.5" />{t(`comp.${k}.place`)}</p>
               </article>
             ))}
           </div>
