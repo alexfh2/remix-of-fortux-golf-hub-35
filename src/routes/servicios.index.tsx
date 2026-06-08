@@ -39,6 +39,13 @@ const SERVICES = [
     img: swingWeightImg.url,
     icon: Scale,
   },
+  {
+    to: "/servicios/lie-loft" as const,
+    title: "Lie & Loft",
+    desc: "Ajustamos el lie y loft de tus palos para lograr precisión, control y distancia en cada golpe.",
+    img: lieLoftImg.url,
+    icon: Ruler,
+  },
 ];
 
 function Page() {
