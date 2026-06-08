@@ -47,7 +47,7 @@ function Home() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("reviews")
-        .select("id,author_name,rating,content,created_at")
+        .select("id,author_name,author_location,rating,content,avatar_url,review_date,created_at")
         .eq("is_published", true)
         .eq("rating", 5)
         .order("created_at", { ascending: false })
@@ -216,13 +216,32 @@ function Home() {
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {reviews.map((r) => (
               <article key={r.id} className="rounded-2xl border border-border bg-card p-7 shadow-soft">
-                <div className="flex gap-0.5 text-secondary-foreground">
+                <div className="flex items-center gap-3">
+                  {r.avatar_url ? (
+                    <img src={r.avatar_url} alt={r.author_name} className="h-10 w-10 rounded-full object-cover" />
+                  ) : (
+                    <div className="h-10 w-10 rounded-full bg-muted flex items-center justify-center text-sm font-semibold text-muted-foreground">
+                      {r.author_name.slice(0, 2).toUpperCase()}
+                    </div>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <div className="font-semibold text-primary truncate">{r.author_name}</div>
+                    {r.author_location && (
+                      <div className="text-xs text-muted-foreground truncate">{r.author_location}</div>
+                    )}
+                  </div>
+                </div>
+                <div className="mt-4 flex gap-0.5 text-secondary-foreground">
                   {Array.from({ length: r.rating }).map((_, i) => (
                     <Star key={i} className="h-4 w-4 fill-secondary text-secondary" />
                   ))}
                 </div>
-                <p className="mt-4 text-foreground/90 leading-relaxed">"{r.content}"</p>
-                <div className="mt-5 font-semibold text-primary">{r.author_name}</div>
+                <p className="mt-3 text-foreground/90 leading-relaxed">"{r.content}"</p>
+                {r.review_date && (
+                  <div className="mt-4 text-xs text-muted-foreground">
+                    {new Date(r.review_date).toLocaleDateString("es-ES", { year: "numeric", month: "long" })}
+                  </div>
+                )}
               </article>
             ))}
           </div>
