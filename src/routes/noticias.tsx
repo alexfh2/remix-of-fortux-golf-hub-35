@@ -24,21 +24,62 @@ type News = {
   excerpt: string | null;
   cover_url: string | null;
   published_at: string | null;
+  source: "fortux" | "circuit";
 };
+
+const CIRCUIT_SUPABASE_URL = "https://xskmbgbjxixezdudbgme.supabase.co";
+const CIRCUIT_SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhza21iZ2JqeGl4ZXpkdWRiZ21lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxMzY2ODEsImV4cCI6MjA5NTcxMjY4MX0.Pc-Z8pcizE0TGHb_luIWtZ8gH7wp4S7HD0D26Affrac";
+
+async function fetchCircuitNews(): Promise<News[]> {
+  try {
+    const res = await fetch(
+      `${CIRCUIT_SUPABASE_URL}/rest/v1/news?select=id,title,excerpt,image_url,created_at,published&published=eq.true&order=created_at.desc`,
+      { headers: { apikey: CIRCUIT_SUPABASE_KEY, Authorization: `Bearer ${CIRCUIT_SUPABASE_KEY}` } },
+    );
+    if (!res.ok) return [];
+    const rows = (await res.json()) as Array<{ id: string; title: string; excerpt: string | null; image_url: string | null; created_at: string }>;
+    return rows.map((r) => ({
+      id: `circuit-${r.id}`,
+      title: r.title,
+      excerpt: r.excerpt,
+      cover_url: r.image_url,
+      published_at: r.created_at,
+      source: "circuit" as const,
+    }));
+  } catch {
+    return [];
+  }
+}
 
 function Page() {
   const { t, lang } = useI18n();
   const { data: news = [], isLoading } = useQuery({
-    queryKey: ["news"],
+    queryKey: ["news", "merged"],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("news")
-        .select("id,title,excerpt,cover_url,published_at")
-        .eq("is_published", true)
-        .order("published_at", { ascending: false });
-      if (error) throw error;
-      return data as News[];
+      const [localRes, circuit] = await Promise.all([
+        supabase
+          .from("news")
+          .select("id,title,excerpt,cover_url,published_at")
+          .eq("is_published", true)
+          .order("published_at", { ascending: false }),
+        fetchCircuitNews(),
+      ]);
+      if (localRes.error) throw localRes.error;
+      const local: News[] = (localRes.data ?? []).map((n) => ({
+        id: n.id,
+        title: n.title,
+        excerpt: n.excerpt,
+        cover_url: n.cover_url,
+        published_at: n.published_at,
+        source: "fortux" as const,
+      }));
+      return [...local, ...circuit].sort(
+        (a, b) => new Date(b.published_at ?? 0).getTime() - new Date(a.published_at ?? 0).getTime(),
+      );
     },
+    staleTime: 0,
+    refetchOnMount: "always",
+    refetchOnWindowFocus: true,
   });
 
   return (
@@ -56,7 +97,9 @@ function Page() {
                 </div>
                 <div className="p-7">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-semibold uppercase tracking-wider text-primary">Fortux</span>
+                    <span className="font-semibold uppercase tracking-wider text-primary">
+                      {n.source === "circuit" ? "Circuit Fortux" : "Fortux"}
+                    </span>
                     {n.published_at && (
                       <span className="text-muted-foreground">
                         {new Date(n.published_at).toLocaleDateString(lang === "ca" ? "ca-ES" : "es-ES", { day: "2-digit", month: "short", year: "numeric" })}
