@@ -29,11 +29,7 @@ const RANKING = [
   { pos: 5, name: "Pol Serra", pts: 1035 },
 ];
 
-const UPCOMING = [
-  { date: "12 OCT", name: "Open de Otoño", place: "P&P Vall d'Or" },
-  { date: "02 NOV", name: "Trofeo Fortux", place: "P&P Llavaneres" },
-  { date: "23 NOV", name: "Final de Circuito", place: "P&P Papalús" },
-];
+const UPCOMING = ["1", "2", "3"];
 
 function Page() {
   const { t } = useI18n();
@@ -85,15 +81,15 @@ function Page() {
           <div>
             <SectionHeading eyebrow={t("cir.cal.eyebrow")} title={t("cir.cal.title")} />
             <div className="mt-8 space-y-3">
-              {UPCOMING.map((c) => (
-                <article key={c.name} className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5">
+              {UPCOMING.map((k) => (
+                <article key={k} className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5">
                   <div className="rounded-lg bg-primary text-primary-foreground px-3 py-2 text-center min-w-16">
                     <Calendar className="mx-auto h-4 w-4 mb-1 text-secondary" />
-                    <div className="text-xs font-bold">{c.date}</div>
+                    <div className="text-xs font-bold">{t(`comp.${k}.date`)}</div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-display font-bold">{c.name}</h3>
-                    <p className="text-sm text-muted-foreground inline-flex items-center gap-1"><MapPin className="h-3.5 w-3.5" />{c.place}</p>
+                    <h3 className="font-display font-bold">{t(`comp.${k}.name`)}</h3>
+                    <p className="text-sm text-muted-foreground inline-flex items-center gap-1"><MapPin className="h-3.5 w-3.5" />{t(`comp.${k}.place`)}</p>
                   </div>
                 </article>
               ))}

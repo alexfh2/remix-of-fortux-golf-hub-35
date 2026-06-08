@@ -26,19 +26,16 @@ export const Route = createFileRoute("/")({
 });
 
 const SERVICES = [
-  { icon: Wrench, title: "Reparación de palos", desc: "Reparaciones expertas que devuelven el rendimiento a tu equipo." },
-  { icon: Hammer, title: "Cambio de grips", desc: "Grips nuevos en minutos con materiales premium." },
-  { icon: Sparkles, title: "Fitting y ajustes", desc: "Lie, loft, longitud y swingweight ajustados a tu juego." },
-  { icon: ShoppingBag, title: "Personalización", desc: "Stamping, pintura y acabados únicos." },
-  { icon: GraduationCap, title: "Clases de golf", desc: "Formación individual y grupal en nuestra academia." },
-  { icon: Trophy, title: "CIRCUIT FORTUX\nX MULLIGAN 2026", desc: "Compite en el circuito Pitch & Putt de referencia." },
+  { icon: Wrench, key: "1" },
+  { icon: Hammer, key: "2" },
+  { icon: Sparkles, key: "3" },
+  { icon: ShoppingBag, key: "4" },
+  { icon: GraduationCap, key: "5" },
+  { icon: Trophy, key: "6" },
 ];
 
-const UPCOMING = [
-  { date: "12 OCT", name: "Open de Otoño", place: "P&P Vall d'Or", status: "Inscripciones abiertas" },
-  { date: "02 NOV", name: "Trofeo Fortux", place: "P&P Llavaneres", status: "Próximamente" },
-  { date: "23 NOV", name: "Final de Circuito", place: "P&P Papalús", status: "Final" },
-];
+const UPCOMING = ["1", "2", "3"];
+const PILLS = ["pill.repair", "pill.maintenance", "pill.custom", "pill.classes", "pill.sale"];
 
 function Home() {
   const { t } = useI18n();
@@ -96,9 +93,9 @@ function Home() {
           </div>
 
           <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-3 max-w-3xl">
-            {["Reparación", "Mantenimiento", "Personalización", "Clases", "Venta"].map((b) => (
+            {PILLS.map((b) => (
               <div key={b} className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-3 py-2 text-center text-sm font-medium">
-                {b}
+                {t(b)}
               </div>
             ))}
           </div>
@@ -116,14 +113,14 @@ function Home() {
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s) => (
               <article
-                key={s.title}
+                key={s.key}
                 className="group rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:shadow-elegant"
               >
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-secondary/40 text-primary group-hover:bg-secondary transition-colors">
                   <s.icon className="h-6 w-6" />
                 </div>
-                <h3 className="mt-5 font-display text-xl font-bold text-foreground whitespace-pre-line">{s.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                <h3 className="mt-5 font-display text-xl font-bold text-foreground whitespace-pre-line">{t(`home.svc.${s.key}.t`)}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t(`home.svc.${s.key}.d`)}</p>
               </article>
             ))}
           </div>
@@ -191,17 +188,17 @@ function Home() {
             subtitle={t("home.upcoming.subtitle")}
           />
           <div className="mt-12 grid gap-4 md:grid-cols-3">
-            {UPCOMING.map((c) => (
-              <article key={c.name} className="rounded-2xl bg-card border border-border p-6 hover:shadow-soft transition-shadow">
+            {UPCOMING.map((k) => (
+              <article key={k} className="rounded-2xl bg-card border border-border p-6 hover:shadow-soft transition-shadow">
                 <div className="flex items-start justify-between">
                   <div className="rounded-lg bg-primary text-primary-foreground px-3 py-2 text-center">
                     <Calendar className="mx-auto h-4 w-4 mb-1 text-secondary" />
-                    <div className="text-xs font-bold">{c.date}</div>
+                    <div className="text-xs font-bold">{t(`comp.${k}.date`)}</div>
                   </div>
-                  <span className="text-xs font-semibold rounded-full bg-secondary/40 px-3 py-1 text-primary">{c.status}</span>
+                  <span className="text-xs font-semibold rounded-full bg-secondary/40 px-3 py-1 text-primary">{t(`comp.${k}.status`)}</span>
                 </div>
-                <h3 className="mt-5 font-display text-xl font-bold text-foreground">{c.name}</h3>
-                <p className="mt-1 inline-flex items-center gap-1 text-sm text-muted-foreground"><MapPin className="h-3.5 w-3.5" />{c.place}</p>
+                <h3 className="mt-5 font-display text-xl font-bold text-foreground">{t(`comp.${k}.name`)}</h3>
+                <p className="mt-1 inline-flex items-center gap-1 text-sm text-muted-foreground"><MapPin className="h-3.5 w-3.5" />{t(`comp.${k}.place`)}</p>
               </article>
             ))}
           </div>

@@ -22,10 +22,10 @@ export const Route = createFileRoute("/academia")({
 });
 
 const PLANS = [
-  { icon: User, t: "Clase individual", d: "Sesión 1 a 1 con plan de mejora personalizado." },
-  { icon: Users, t: "Clase grupal", d: "Aprende en grupo, entrenamiento dinámico y económico." },
-  { icon: Target, t: "Formación técnica", d: "Análisis de swing, control de bola y juego corto." },
-  { icon: Trophy, t: "Entrenamiento competitivo", d: "Plan personalizado para jugadores federados." },
+  { icon: User, k: "1" },
+  { icon: Users, k: "2" },
+  { icon: Target, k: "3" },
+  { icon: Trophy, k: "4" },
 ];
 
 function Page() {
@@ -46,12 +46,12 @@ function Page() {
           <SectionHeading eyebrow={t("aca.eyebrow")} title={t("aca.title")} />
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             {PLANS.map((p) => (
-              <article key={p.t} className="rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:shadow-elegant">
+              <article key={p.k} className="rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:shadow-elegant">
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-secondary/40 text-primary">
                   <p.icon className="h-6 w-6" />
                 </div>
-                <h3 className="mt-5 font-display text-xl font-bold">{p.t}</h3>
-                <p className="mt-2 text-muted-foreground">{p.d}</p>
+                <h3 className="mt-5 font-display text-xl font-bold">{t(`aca.${p.k}.t`)}</h3>
+                <p className="mt-2 text-muted-foreground">{t(`aca.${p.k}.d`)}</p>
               </article>
             ))}
           </div>
