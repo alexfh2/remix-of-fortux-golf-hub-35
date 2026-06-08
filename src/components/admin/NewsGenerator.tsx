@@ -351,18 +351,33 @@ export function NewsGenerator({ onSaved, onBack }: { onSaved: () => void; onBack
       )}
 
       <div className="space-y-1.5">
-        <Label>URL de imagen de portada</Label>
-        <Input type="url" value={coverUrl} onChange={(e) => setCoverUrl(e.target.value)}
-          placeholder="https://…" />
+        <Label>Imagen de portada</Label>
+        <div className="flex gap-2">
+          <Input type="url" value={coverUrl} onChange={(e) => setCoverUrl(e.target.value)}
+            placeholder="Pega una URL o sube un archivo" />
+          <label className="inline-flex items-center justify-center gap-1.5 px-3 rounded-md border border-input bg-background hover:bg-accent cursor-pointer text-sm whitespace-nowrap">
+            {uploading === "cover" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
+            <span>Subir</span>
+            <input type="file" accept="image/*" className="hidden"
+              onChange={(e) => { handleCoverFile(e.target.files?.[0] ?? null); e.target.value = ""; }} />
+          </label>
+        </div>
+        {coverUrl && <img src={coverUrl} alt="" className="mt-2 h-32 rounded-md object-cover" />}
       </div>
 
       <div className="space-y-2">
-        <Label>Galería (URLs adicionales)</Label>
+        <Label>Galería de imágenes</Label>
         <div className="flex gap-2">
           <Input type="url" value={galleryInput} onChange={(e) => setGalleryInput(e.target.value)}
-            placeholder="https://…"
+            placeholder="Pega una URL…"
             onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addGallery(); } }} />
           <Button type="button" variant="outline" onClick={addGallery}><Plus className="h-4 w-4" /></Button>
+          <label className="inline-flex items-center justify-center gap-1.5 px-3 rounded-md border border-input bg-background hover:bg-accent cursor-pointer text-sm whitespace-nowrap">
+            {uploading === "gallery" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
+            <span>Subir</span>
+            <input type="file" accept="image/*" multiple className="hidden"
+              onChange={(e) => { handleGalleryFiles(e.target.files); e.target.value = ""; }} />
+          </label>
         </div>
         {gallery.length > 0 && (
           <div className="grid grid-cols-4 gap-2">
