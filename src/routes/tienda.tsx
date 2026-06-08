@@ -323,7 +323,7 @@ function Page() {
             </div>
           </div>
 
-          <ProductGrid items={items} />
+          <ProductGrid items={items} onImageClick={(img, name) => setSelectedImage({ img, name })} />
         </div>
       </section>
 
