@@ -151,9 +151,24 @@ function Home() {
         </div>
       </section>
 
-      {/* CIRCUIT — quick access tabs to live external site */}
+      {/* CIRCUIT EMBED — live external site, navbar cropped */}
       <section className="pb-12 md:pb-16 pt-8 md:pt-10">
         <div className="container-fortux">
+          <div
+            className="relative w-full overflow-hidden"
+            style={{ height: "1380px" }}
+          >
+            <iframe
+              src="https://fortux.fairwaystudio.ai/"
+              title="Circuit Fortux x Mulligan 2026"
+              loading="lazy"
+              scrolling="no"
+              className="absolute left-0 w-full border-0"
+              style={{ top: "-90px", height: "calc(100% + 90px)" }}
+            />
+          </div>
+
+          {/* Quick access tabs */}
           <CircuitTabs />
         </div>
       </section>
