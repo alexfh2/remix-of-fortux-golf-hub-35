@@ -55,49 +55,61 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative isolate overflow-hidden">
-        <img
-          src={heroImg}
-          alt="Taller de reparación de palos de golf Fortux"
-          width={1920}
-          height={1080}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-overlay" />
-        <div className="container-fortux relative py-24 md:py-32 lg:py-40 text-primary-foreground animate-fade-up">
-          <span className="inline-block rounded-full bg-secondary/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary-foreground">
-            {t("home.hero.eyebrow")}
-          </span>
-          <h1 className="mt-5 max-w-3xl font-display text-4xl md:text-6xl lg:text-7xl font-bold text-balance">
-            {t("home.hero.title")}
-          </h1>
-          <p className="mt-6 max-w-xl text-lg md:text-xl text-primary-foreground/85">
-            {t("home.hero.subtitle")}
-          </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
-              <a href={waLink("Hola, querría reparar mi equipo.")} target="_blank" rel="noopener">
-                {t("cta.repair")} <ArrowRight className="ml-1.5 h-4 w-4" />
-              </a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20">
-              <a href={waLink("Hola, querría solicitar un presupuesto.")} target="_blank" rel="noopener">
-                {t("cta.quote")}
-              </a>
-            </Button>
-            <Button asChild size="lg" className="bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp/90">
-              <a href={waLink()} target="_blank" rel="noopener">
-                <MessageCircle className="mr-1.5 h-4 w-4" /> {t("cta.whatsapp")}
-              </a>
-            </Button>
-          </div>
+      <section className="relative isolate overflow-hidden bg-gradient-hero">
+        {/* glow accents */}
+        <div className="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full bg-secondary/30 blur-3xl" />
+        <div className="pointer-events-none absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full bg-primary-glow/20 blur-3xl" />
 
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-3 max-w-3xl">
-            {PILLS.map((b) => (
-              <div key={b} className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-3 py-2 text-center text-sm font-medium">
-                {t(b)}
+        <div className="container-fortux relative py-20 md:py-28 lg:py-32 text-primary-foreground animate-fade-up">
+          <div className="grid items-center gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-6">
+              <span className="inline-block rounded-full bg-secondary/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary-foreground">
+                {t("home.hero.eyebrow")}
+              </span>
+              <h1 className="mt-5 font-display text-4xl md:text-6xl lg:text-7xl font-bold text-balance">
+                {t("home.hero.title")}
+              </h1>
+              <p className="mt-6 max-w-xl text-lg md:text-xl text-primary-foreground/85">
+                {t("home.hero.subtitle")}
+              </p>
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
+                  <a href={waLink("Hola, querría reparar mi equipo.")} target="_blank" rel="noopener">
+                    {t("cta.repair")} <ArrowRight className="ml-1.5 h-4 w-4" />
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20">
+                  <a href={waLink("Hola, querría solicitar un presupuesto.")} target="_blank" rel="noopener">
+                    {t("cta.quote")}
+                  </a>
+                </Button>
+                <Button asChild size="lg" className="bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp/90">
+                  <a href={waLink()} target="_blank" rel="noopener">
+                    <MessageCircle className="mr-1.5 h-4 w-4" /> {t("cta.whatsapp")}
+                  </a>
+                </Button>
               </div>
-            ))}
+
+              <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-3 max-w-3xl">
+                {PILLS.map((b) => (
+                  <div key={b} className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-3 py-2 text-center text-sm font-medium">
+                    {t(b)}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative lg:col-span-6">
+              {/* soft ground shadow */}
+              <div className="absolute inset-x-6 bottom-2 h-10 rounded-[50%] bg-black/40 blur-2xl" />
+              <img
+                src={vanImg}
+                alt="Furgoneta Fortux Golf — servicio a domicilio"
+                width={1200}
+                height={900}
+                className="relative w-full h-auto drop-shadow-2xl animate-fade-up"
+              />
+            </div>
           </div>
         </div>
       </section>
