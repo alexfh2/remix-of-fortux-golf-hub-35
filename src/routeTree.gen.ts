@@ -21,6 +21,7 @@ import { Route as AcademiaRouteImport } from './routes/academia'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServiciosIndexRouteImport } from './routes/servicios.index'
+import { Route as ServiciosSwingWeightRouteImport } from './routes/servicios.swing-weight'
 import { Route as ServiciosReemplazoDelGripRouteImport } from './routes/servicios.reemplazo-del-grip'
 import { Route as ServiciosAjustesDeVarillasRouteImport } from './routes/servicios.ajustes-de-varillas'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
@@ -89,6 +90,11 @@ const IndexRoute = IndexRouteImport.update({
 const ServiciosIndexRoute = ServiciosIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => ServiciosRoute,
+} as any)
+const ServiciosSwingWeightRoute = ServiciosSwingWeightRouteImport.update({
+  id: '/swing-weight',
+  path: '/swing-weight',
   getParentRoute: () => ServiciosRoute,
 } as any)
 const ServiciosReemplazoDelGripRoute =
@@ -164,6 +170,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/servicios/ajustes-de-varillas': typeof ServiciosAjustesDeVarillasRoute
   '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
+  '/servicios/swing-weight': typeof ServiciosSwingWeightRoute
   '/servicios/': typeof ServiciosIndexRoute
   '/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
   '/admin/galeria': typeof AuthenticatedAdminGaleriaRoute
@@ -185,6 +192,7 @@ export interface FileRoutesByTo {
   '/tienda': typeof TiendaRoute
   '/servicios/ajustes-de-varillas': typeof ServiciosAjustesDeVarillasRoute
   '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
+  '/servicios/swing-weight': typeof ServiciosSwingWeightRoute
   '/servicios': typeof ServiciosIndexRoute
   '/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
   '/admin/galeria': typeof AuthenticatedAdminGaleriaRoute
@@ -210,6 +218,7 @@ export interface FileRoutesById {
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/servicios/ajustes-de-varillas': typeof ServiciosAjustesDeVarillasRoute
   '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
+  '/servicios/swing-weight': typeof ServiciosSwingWeightRoute
   '/servicios/': typeof ServiciosIndexRoute
   '/_authenticated/admin/cambiar-contrasena': typeof AuthenticatedAdminCambiarContrasenaRoute
   '/_authenticated/admin/galeria': typeof AuthenticatedAdminGaleriaRoute
@@ -235,6 +244,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/servicios/ajustes-de-varillas'
     | '/servicios/reemplazo-del-grip'
+    | '/servicios/swing-weight'
     | '/servicios/'
     | '/admin/cambiar-contrasena'
     | '/admin/galeria'
@@ -256,6 +266,7 @@ export interface FileRouteTypes {
     | '/tienda'
     | '/servicios/ajustes-de-varillas'
     | '/servicios/reemplazo-del-grip'
+    | '/servicios/swing-weight'
     | '/servicios'
     | '/admin/cambiar-contrasena'
     | '/admin/galeria'
@@ -280,6 +291,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin'
     | '/servicios/ajustes-de-varillas'
     | '/servicios/reemplazo-del-grip'
+    | '/servicios/swing-weight'
     | '/servicios/'
     | '/_authenticated/admin/cambiar-contrasena'
     | '/_authenticated/admin/galeria'
@@ -388,6 +400,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/servicios/'
       preLoaderRoute: typeof ServiciosIndexRouteImport
+      parentRoute: typeof ServiciosRoute
+    }
+    '/servicios/swing-weight': {
+      id: '/servicios/swing-weight'
+      path: '/swing-weight'
+      fullPath: '/servicios/swing-weight'
+      preLoaderRoute: typeof ServiciosSwingWeightRouteImport
       parentRoute: typeof ServiciosRoute
     }
     '/servicios/reemplazo-del-grip': {
@@ -501,12 +520,14 @@ const AuthenticatedRouteRouteWithChildren =
 interface ServiciosRouteChildren {
   ServiciosAjustesDeVarillasRoute: typeof ServiciosAjustesDeVarillasRoute
   ServiciosReemplazoDelGripRoute: typeof ServiciosReemplazoDelGripRoute
+  ServiciosSwingWeightRoute: typeof ServiciosSwingWeightRoute
   ServiciosIndexRoute: typeof ServiciosIndexRoute
 }
 
 const ServiciosRouteChildren: ServiciosRouteChildren = {
   ServiciosAjustesDeVarillasRoute: ServiciosAjustesDeVarillasRoute,
   ServiciosReemplazoDelGripRoute: ServiciosReemplazoDelGripRoute,
+  ServiciosSwingWeightRoute: ServiciosSwingWeightRoute,
   ServiciosIndexRoute: ServiciosIndexRoute,
 }
 
@@ -530,3 +551,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
