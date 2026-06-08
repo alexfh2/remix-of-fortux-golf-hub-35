@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { ArrowRight, Wrench, Hammer, Sparkles, GraduationCap, ShoppingBag, Trophy, MessageCircle, Star, Calendar, MapPin, ChevronDown, ExternalLink, BarChart3, ListChecks, Users } from "lucide-react";
+import { ArrowRight, Wrench, Hammer, Sparkles, GraduationCap, ShoppingBag, Trophy, MessageCircle, Star, ChevronDown, ExternalLink, BarChart3, ListChecks, Users } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/site/SectionHeading";
@@ -9,7 +9,6 @@ import { SITE, waLink } from "@/lib/site";
 import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/lib/i18n";
 import teamPhoto from "@/assets/gerard-marc-cutout.png";
-import circuitoImg from "@/assets/circuito-hero.jpg";
 import fortuxLogo from "@/assets/fortux-logo.png.asset.json";
 import mulliganLogo from "@/assets/mulligan-logo.png.asset.json";
 
@@ -201,79 +200,6 @@ function Home() {
             <Button asChild variant="outline">
               <Link to="/servicios">{t("cta.viewAll")} <ArrowRight className="ml-1.5 h-4 w-4" /></Link>
             </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* CIRCUITO HERO */}
-      <section className="relative isolate overflow-hidden">
-        <img
-          src={circuitoImg}
-          alt="Campo de Pitch and Putt al atardecer"
-          width={1920}
-          height={1080}
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-overlay" />
-        <div className="container-fortux relative py-24 md:py-32 grid gap-10 lg:grid-cols-2 items-center text-primary-foreground">
-          <div>
-            <span className="inline-block rounded-full bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary-foreground">
-              {t("home.circuit.eyebrow")}
-            </span>
-            <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl font-bold text-balance">
-              {t("home.circuit.title")}
-            </h2>
-            <p className="mt-5 max-w-xl text-lg text-primary-foreground/85">
-              {t("home.circuit.subtitle")}
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
-                <a href={SITE.circuitUrl} target="_blank" rel="noopener">{t("cta.accessCircuit")} <ArrowRight className="ml-1.5 h-4 w-4" /></a>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20">
-                <Link to="/circuito">{t("cta.viewRankings")}</Link>
-              </Button>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-3 gap-4">
-            {[
-              { v: "+24", l: t("home.stat.tests") },
-              { v: "+850", l: t("home.stat.players") },
-              { v: "12", l: t("home.stat.courses") },
-            ].map((s) => (
-              <div key={s.l} className="rounded-2xl border border-primary-foreground/15 bg-primary/40 backdrop-blur p-5 text-center">
-                <div className="font-display text-3xl md:text-4xl font-bold text-secondary">{s.v}</div>
-                <div className="mt-1 text-xs uppercase tracking-wider text-primary-foreground/70">{s.l}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PRÓXIMAS COMPETICIONES */}
-      <section className="py-20 md:py-28 bg-muted/40">
-        <div className="container-fortux">
-          <SectionHeading
-            eyebrow={t("home.upcoming.eyebrow")}
-            title={t("home.upcoming.title")}
-            subtitle={t("home.upcoming.subtitle")}
-          />
-          <div className="mt-12 grid gap-4 md:grid-cols-3">
-            {UPCOMING.map((k) => (
-              <article key={k} className="rounded-2xl bg-card border border-border p-6 hover:shadow-soft transition-shadow">
-                <div className="flex items-start justify-between">
-                  <div className="rounded-lg bg-primary text-primary-foreground px-3 py-2 text-center">
-                    <Calendar className="mx-auto h-4 w-4 mb-1 text-secondary" />
-                    <div className="text-xs font-bold">{t(`comp.${k}.date`)}</div>
-                  </div>
-                  <span className="text-xs font-semibold rounded-full bg-secondary/40 px-3 py-1 text-primary">{t(`comp.${k}.status`)}</span>
-                </div>
-                <h3 className="mt-5 font-display text-xl font-bold text-foreground">{t(`comp.${k}.name`)}</h3>
-                <p className="mt-1 inline-flex items-center gap-1 text-sm text-muted-foreground"><MapPin className="h-3.5 w-3.5" />{t(`comp.${k}.place`)}</p>
-              </article>
-            ))}
           </div>
         </div>
       </section>
