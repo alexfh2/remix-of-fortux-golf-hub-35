@@ -26,19 +26,16 @@ export const Route = createFileRoute("/")({
 });
 
 const SERVICES = [
-  { icon: Wrench, title: "Reparación de palos", desc: "Reparaciones expertas que devuelven el rendimiento a tu equipo." },
-  { icon: Hammer, title: "Cambio de grips", desc: "Grips nuevos en minutos con materiales premium." },
-  { icon: Sparkles, title: "Fitting y ajustes", desc: "Lie, loft, longitud y swingweight ajustados a tu juego." },
-  { icon: ShoppingBag, title: "Personalización", desc: "Stamping, pintura y acabados únicos." },
-  { icon: GraduationCap, title: "Clases de golf", desc: "Formación individual y grupal en nuestra academia." },
-  { icon: Trophy, title: "CIRCUIT FORTUX\nX MULLIGAN 2026", desc: "Compite en el circuito Pitch & Putt de referencia." },
+  { icon: Wrench, key: "1" },
+  { icon: Hammer, key: "2" },
+  { icon: Sparkles, key: "3" },
+  { icon: ShoppingBag, key: "4" },
+  { icon: GraduationCap, key: "5" },
+  { icon: Trophy, key: "6" },
 ];
 
-const UPCOMING = [
-  { date: "12 OCT", name: "Open de Otoño", place: "P&P Vall d'Or", status: "Inscripciones abiertas" },
-  { date: "02 NOV", name: "Trofeo Fortux", place: "P&P Llavaneres", status: "Próximamente" },
-  { date: "23 NOV", name: "Final de Circuito", place: "P&P Papalús", status: "Final" },
-];
+const UPCOMING = ["1", "2", "3"];
+const PILLS = ["pill.repair", "pill.maintenance", "pill.custom", "pill.classes", "pill.sale"];
 
 function Home() {
   const { t } = useI18n();
