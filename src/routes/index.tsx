@@ -292,3 +292,63 @@ function Home() {
     </>
   );
 }
+
+const TABS = [
+  { key: "rankings", label: "Class. acumulades", icon: BarChart3, url: "https://fortux.fairwaystudio.ai/rankings" },
+  { key: "proves", label: "Prova a prova", icon: ListChecks, url: "https://fortux.fairwaystudio.ai/proves" },
+  { key: "jugadors", label: "Jugadors", icon: Users, url: "https://fortux.fairwaystudio.ai/jugadors" },
+] as const;
+
+function CircuitTabs() {
+  const [open, setOpen] = useState<string | null>(null);
+  return (
+    <div className="mt-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {TABS.map((tab) => {
+          const isOpen = open === tab.key;
+          return (
+            <button
+              key={tab.key}
+              type="button"
+              onClick={() => setOpen(isOpen ? null : tab.key)}
+              className={`inline-flex items-center justify-center gap-2 rounded-xl border px-4 py-4 text-sm font-semibold uppercase tracking-wider transition-colors ${
+                isOpen
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-card text-foreground hover:bg-muted"
+              }`}
+            >
+              <tab.icon className="h-4 w-4" />
+              <span>{tab.label}</span>
+              <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+            </button>
+          );
+        })}
+        <a
+          href="https://fortux.fairwaystudio.ai/"
+          target="_blank"
+          rel="noopener"
+          className="inline-flex items-center justify-center gap-2 rounded-xl border border-secondary bg-secondary px-4 py-4 text-sm font-semibold uppercase tracking-wider text-secondary-foreground transition-colors hover:bg-secondary/90"
+        >
+          <ExternalLink className="h-4 w-4" />
+          <span>Veure web del circuit</span>
+        </a>
+      </div>
+
+      {TABS.map((tab) => (
+        <Collapsible key={tab.key} open={open === tab.key}>
+          <CollapsibleContent className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+            <div className="relative w-full overflow-hidden mt-4" style={{ height: "900px" }}>
+              <iframe
+                src={tab.url}
+                title={tab.label}
+                loading="lazy"
+                className="absolute left-0 w-full border-0"
+                style={{ top: "-90px", height: "calc(100% + 90px)" }}
+              />
+            </div>
+          </CollapsibleContent>
+        </Collapsible>
+      ))}
+    </div>
+  );
+}
