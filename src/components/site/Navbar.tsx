@@ -40,13 +40,13 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-2">
-          <LanguageSwitcher />
-          <Button asChild variant="default" className="bg-primary hover:bg-primary-glow">
+        <div className="hidden lg:flex items-center gap-3">
+          <Button asChild variant="default" className="bg-primary hover:bg-primary-glow uppercase">
             <a href={waLink("Hola, querría solicitar un presupuesto.")} target="_blank" rel="noopener">
               {t("cta.quote")}
             </a>
           </Button>
+          <LanguageSwitcher />
         </div>
 
         <button
