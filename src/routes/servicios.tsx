@@ -37,14 +37,14 @@ function Page() {
         <SectionHeading eyebrow={t("svc.eyebrow")} title={t("svc.title")} subtitle={t("svc.subtitle")} />
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {ITEMS.map((s) => (
-            <article key={s.t} className="rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:shadow-elegant">
+            <article key={s.k} className="rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:shadow-elegant">
               <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-secondary/40 text-primary">
                 <s.icon className="h-6 w-6" />
               </div>
-              <h3 className="mt-5 font-display text-xl font-bold">{s.t}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.d}</p>
+              <h3 className="mt-5 font-display text-xl font-bold">{t(`svc.${s.k}.t`)}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t(`svc.${s.k}.d`)}</p>
               <Button asChild variant="link" className="mt-4 px-0 text-primary">
-                <a href={waLink(`Hola, me interesa: ${s.t}.`)} target="_blank" rel="noopener">{t("cta.requestWa")}</a>
+                <a href={waLink(`Hola, me interesa: ${t(`svc.${s.k}.t`)}.`)} target="_blank" rel="noopener">{t("cta.requestWa")}</a>
               </Button>
             </article>
           ))}
