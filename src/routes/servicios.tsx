@@ -27,7 +27,7 @@ export const Route = createFileRoute("/servicios")({
       { property: "og:url", content: "/servicios" },
       {
         property: "og:image",
-        content: "https://fortuxgolf.com/wp-content/uploads/2024/11/academy-tarifas-bonos-fortux-golf.png",
+        content: bonosImg.url,
       },
     ],
     links: [{ rel: "canonical", href: "/servicios" }],
@@ -35,73 +35,77 @@ export const Route = createFileRoute("/servicios")({
   component: Page,
 });
 
-const CDN = "https://fortuxgolf.com/wp-content/uploads/2024/11";
+import bonosImg from "@/assets/academia/academy-tarifas-bonos-fortux-golf.png.asset.json";
+import teamImg from "@/assets/academia/team.png.asset.json";
+import t1 from "@/assets/tarifas/academy-golf-fortux-1-persona.jpg.asset.json";
+import t2 from "@/assets/tarifas/academy-golf-fortux-1-persona-30-min.jpg.asset.json";
+import t3 from "@/assets/tarifas/academy-golf-fortux-2-personas.jpg.asset.json";
+import t4 from "@/assets/tarifas/academy-golf-fortux-grupos-empresas.jpg.asset.json";
+import t5 from "@/assets/tarifas/academy-golf-fortux-bono-10-clases.jpg.asset.json";
+import t6 from "@/assets/tarifas/academy-golf-fortux-3-personas.jpg.asset.json";
+import a01 from "@/assets/alumnos/academia-fotos-01.jpg.asset.json";
+import a02 from "@/assets/alumnos/academia-fotos-02.jpg.asset.json";
+import a03 from "@/assets/alumnos/academia-fotos-03.jpg.asset.json";
+import a04 from "@/assets/alumnos/academia-fotos-04.jpg.asset.json";
+import a05 from "@/assets/alumnos/academia-fotos-05.jpg.asset.json";
+import a06 from "@/assets/alumnos/academia-fotos-06.jpg.asset.json";
+import a07 from "@/assets/alumnos/academia-fotos-07.jpg.asset.json";
+import a08 from "@/assets/alumnos/academia-fotos-08.jpg.asset.json";
+import a09 from "@/assets/alumnos/academia-fotos-09.jpg.asset.json";
+import a10 from "@/assets/alumnos/academia-fotos-10.jpg.asset.json";
+import cBdalona from "@/assets/campos/bdalona.png.asset.json";
+import cCanCuyas from "@/assets/campos/can-cuyas.png.asset.json";
+import cCanRafel from "@/assets/campos/can-rafel.png.asset.json";
+import cStCebria from "@/assets/campos/st-cebria.png.asset.json";
+import cDaro from "@/assets/campos/daro.png.asset.json";
+import cFranciac from "@/assets/campos/franciac.png.asset.json";
+import cLaRoca from "@/assets/campos/la-roca.png.asset.json";
+import cPar3 from "@/assets/campos/par-3.png.asset.json";
+import cLaGarriga from "@/assets/campos/la-garriga.png.asset.json";
+import cLloret from "@/assets/campos/lloret.png.asset.json";
+import cCanMascaro from "@/assets/campos/can-mascaro.png.asset.json";
+import cMora from "@/assets/campos/mora.png.asset.json";
+import cPals from "@/assets/campos/pals.png.asset.json";
+import cRoc3 from "@/assets/campos/roc-3.png.asset.json";
+import cTeia from "@/assets/campos/teia.png.asset.json";
+import cGolfSquare from "@/assets/campos/golfsquare.png.asset.json";
+import cUrgell from "@/assets/campos/urgell.png.asset.json";
+import cBonarea from "@/assets/campos/bonarea.png.asset.json";
+import cSantCugat from "@/assets/campos/sant-cugat.png.asset.json";
+import cMontseny from "@/assets/campos/montseny.png.asset.json";
 
 const TARIFFS = [
-  {
-    name: "Tarifa Personal",
-    detail: "1 Persona / 60 Min.",
-    price: "45€",
-    img: `${CDN}/academy-golf-fortux-1-persona.jpg`,
-  },
-  {
-    name: "Tarifa Personal II",
-    detail: "1 Persona / 30 Min.",
-    price: "28€",
-    img: `${CDN}/academy-golf-fortux-1-persona-30-min.jpg`,
-  },
-  {
-    name: "Tarifa Dobles",
-    detail: "2 Personas / 60 Min.",
-    price: "60€",
-    img: `${CDN}/academy-golf-fortux-2-personas.jpg`,
-  },
-  {
-    name: "Tarifa Multi",
-    detail: "A partir de 3 Personas / 60 Min.",
-    price: "75€",
-    img: `${CDN}/academy-golf-fortux-grupos-empresas.jpg`,
-  },
-  {
-    name: "Bono 10 clases",
-    detail: "Individual",
-    price: "380€",
-    img: `${CDN}/academy-golf-fortux-bono-10-clases.jpg`,
-    highlight: true,
-  },
-  {
-    name: "Group / Team Building",
-    detail: "Clases para grupos / empresas",
-    price: "Presupuesto a medida",
-    img: `${CDN}/academy-golf-fortux-3-personas.jpg`,
-  },
+  { name: "Tarifa Personal", detail: "1 Persona / 60 Min.", price: "45€", img: t1.url },
+  { name: "Tarifa Personal II", detail: "1 Persona / 30 Min.", price: "28€", img: t2.url },
+  { name: "Tarifa Dobles", detail: "2 Personas / 60 Min.", price: "60€", img: t3.url },
+  { name: "Tarifa Multi", detail: "A partir de 3 Personas / 60 Min.", price: "75€", img: t4.url },
+  { name: "Bono 10 clases", detail: "Individual", price: "380€", img: t5.url, highlight: true },
+  { name: "Group / Team Building", detail: "Clases para grupos / empresas", price: "Presupuesto a medida", img: t6.url },
 ];
 
-const STUDENTS = Array.from({ length: 10 }, (_, i) =>
-  `${CDN}/academia-fotos-${String(i + 1).padStart(2, "0")}.jpg`,
-);
+const STUDENTS = [a01.url, a02.url, a03.url, a04.url, a05.url, a06.url, a07.url, a08.url, a09.url, a10.url];
 
 const COURSES = [
-  { name: "Badalona", file: "bdalona.png" },
-  { name: "Can Cuyàs", file: "can-cuyas.png" },
-  { name: "Can Rafel", file: "can-rafel.png" },
-  { name: "Sant Cebrià", file: "st-cebria.png" },
-  { name: "Daró", file: "daro.png" },
-  { name: "Franciac", file: "franciac.png" },
-  { name: "La Roca", file: "la-roca.png" },
-  { name: "Par 3", file: "par-3.png" },
-  { name: "La Garriga", file: "la-garriga.png" },
-  { name: "Lloret", file: "lloret.png" },
-  { name: "Can Mascaró", file: "can-mascaro.png" },
-  { name: "Mora", file: "mora.png" },
-  { name: "Pals", file: "pals.png" },
-  { name: "Roc 3", file: "roc-3.png" },
-  { name: "Teià", file: "teia.png" },
-  { name: "Golf Square", file: "golfsquare.png" },
-  { name: "Urgell", file: "urgell.png" },
-  { name: "BonÀrea", file: "bonarea.png" },
-  { name: "Sant Cugat", file: "sant-cugat.png" },
-  { name: "Montseny", file: "montseny.png" },
+  { name: "Badalona", url: cBdalona.url },
+  { name: "Can Cuyàs", url: cCanCuyas.url },
+  { name: "Can Rafel", url: cCanRafel.url },
+  { name: "Sant Cebrià", url: cStCebria.url },
+  { name: "Daró", url: cDaro.url },
+  { name: "Franciac", url: cFranciac.url },
+  { name: "La Roca", url: cLaRoca.url },
+  { name: "Par 3", url: cPar3.url },
+  { name: "La Garriga", url: cLaGarriga.url },
+  { name: "Lloret", url: cLloret.url },
+  { name: "Can Mascaró", url: cCanMascaro.url },
+  { name: "Mora", url: cMora.url },
+  { name: "Pals", url: cPals.url },
+  { name: "Roc 3", url: cRoc3.url },
+  { name: "Teià", url: cTeia.url },
+  { name: "Golf Square", url: cGolfSquare.url },
+  { name: "Urgell", url: cUrgell.url },
+  { name: "BonÀrea", url: cBonarea.url },
+  { name: "Sant Cugat", url: cSantCugat.url },
+  { name: "Montseny", url: cMontseny.url },
 ];
 
 function Page() {
@@ -175,7 +179,7 @@ function Page() {
           </div>
           <div className="relative">
             <img
-              src={`${CDN}/academy-tarifas-bonos-fortux-golf.png`}
+              src={bonosImg.url}
               alt="Bonos de clases de golf Fortux"
               loading="lazy"
               className="w-full rounded-2xl shadow-elegant"
@@ -234,7 +238,7 @@ function Page() {
       <section className="py-20 md:py-28">
         <div className="container-fortux grid gap-12 lg:grid-cols-2 lg:items-center">
           <img
-            src="https://fortuxgolf.com/wp-content/uploads/2024/10/team.png"
+            src={teamImg.url}
             alt="Equipo Fortux Golf — Marc Fortuny y Gerard Rubio"
             loading="lazy"
             className="w-full rounded-2xl shadow-elegant"
@@ -334,11 +338,11 @@ function Page() {
           <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {COURSES.map((c) => (
               <div
-                key={c.file}
+                key={c.name}
                 className="flex aspect-square items-center justify-center rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-1 hover:shadow-elegant"
               >
                 <img
-                  src={`${CDN}/${c.file}`}
+                  src={c.url}
                   alt={`Campo de golf ${c.name}`}
                   loading="lazy"
                   className="max-h-full max-w-full object-contain"
