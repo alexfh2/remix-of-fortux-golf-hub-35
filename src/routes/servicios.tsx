@@ -27,7 +27,7 @@ export const Route = createFileRoute("/servicios")({
       { property: "og:url", content: "/servicios" },
       {
         property: "og:image",
-        content: "https://fortuxgolf.com/wp-content/uploads/2024/11/academy-tarifas-bonos-fortux-golf.png",
+        content: bonosImg.url,
       },
     ],
     links: [{ rel: "canonical", href: "/servicios" }],
