@@ -8,7 +8,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/lib/i18n";
 import vanImg from "@/assets/fortux-van.png";
 import circuitoImg from "@/assets/circuito-hero.jpg";
-import circuitPreview from "@/assets/fortux-circuit-preview.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -119,26 +118,24 @@ function Home() {
         </div>
       </section>
 
-      {/* CIRCUIT PREVIEW */}
-      <section className="py-16 md:py-20 bg-muted/40">
+      {/* CIRCUIT EMBED — live external site, navbar cropped */}
+      <section className="py-12 md:py-16 bg-muted/40">
         <div className="container-fortux">
-          <a
-            href="https://fortux.fairwaystudio.ai/"
-            target="_blank"
-            rel="noopener"
-            className="block overflow-hidden rounded-2xl border border-border bg-card shadow-elegant transition-transform hover:-translate-y-1"
+          <div
+            className="relative w-full overflow-hidden rounded-2xl border border-border bg-card shadow-elegant"
+            style={{ height: "min(1600px, 180vh)" }}
           >
-            <img
-              src={circuitPreview.url}
-              alt="Vista previa del Circuit Fortux x Mulligan 2026"
-              width={1905}
-              height={1364}
+            <iframe
+              src="https://fortux.fairwaystudio.ai/"
+              title="Circuit Fortux x Mulligan 2026"
               loading="lazy"
-              className="block w-full h-auto"
+              className="absolute left-0 w-full border-0"
+              style={{ top: "-90px", height: "calc(100% + 90px)" }}
             />
-          </a>
+          </div>
         </div>
       </section>
+
 
       {/* SERVICIOS */}
       <section className="py-20 md:py-28">
