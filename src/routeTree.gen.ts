@@ -23,6 +23,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServiciosIndexRouteImport } from './routes/servicios.index'
 import { Route as ServiciosSwingWeightRouteImport } from './routes/servicios.swing-weight'
 import { Route as ServiciosReemplazoDelGripRouteImport } from './routes/servicios.reemplazo-del-grip'
+import { Route as ServiciosLieLoftRouteImport } from './routes/servicios.lie-loft'
 import { Route as ServiciosAjustesDeVarillasRouteImport } from './routes/servicios.ajustes-de-varillas'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
@@ -103,6 +104,11 @@ const ServiciosReemplazoDelGripRoute =
     path: '/reemplazo-del-grip',
     getParentRoute: () => ServiciosRoute,
   } as any)
+const ServiciosLieLoftRoute = ServiciosLieLoftRouteImport.update({
+  id: '/lie-loft',
+  path: '/lie-loft',
+  getParentRoute: () => ServiciosRoute,
+} as any)
 const ServiciosAjustesDeVarillasRoute =
   ServiciosAjustesDeVarillasRouteImport.update({
     id: '/ajustes-de-varillas',
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/tienda': typeof TiendaRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/servicios/ajustes-de-varillas': typeof ServiciosAjustesDeVarillasRoute
+  '/servicios/lie-loft': typeof ServiciosLieLoftRoute
   '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
   '/servicios/swing-weight': typeof ServiciosSwingWeightRoute
   '/servicios/': typeof ServiciosIndexRoute
@@ -191,6 +198,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tienda': typeof TiendaRoute
   '/servicios/ajustes-de-varillas': typeof ServiciosAjustesDeVarillasRoute
+  '/servicios/lie-loft': typeof ServiciosLieLoftRoute
   '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
   '/servicios/swing-weight': typeof ServiciosSwingWeightRoute
   '/servicios': typeof ServiciosIndexRoute
@@ -217,6 +225,7 @@ export interface FileRoutesById {
   '/tienda': typeof TiendaRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/servicios/ajustes-de-varillas': typeof ServiciosAjustesDeVarillasRoute
+  '/servicios/lie-loft': typeof ServiciosLieLoftRoute
   '/servicios/reemplazo-del-grip': typeof ServiciosReemplazoDelGripRoute
   '/servicios/swing-weight': typeof ServiciosSwingWeightRoute
   '/servicios/': typeof ServiciosIndexRoute
@@ -243,6 +252,7 @@ export interface FileRouteTypes {
     | '/tienda'
     | '/admin'
     | '/servicios/ajustes-de-varillas'
+    | '/servicios/lie-loft'
     | '/servicios/reemplazo-del-grip'
     | '/servicios/swing-weight'
     | '/servicios/'
@@ -265,6 +275,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/tienda'
     | '/servicios/ajustes-de-varillas'
+    | '/servicios/lie-loft'
     | '/servicios/reemplazo-del-grip'
     | '/servicios/swing-weight'
     | '/servicios'
@@ -290,6 +301,7 @@ export interface FileRouteTypes {
     | '/tienda'
     | '/_authenticated/admin'
     | '/servicios/ajustes-de-varillas'
+    | '/servicios/lie-loft'
     | '/servicios/reemplazo-del-grip'
     | '/servicios/swing-weight'
     | '/servicios/'
@@ -416,6 +428,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiciosReemplazoDelGripRouteImport
       parentRoute: typeof ServiciosRoute
     }
+    '/servicios/lie-loft': {
+      id: '/servicios/lie-loft'
+      path: '/lie-loft'
+      fullPath: '/servicios/lie-loft'
+      preLoaderRoute: typeof ServiciosLieLoftRouteImport
+      parentRoute: typeof ServiciosRoute
+    }
     '/servicios/ajustes-de-varillas': {
       id: '/servicios/ajustes-de-varillas'
       path: '/ajustes-de-varillas'
@@ -519,6 +538,7 @@ const AuthenticatedRouteRouteWithChildren =
 
 interface ServiciosRouteChildren {
   ServiciosAjustesDeVarillasRoute: typeof ServiciosAjustesDeVarillasRoute
+  ServiciosLieLoftRoute: typeof ServiciosLieLoftRoute
   ServiciosReemplazoDelGripRoute: typeof ServiciosReemplazoDelGripRoute
   ServiciosSwingWeightRoute: typeof ServiciosSwingWeightRoute
   ServiciosIndexRoute: typeof ServiciosIndexRoute
@@ -526,6 +546,7 @@ interface ServiciosRouteChildren {
 
 const ServiciosRouteChildren: ServiciosRouteChildren = {
   ServiciosAjustesDeVarillasRoute: ServiciosAjustesDeVarillasRoute,
+  ServiciosLieLoftRoute: ServiciosLieLoftRoute,
   ServiciosReemplazoDelGripRoute: ServiciosReemplazoDelGripRoute,
   ServiciosSwingWeightRoute: ServiciosSwingWeightRoute,
   ServiciosIndexRoute: ServiciosIndexRoute,

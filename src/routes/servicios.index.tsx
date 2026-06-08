@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Wrench, ArrowRight, Cog, Scale } from "lucide-react";
+import { Wrench, ArrowRight, Cog, Scale, Ruler } from "lucide-react";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import heroImg from "@/assets/servicios/reemplazo-del-grip.png.asset.json";
 import varillasImg from "@/assets/servicios/ajustes-de-varillas.png.asset.json";
 import swingWeightImg from "@/assets/servicios/swing-weight.png.asset.json";
+import lieLoftImg from "@/assets/servicios/lie-loft.png.asset.json";
 
 export const Route = createFileRoute("/servicios/")({
   head: () => ({
@@ -37,6 +38,13 @@ const SERVICES = [
     desc: "Ajustamos el equilibrio de tus palos para mejorar control, ritmo y prevenir lesiones.",
     img: swingWeightImg.url,
     icon: Scale,
+  },
+  {
+    to: "/servicios/lie-loft" as const,
+    title: "Lie & Loft",
+    desc: "Ajustamos el lie y loft de tus palos para lograr precisión, control y distancia en cada golpe.",
+    img: lieLoftImg.url,
+    icon: Ruler,
   },
 ];
 
