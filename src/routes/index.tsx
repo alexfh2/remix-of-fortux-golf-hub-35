@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/lib/i18n";
 import vanImg from "@/assets/fortux-van.png";
 import circuitoImg from "@/assets/circuito-hero.jpg";
+import circuitPreview from "@/assets/fortux-circuit-preview.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
