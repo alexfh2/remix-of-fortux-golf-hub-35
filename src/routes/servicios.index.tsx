@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Wrench, ArrowRight, Cog, Scale } from "lucide-react";
+import { Wrench, ArrowRight, Cog, Scale, Ruler } from "lucide-react";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import heroImg from "@/assets/servicios/reemplazo-del-grip.png.asset.json";
 import varillasImg from "@/assets/servicios/ajustes-de-varillas.png.asset.json";
 import swingWeightImg from "@/assets/servicios/swing-weight.png.asset.json";
+import lieLoftImg from "@/assets/servicios/lie-loft.png.asset.json";
 
 export const Route = createFileRoute("/servicios/")({
   head: () => ({
