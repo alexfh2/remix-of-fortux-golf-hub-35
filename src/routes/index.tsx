@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { SITE, waLink } from "@/lib/site";
 import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/lib/i18n";
-import teamPhoto from "@/assets/gerard-marc.png.asset.json";
+import teamPhoto from "@/assets/gerard-marc-cutout.png";
 import circuitoImg from "@/assets/circuito-hero.jpg";
 
 export const Route = createFileRoute("/")({
