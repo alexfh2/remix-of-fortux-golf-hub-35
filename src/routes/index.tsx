@@ -47,10 +47,11 @@ function Home() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("reviews")
-        .select("id,author_name,rating,content")
+        .select("id,author_name,rating,content,created_at")
         .eq("is_published", true)
-        .order("sort_order")
-        .limit(3);
+        .eq("rating", 5)
+        .order("created_at", { ascending: false })
+        .limit(5);
       if (error) throw error;
       return data;
     },
