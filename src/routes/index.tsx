@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, Wrench, Hammer, Sparkles, GraduationCap, ShoppingBag, Trophy, MessageCircle, Star, Calendar, MapPin } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Wrench, Hammer, Sparkles, GraduationCap, ShoppingBag, Trophy, MessageCircle, Star, Calendar, MapPin, ChevronDown, ExternalLink, BarChart3, ListChecks, Users } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { SITE, waLink } from "@/lib/site";
@@ -119,11 +121,11 @@ function Home() {
       </section>
 
       {/* CIRCUIT EMBED — live external site, navbar cropped */}
-      <section className="py-12 md:py-16 bg-muted/40">
+      <section className="pb-12 md:pb-16">
         <div className="container-fortux">
           <div
-            className="relative w-full overflow-hidden rounded-2xl border border-border bg-card shadow-elegant"
-            style={{ height: "min(1600px, 180vh)" }}
+            className="relative w-full overflow-hidden"
+            style={{ height: "950px" }}
           >
             <iframe
               src="https://fortux.fairwaystudio.ai/"
@@ -133,8 +135,12 @@ function Home() {
               style={{ top: "-90px", height: "calc(100% + 90px)" }}
             />
           </div>
+
+          {/* Quick access tabs */}
+          <CircuitTabs />
         </div>
       </section>
+
 
 
       {/* SERVICIOS */}
@@ -284,5 +290,65 @@ function Home() {
         </div>
       </section>
     </>
+  );
+}
+
+const TABS = [
+  { key: "rankings", label: "Class. acumulades", icon: BarChart3, url: "https://fortux.fairwaystudio.ai/rankings" },
+  { key: "proves", label: "Prova a prova", icon: ListChecks, url: "https://fortux.fairwaystudio.ai/proves" },
+  { key: "jugadors", label: "Jugadors", icon: Users, url: "https://fortux.fairwaystudio.ai/jugadors" },
+] as const;
+
+function CircuitTabs() {
+  const [open, setOpen] = useState<string | null>(null);
+  return (
+    <div className="mt-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {TABS.map((tab) => {
+          const isOpen = open === tab.key;
+          return (
+            <button
+              key={tab.key}
+              type="button"
+              onClick={() => setOpen(isOpen ? null : tab.key)}
+              className={`inline-flex items-center justify-center gap-2 rounded-xl border px-4 py-4 text-sm font-semibold uppercase tracking-wider transition-colors ${
+                isOpen
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-card text-foreground hover:bg-muted"
+              }`}
+            >
+              <tab.icon className="h-4 w-4" />
+              <span>{tab.label}</span>
+              <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+            </button>
+          );
+        })}
+        <a
+          href="https://fortux.fairwaystudio.ai/"
+          target="_blank"
+          rel="noopener"
+          className="inline-flex items-center justify-center gap-2 rounded-xl border border-secondary bg-secondary px-4 py-4 text-sm font-semibold uppercase tracking-wider text-secondary-foreground transition-colors hover:bg-secondary/90"
+        >
+          <ExternalLink className="h-4 w-4" />
+          <span>Veure web del circuit</span>
+        </a>
+      </div>
+
+      {TABS.map((tab) => (
+        <Collapsible key={tab.key} open={open === tab.key}>
+          <CollapsibleContent className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+            <div className="relative w-full overflow-hidden mt-4" style={{ height: "900px" }}>
+              <iframe
+                src={tab.url}
+                title={tab.label}
+                loading="lazy"
+                className="absolute left-0 w-full border-0"
+                style={{ top: "-90px", height: "calc(100% + 90px)" }}
+              />
+            </div>
+          </CollapsibleContent>
+        </Collapsible>
+      ))}
+    </div>
   );
 }
