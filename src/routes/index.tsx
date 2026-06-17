@@ -98,11 +98,21 @@ function Home() {
               </div>
 
               <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-3 max-w-3xl">
-                {PILLS.map((b) => (
-                  <div key={b} className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-3 py-2 text-center text-sm font-medium">
-                    {t(b)}
-                  </div>
-                ))}
+                <Link to="/servicios/reemplazo-del-grip" className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-primary-foreground/10">
+                  {t("pill.repair")}
+                </Link>
+                <Link to="/servicios/ajustes-de-varillas" className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-primary-foreground/10">
+                  {t("pill.maintenance")}
+                </Link>
+                <Link to="/servicios/lie-loft" className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-primary-foreground/10">
+                  {t("pill.custom")}
+                </Link>
+                <Link to="/academia" className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-primary-foreground/10">
+                  {t("pill.classes")}
+                </Link>
+                <Link to="/tienda" className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-primary-foreground/10">
+                  {t("pill.sale")}
+                </Link>
               </div>
             </div>
 
