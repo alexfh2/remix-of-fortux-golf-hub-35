@@ -38,6 +38,12 @@ function Page() {
         </Button>
       </div>
 
+      <div className="container-fortux py-2">
+        <p className="text-sm text-muted-foreground">
+          Clica en qualsevol prova per veure resultats i detalls del circuit.
+        </p>
+      </div>
+
       <div className="w-full bg-muted" style={{ height: "calc(100vh - 4rem - 60px)" }}>
         <iframe
           src={SITE.circuitUrl}
