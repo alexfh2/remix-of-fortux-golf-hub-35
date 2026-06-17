@@ -323,12 +323,17 @@ type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: (key: string) => string 
 const I18nCtx = createContext<Ctx | null>(null);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("es");
+  const [lang, setLangState] = useState<Lang>("ca");
 
   useEffect(() => {
     try {
       const stored = localStorage.getItem("fortux:lang") as Lang | null;
-      if (stored === "es" || stored === "ca") setLangState(stored);
+      if (stored === "es" || stored === "ca") {
+        setLangState(stored);
+        document.documentElement.lang = stored;
+      } else {
+        document.documentElement.lang = "ca";
+      }
     } catch {}
   }, []);
 
@@ -339,6 +344,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
       document.documentElement.lang = l;
     } catch {}
   };
+
 
   const t = (key: string) => DICTS[lang][key] ?? DICTS.es[key] ?? key;
 
