@@ -257,6 +257,37 @@ function Home() {
         </div>
       </section>
 
+      {/* CAMPS COL·LABORADORS */}
+      <section className="relative overflow-hidden py-20 md:py-28 bg-gradient-to-br from-secondary/20 via-background to-primary/5">
+        <div className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-secondary/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
+        <div className="container-fortux relative">
+          <SectionHeading
+            eyebrow="Xarxa de camps"
+            title="Camps Col·laboradors"
+            subtitle="Treballem amb una àmplia xarxa de camps de golf arreu de Catalunya."
+            align="center"
+          />
+          <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {PARTNER_COURSES.map((c, i) => (
+              <div
+                key={c.name}
+                className="group relative flex aspect-square items-center justify-center rounded-2xl border border-border/60 bg-card/80 p-5 shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-elegant hover:border-primary/40"
+                style={{ animationDelay: `${i * 40}ms` }}
+              >
+                <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/0 via-primary/0 to-secondary/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <img
+                  src={c.url}
+                  alt={`Camp de golf ${c.name}`}
+                  loading="lazy"
+                  className="relative max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-110"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* RESEÑAS */}
       <section className="py-20 md:py-28">
         <div className="container-fortux">
