@@ -11,6 +11,49 @@ import { useI18n } from "@/lib/i18n";
 import teamPhoto from "@/assets/gerard-marc-cutout.png";
 import fortuxLogo from "@/assets/fortux-logo.png.asset.json";
 import mulliganLogo from "@/assets/mulligan-logo.png.asset.json";
+import cBdalona from "@/assets/campos/bdalona.png.asset.json";
+import cCanCuyas from "@/assets/campos/can-cuyas.png.asset.json";
+import cCanRafel from "@/assets/campos/can-rafel.png.asset.json";
+import cStCebria from "@/assets/campos/st-cebria.png.asset.json";
+import cDaro from "@/assets/campos/daro.png.asset.json";
+import cFranciac from "@/assets/campos/franciac.png.asset.json";
+import cLaRoca from "@/assets/campos/la-roca.png.asset.json";
+import cPar3 from "@/assets/campos/par-3.png.asset.json";
+import cLaGarriga from "@/assets/campos/la-garriga.png.asset.json";
+import cLloret from "@/assets/campos/lloret.png.asset.json";
+import cCanMascaro from "@/assets/campos/can-mascaro.png.asset.json";
+import cMora from "@/assets/campos/mora.png.asset.json";
+import cPals from "@/assets/campos/pals.png.asset.json";
+import cRoc3 from "@/assets/campos/roc-3.png.asset.json";
+import cTeia from "@/assets/campos/teia.png.asset.json";
+import cGolfSquare from "@/assets/campos/golfsquare.png.asset.json";
+import cUrgell from "@/assets/campos/urgell.png.asset.json";
+import cBonarea from "@/assets/campos/bonarea.png.asset.json";
+import cSantCugat from "@/assets/campos/sant-cugat.png.asset.json";
+import cMontseny from "@/assets/campos/montseny.png.asset.json";
+
+const PARTNER_COURSES = [
+  { name: "Badalona", url: cBdalona.url },
+  { name: "Can Cuyàs", url: cCanCuyas.url },
+  { name: "Can Rafel", url: cCanRafel.url },
+  { name: "Sant Cebrià", url: cStCebria.url },
+  { name: "Daró", url: cDaro.url },
+  { name: "Franciac", url: cFranciac.url },
+  { name: "La Roca", url: cLaRoca.url },
+  { name: "Par 3", url: cPar3.url },
+  { name: "La Garriga", url: cLaGarriga.url },
+  { name: "Lloret", url: cLloret.url },
+  { name: "Can Mascaró", url: cCanMascaro.url },
+  { name: "Mora", url: cMora.url },
+  { name: "Pals", url: cPals.url },
+  { name: "Roc 3", url: cRoc3.url },
+  { name: "Teià", url: cTeia.url },
+  { name: "Golf Square", url: cGolfSquare.url },
+  { name: "Urgell", url: cUrgell.url },
+  { name: "BonÀrea", url: cBonarea.url },
+  { name: "Sant Cugat", url: cSantCugat.url },
+  { name: "Montseny", url: cMontseny.url },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
