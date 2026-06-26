@@ -138,7 +138,7 @@ function Home() {
                 </Button>
                 <Button asChild size="lg" className="bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp/90">
                   <a href={waLink()} target="_blank" rel="noopener">
-                    <MessageCircle className="mr-1.5 h-4 w-4" /> {t("cta.whatsapp")}
+                    <MessageCircle className="mr-1.5 h-4 w-4" />{"\n"}
                   </a>
                 </Button>
               </div>
