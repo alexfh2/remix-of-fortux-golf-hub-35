@@ -271,11 +271,11 @@ function Home() {
             subtitle="Treballem amb una àmplia xarxa de camps de golf arreu de Catalunya."
             align="center"
           />
-          <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
             {PARTNER_COURSES.map((c, i) => (
               <div
                 key={c.name}
-                className="group relative flex aspect-square items-center justify-center rounded-2xl border border-border/60 bg-card/80 p-5 shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-elegant hover:border-primary/40"
+                className="group relative flex w-[calc(50%-0.5rem)] aspect-square items-center justify-center rounded-2xl border border-border/60 bg-card/80 p-5 shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-elegant hover:border-primary/40 sm:w-[calc(33.333%-0.75rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)]"
                 style={{ animationDelay: `${i * 40}ms` }}
               >
                 <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/0 via-primary/0 to-secondary/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
