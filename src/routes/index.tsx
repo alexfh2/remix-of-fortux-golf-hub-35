@@ -31,6 +31,7 @@ import cUrgell from "@/assets/campos/urgell.png.asset.json";
 import cBonarea from "@/assets/campos/bonarea.png.asset.json";
 import cSantCugat from "@/assets/campos/sant-cugat.png.asset.json";
 import cMontseny from "@/assets/campos/montseny.png.asset.json";
+import cElVendrell from "@/assets/campos/el-vendrell.png.asset.json";
 
 const PARTNER_COURSES = [
   { name: "Badalona", url: cBdalona.url },
@@ -48,6 +49,8 @@ const PARTNER_COURSES = [
   { name: "Pals", url: cPals.url },
   { name: "Roc 3", url: cRoc3.url },
   { name: "Teià", url: cTeia.url },
+  { name: "El Vendrell", url: cElVendrell.url },
+
   { name: "Golf Square", url: cGolfSquare.url },
   { name: "Urgell", url: cUrgell.url },
   { name: "BonÀrea", url: cBonarea.url },
