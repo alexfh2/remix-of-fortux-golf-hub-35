@@ -217,10 +217,6 @@ function Home() {
               className="absolute left-0 w-full border-0"
               style={{ top: "-90px", height: "calc(100% + 90px)" }}
             />
-              loading="lazy"
-              scrolling="no"
-              className="absolute left-0 top-0 w-full h-full border-0"
-            />
           </div>
 
           {/* Quick access tabs */}
