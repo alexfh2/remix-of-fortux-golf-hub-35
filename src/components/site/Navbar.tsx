@@ -53,7 +53,7 @@ export function Navbar() {
       <div className="mx-auto flex h-[68px] max-w-[1440px] items-center justify-between gap-10 px-6 md:px-10 lg:px-14">
         <Link
           to="/"
-          className="flex items-center shrink-0"
+          className="flex items-center shrink-0 py-3"
           onClick={() => setOpen(false)}
           aria-label="Fortux — Inicio"
         >
