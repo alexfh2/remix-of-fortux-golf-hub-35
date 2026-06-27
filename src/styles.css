@@ -77,9 +77,10 @@
   --whatsapp: oklch(0.68 0.17 150);
   --whatsapp-foreground: oklch(0.99 0 0);
 
-  --gradient-hero: linear-gradient(160deg, oklch(0.06 0.005 258) 0%, oklch(0.09 0.008 258) 55%, oklch(0.13 0.012 258) 100%);
+  --gradient-hero: linear-gradient(100deg, #111316 0%, #0A0B0D 40%, #050607 70%, #030405 100%);
   --gradient-accent: linear-gradient(135deg, oklch(0.87 0.14 128) 0%, oklch(0.80 0.15 130) 100%);
   --gradient-overlay: linear-gradient(180deg, oklch(0.12 0.05 258 / 0.55) 0%, oklch(0.12 0.05 258 / 0.92) 100%);
+  --gradient-first-fold: linear-gradient(100deg, #111316 0%, #0A0B0D 40%, #050607 70%, #030405 100%);
 
   --shadow-elegant: 0 24px 60px -24px oklch(0.20 0.05 258 / 0.35);
   --shadow-soft: 0 10px 30px -12px oklch(0.20 0.05 258 / 0.15);
@@ -130,6 +131,7 @@
 }
 
 @utility bg-gradient-hero { background-image: var(--gradient-hero); }
+@utility bg-gradient-first-fold { background-image: var(--gradient-first-fold); }
 @utility bg-gradient-accent { background-image: var(--gradient-accent); }
 @utility bg-gradient-overlay { background-image: var(--gradient-overlay); }
 @utility shadow-elegant { box-shadow: var(--shadow-elegant); }
