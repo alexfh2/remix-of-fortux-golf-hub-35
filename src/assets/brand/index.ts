@@ -1,5 +1,6 @@
 import horizontal from "@/assets/brand/fortux-horizontal-transparent.png.asset.json";
-import horizontalWhite from "@/assets/brand/fortux-horizontal-web-colors.png.asset.json";
+import horizontalWhite from "@/assets/brand/fortux-horizontal-exact.png.asset.json";
+import horizontalWebColors from "@/assets/brand/fortux-horizontal-web-colors.png.asset.json";
 import horizontalWhiteNew from "@/assets/brand/fortux-horizontal-white-new.png.asset.json";
 import horizontalWhiteLegacy from "@/assets/brand/fortux-horizontal-white.png.asset.json";
 import vertical from "@/assets/brand/fortux-vertical-transparent.png.asset.json";
@@ -11,6 +12,7 @@ import favicon from "@/assets/brand/favicon.png.asset.json";
 export const BRAND = {
   horizontal: horizontal.url,
   horizontalWhite: horizontalWhite.url,
+  horizontalWebColors: horizontalWebColors.url,
   horizontalWhiteNew: horizontalWhiteNew.url,
   horizontalWhiteLegacy: horizontalWhiteLegacy.url,
   vertical: vertical.url,
