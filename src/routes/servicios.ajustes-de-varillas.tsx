@@ -8,7 +8,7 @@ import {
   ServiceBackLink,
   ServiceMedia,
 } from "@/components/site/ServiceShell";
-import heroImg from "@/assets/servicios-v2/01-reparacion.jpg.asset.json";
+import heroImg from "@/assets/servicios-v2/shaft-hero-v2.jpg.asset.json";
 import secondaryImg from "@/assets/servicios-v2/shaft-secondary.jpg";
 import detailImg from "@/assets/servicios-v2/shaft-detail.jpg";
 
