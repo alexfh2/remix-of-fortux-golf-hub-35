@@ -96,7 +96,6 @@ function Page() {
       </ServiceSection>
 
       <ServiceSection eyebrow="Proceso" title="Cómo trabajamos">
-        <ServiceMedia src={detailImg} alt="Ajuste de varilla en taller" caption="Trabajo de precisión en taller" ratio="3/2" />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {PROCESS.map((p, i) => (
             <ServiceCard key={p.t} index={String(i + 1).padStart(2, "0")} title={p.t}>
