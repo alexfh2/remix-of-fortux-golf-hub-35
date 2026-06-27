@@ -6,8 +6,11 @@ import {
   ServiceProse,
   ServiceFinalCTA,
   ServiceBackLink,
+  ServiceMedia,
 } from "@/components/site/ServiceShell";
 import heroImg from "@/assets/servicios-v2/02-mantenimiento.jpg.asset.json";
+import secondaryImg from "@/assets/servicios-v2/sw-secondary.jpg";
+import detailImg from "@/assets/servicios-v2/sw-detail.jpg";
 
 export const Route = createFileRoute("/servicios/swing-weight")({
   head: () => ({
@@ -69,6 +72,7 @@ function Page() {
             consistencia e incluso forzar lesiones.
           </p>
         </ServiceProse>
+        <ServiceMedia src={secondaryImg} alt="Báscula de swing weight" caption="Medición sobre báscula profesional" />
       </ServiceSection>
 
       <ServiceSection eyebrow="Qué lo modifica" title="Factores que cambian el swing weight" tone="alt">
@@ -82,6 +86,7 @@ function Page() {
       </ServiceSection>
 
       <ServiceSection eyebrow="Proceso" title="Evaluación y ajuste">
+        <ServiceMedia src={detailImg} alt="Ajuste fino de pesos en la cabeza del palo" caption="Pesos de tungsteno — ajuste fino" ratio="3/2" />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {PROCESS.map((p, i) => (
             <ServiceCard key={p.t} index={String(i + 1).padStart(2, "0")} title={p.t}>
