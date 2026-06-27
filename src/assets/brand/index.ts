@@ -10,6 +10,7 @@ import favicon from "@/assets/brand/favicon.png.asset.json";
 export const BRAND = {
   horizontal: horizontal.url,
   horizontalWhite: horizontalWhite.url,
+  horizontalWhiteLegacy: horizontalWhiteLegacy.url,
   vertical: vertical.url,
   verticalWhite: verticalWhite.url,
   icon: icon.url,
