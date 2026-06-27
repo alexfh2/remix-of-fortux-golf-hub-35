@@ -127,30 +127,34 @@ function Home() {
   return (
     <div className="bg-primary-deep text-primary-foreground">
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-[#050606]">
-        {/* Atmospheric gradient: dark smoky charcoal → deep near-black → black */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#141619] via-[#0A0B0D] via-[#050607] to-[#020304]" />
+      <section className="relative overflow-hidden bg-[#050606]">
+        {/* Image as absolute background layer — outside the content grid */}
+        <img
+          src={heroImg}
+          alt="Ajuste técnico de un hierro de golf en máquina de fitting Fortux"
+          width={1536}
+          height={1280}
+          style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            bottom: 0,
+            width: "58vw",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center right",
+            zIndex: 0,
+          }}
+        />
 
-        {/* Hero image integrated on the right, no frame, full first-fold height */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-full md:w-[72%] lg:w-[60%] xl:w-[56%]">
-          <img
-            src={heroImg}
-            alt="Ajuste técnico de un hierro de golf en máquina de fitting Fortux"
-            width={1536}
-            height={1280}
-            className="h-full w-full object-cover object-center"
-          />
-          {/* Soft horizontal fade from dark background into the image */}
-          <div className="absolute inset-y-0 left-0 w-[55%] bg-gradient-to-r from-[#0A0B0D] via-[#0A0B0D]/80 to-transparent" />
-          {/* Subtle vertical darkening for header and strip integration */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050606]/45 via-transparent to-[#050606]/35" />
-        </div>
+        {/* Gradient overlays above the image and background */}
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#141619] via-[#0A0B0D] via-[#050607] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-[55%] bg-gradient-to-r from-[#0A0B0D] via-[#0A0B0D]/80 to-transparent" />
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-[#050606]/45 via-transparent to-[#050606]/35" />
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_55%_75%_at_100%_50%,rgba(185,217,134,0.02),transparent_60%)]" />
 
-        {/* Very restrained dark green tint at far right */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_75%_at_100%_50%,rgba(185,217,134,0.02),transparent_60%)]" />
-
-        {/* Content */}
-        <div className="container-fortux relative z-10 grid items-center lg:grid-cols-2 lg:gap-12 py-20 md:py-28 lg:py-32 animate-fade-up">
+        {/* Text content inside the max-width container */}
+        <div className="container-fortux relative z-[2] py-20 md:py-28 lg:py-32 animate-fade-up">
           <div className="relative max-w-xl">
             <span className="inline-block text-[12px] font-medium uppercase tracking-[0.22em] text-secondary">
               Servicios integrales de golf
@@ -180,11 +184,10 @@ function Home() {
               </Link>
             </div>
           </div>
-          <div className="hidden lg:block" />
         </div>
 
         {/* SERVICE INDEX STRIP */}
-        <div className="relative z-10 border-t border-white/[0.06] bg-gradient-to-r from-[#0A0B0D]/95 via-[#050607]/70 to-transparent">
+        <div className="relative z-[2] border-t border-white/[0.06] bg-gradient-to-r from-[#0A0B0D]/95 via-[#050607]/70 to-transparent">
           <div className="container-fortux grid grid-cols-3 gap-y-6 py-8 md:grid-cols-6">
             {SERVICE_INDEX.map((s) => (
               <div key={s.n} className="flex flex-col items-start">
