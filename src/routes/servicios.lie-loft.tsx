@@ -9,7 +9,7 @@ import {
   ServiceMedia,
 } from "@/components/site/ServiceShell";
 import heroImg from "@/assets/servicios-v2/ll-hero-v2.jpg.asset.json";
-import secondaryImg from "@/assets/servicios-v2/ll-secondary.jpg";
+import secondaryImg from "@/assets/servicios-v2/ll-secondary-v3.jpg.asset.json";
 import detailImg from "@/assets/servicios-v2/ll-detail.jpg";
 
 export const Route = createFileRoute("/servicios/lie-loft")({
