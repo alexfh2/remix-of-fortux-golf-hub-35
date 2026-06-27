@@ -9,8 +9,9 @@ import {
   ServiceMedia,
 } from "@/components/site/ServiceShell";
 import heroImg from "@/assets/servicios-v2/shaft-hero-v2.jpg.asset.json";
-import secondaryImg from "@/assets/servicios-v2/shaft-secondary.jpg";
+import secondaryImg from "@/assets/servicios-v2/shaft-secondary-v2.jpg.asset.json";
 import detailImg from "@/assets/servicios-v2/shaft-detail.jpg";
+
 
 export const Route = createFileRoute("/servicios/ajustes-de-varillas")({
   head: () => ({
@@ -75,7 +76,7 @@ function Page() {
             <strong>adaptar el palo a ti</strong>, a tu físico y a tu estilo de juego actual.
           </p>
         </ServiceProse>
-        <ServiceMedia src={secondaryImg} alt="Varillas premium" caption="Varillas premium — grafito y acero" />
+        <ServiceMedia src={secondaryImg.url} alt="Varillas premium" caption="Varillas premium — grafito y acero" />
         <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {WHEN.map((p, i) => (
             <ServiceCard key={p.t} index={String(i + 1).padStart(2, "0")} title={p.t}>
