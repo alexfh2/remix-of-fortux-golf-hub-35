@@ -1,27 +1,27 @@
-import { Globe } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { LANGS, useI18n } from "@/lib/i18n";
 
 export function LanguageSwitcher() {
   const { lang, setLang } = useI18n();
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="inline-flex h-9 items-center gap-1.5 rounded-md border border-border bg-background px-3 text-sm font-medium text-foreground hover:bg-muted transition-colors">
-        <Globe className="h-4 w-4" />
-        {lang.toUpperCase()}
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        {LANGS.map((l) => (
-          <DropdownMenuItem key={l.code} onClick={() => setLang(l.code)}>
-            {l.label}
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div className="inline-flex items-center text-[11px] font-medium tracking-[0.18em] text-white/40 select-none">
+      {LANGS.map((l, i) => (
+        <span key={l.code} className="inline-flex items-center">
+          {i > 0 && <span aria-hidden className="mx-2 text-white/15">/</span>}
+          <button
+            type="button"
+            onClick={() => setLang(l.code)}
+            className={
+              "uppercase transition-colors " +
+              (lang === l.code
+                ? "text-white"
+                : "text-white/40 hover:text-white/70")
+            }
+            aria-pressed={lang === l.code}
+          >
+            {l.code}
+          </button>
+        </span>
+      ))}
+    </div>
   );
 }
