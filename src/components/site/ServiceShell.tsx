@@ -1,0 +1,200 @@
+import type { ReactNode } from "react";
+import { ArrowRight, Phone } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { waLink } from "@/lib/site";
+
+export function ServiceHero({
+  eyebrow = "Servicios técnicos",
+  title,
+  description,
+  image,
+  imageAlt,
+  cta = "Solicitar revisión",
+  ctaMsg = "Hola, querría solicitar una revisión de mi equipo.",
+}: {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  cta?: string;
+  ctaMsg?: string;
+}) {
+  return (
+    <section className="relative overflow-hidden bg-[#050606]">
+      <img
+        src={image}
+        alt={imageAlt}
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          bottom: 0,
+          width: "58vw",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center right",
+          zIndex: 0,
+        }}
+      />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#141619] via-[#0A0B0D] via-[#050607] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-[55%] bg-gradient-to-r from-[#0A0B0D] via-[#0A0B0D]/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-[#050606]/45 via-transparent to-[#050606]/35" />
+
+      <div className="container-fortux relative z-[2] py-20 md:py-28 lg:py-32">
+        <div className="max-w-xl">
+          <span className="inline-block text-[12px] font-medium uppercase tracking-[0.22em] text-secondary">
+            {eyebrow}
+          </span>
+          <h1 className="mt-5 font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] text-balance text-primary-foreground">
+            {title}
+          </h1>
+          <p className="mt-6 text-[15px] md:text-[16px] text-primary-foreground/70 leading-[1.6]">
+            {description}
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <a
+              href={waLink(ctaMsg)}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex h-11 items-center gap-2 rounded-[6px] bg-[#B9D986] px-6 text-[12px] font-medium uppercase tracking-[0.12em] text-[#050606] transition-colors hover:bg-[#c5e294]"
+            >
+              {cta} <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
+            </a>
+            <a
+              href="tel:+34635112656"
+              className="inline-flex h-11 items-center gap-2 rounded-[6px] border border-white/[0.22] bg-transparent px-6 text-[12px] font-medium uppercase tracking-[0.12em] text-white/85 transition-colors hover:bg-white/[0.04] hover:text-white"
+            >
+              <Phone className="h-4 w-4" strokeWidth={1.75} /> 635 112 656
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ServiceSection({
+  eyebrow,
+  title,
+  children,
+  tone = "base",
+}: {
+  eyebrow?: string;
+  title?: string;
+  children: ReactNode;
+  tone?: "base" | "alt";
+}) {
+  return (
+    <section
+      className={
+        tone === "alt"
+          ? "border-y border-white/[0.06] bg-[#0A0B0D] py-20 md:py-24"
+          : "bg-[#050606] py-20 md:py-24"
+      }
+    >
+      <div className="container-fortux max-w-5xl">
+        {eyebrow && (
+          <span className="inline-block text-[11px] font-medium uppercase tracking-[0.22em] text-secondary">
+            {eyebrow}
+          </span>
+        )}
+        {title && (
+          <h2 className="mt-4 font-display text-2xl md:text-3xl lg:text-4xl font-bold text-balance text-primary-foreground">
+            {title}
+          </h2>
+        )}
+        <div className={title || eyebrow ? "mt-8" : ""}>{children}</div>
+      </div>
+    </section>
+  );
+}
+
+export function ServiceCard({
+  index,
+  title,
+  children,
+}: {
+  index?: string;
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="rounded-[10px] border border-white/10 bg-white/[0.03] p-6 transition-colors hover:border-secondary/40 hover:bg-white/[0.05]">
+      <div className="flex items-baseline gap-3">
+        {index && (
+          <span className="font-display text-lg font-bold text-secondary">{index}</span>
+        )}
+        <h3 className="font-display text-base md:text-lg font-bold text-primary-foreground">
+          {title}
+        </h3>
+      </div>
+      <div className="mt-3 text-sm text-primary-foreground/70 leading-relaxed">{children}</div>
+    </div>
+  );
+}
+
+export function ServiceProse({ children }: { children: ReactNode }) {
+  return (
+    <div className="space-y-4 text-[15px] text-primary-foreground/75 leading-[1.7] [&_strong]:text-primary-foreground [&_strong]:font-semibold [&_a]:text-secondary [&_a]:underline-offset-4 hover:[&_a]:underline">
+      {children}
+    </div>
+  );
+}
+
+export function ServiceFinalCTA({
+  title,
+  subtitle,
+  msg = "Hola, querría más información.",
+}: {
+  title: string;
+  subtitle?: string;
+  msg?: string;
+}) {
+  return (
+    <section className="bg-[#050606] py-20">
+      <div className="container-fortux">
+        <div className="relative overflow-hidden rounded-[10px] border border-white/[0.08] bg-[#0A0B0D] p-10 md:p-14 text-center">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_0%,rgba(185,217,134,0.05),transparent_60%)]" />
+          <div className="relative">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground text-balance">
+              {title}
+            </h2>
+            {subtitle && (
+              <p className="mx-auto mt-4 max-w-2xl text-[15px] text-primary-foreground/70 leading-[1.6]">
+                {subtitle}
+              </p>
+            )}
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <a
+                href={waLink(msg)}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex h-11 items-center gap-2 rounded-[6px] bg-[#B9D986] px-6 text-[12px] font-medium uppercase tracking-[0.12em] text-[#050606] transition-colors hover:bg-[#c5e294]"
+              >
+                WhatsApp <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
+              </a>
+              <a
+                href="tel:+34635112656"
+                className="inline-flex h-11 items-center gap-2 rounded-[6px] border border-white/[0.22] bg-transparent px-6 text-[12px] font-medium uppercase tracking-[0.12em] text-white/85 transition-colors hover:bg-white/[0.04] hover:text-white"
+              >
+                <Phone className="h-4 w-4" strokeWidth={1.75} /> 635 112 656
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ServiceBackLink() {
+  return (
+    <Link
+      to="/servicios"
+      className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-primary-foreground/60 hover:text-secondary"
+    >
+      ← Todos los servicios
+    </Link>
+  );
+}
