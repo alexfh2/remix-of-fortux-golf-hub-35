@@ -9,7 +9,7 @@ import {
   ServiceMedia,
 } from "@/components/site/ServiceShell";
 import heroImg from "@/assets/servicios-v2/02-mantenimiento.jpg.asset.json";
-import secondaryImg from "@/assets/servicios-v2/sw-secondary-v4.jpg.asset.json";
+import secondaryImg from "@/assets/servicios-v2/sw-secondary-v5.jpg.asset.json";
 import detailImg from "@/assets/servicios-v2/sw-detail.jpg";
 
 
