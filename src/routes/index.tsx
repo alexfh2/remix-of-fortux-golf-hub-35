@@ -1,16 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { ArrowRight, Wrench, Hammer, Sparkles, GraduationCap, ShoppingBag, Trophy, MessageCircle, Star, ChevronDown, ExternalLink, BarChart3, ListChecks, Users } from "lucide-react";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ArrowRight, Star, ChevronDown, ExternalLink, BarChart3, ListChecks, Users, Cpu, MessageSquare, Award, ShieldCheck } from "lucide-react";
+import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
-import { SectionHeading } from "@/components/site/SectionHeading";
 import { SITE, waLink } from "@/lib/site";
 import { supabase } from "@/integrations/supabase/client";
-import { useI18n } from "@/lib/i18n";
 import teamPhoto from "@/assets/gerard-marc-cutout.png";
-import fortuxLogo from "@/assets/fortux-logo.png.asset.json";
-import mulliganLogo from "@/assets/mulligan-logo.png.asset.json";
+import heroImg from "@/assets/hero-fitting-lab.jpg";
+import repairImg from "@/assets/servicios/reemplazo-del-grip.png.asset.json";
+import varillasImg from "@/assets/servicios/ajustes-de-varillas.png.asset.json";
+import gripsImg from "@/assets/servicios/grips-palos-golf-fortux.jpg.asset.json";
+import swingWeightImg from "@/assets/servicios/swing-weight.png.asset.json";
+import lieLoftImg from "@/assets/servicios/lie-loft.png.asset.json";
+import academyImg from "@/assets/academia/team.png.asset.json";
 import cBdalona from "@/assets/campos/bdalona.png.asset.json";
 import cCanCuyas from "@/assets/campos/can-cuyas.png.asset.json";
 import cCanRafel from "@/assets/campos/can-rafel.png.asset.json";
@@ -61,33 +64,52 @@ const PARTNER_COURSES = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Fortux — Reparación, mantenimiento y soluciones para golfistas" },
-      { name: "description", content: "Reparación y mantenimiento de palos, personalización, fitting, clases y venta de material. Hogar del Circuito Pitch & Putt." },
-      { property: "og:title", content: "Fortux — Expertos en golf" },
-      { property: "og:description", content: "Reparación, mantenimiento, personalización, clases y Circuito Pitch & Putt." },
+      { title: "Fortux — Precisión técnica para cuidar tu equipo" },
+      { name: "description", content: "Reparamos, ajustamos y optimizamos tu material de golf con experiencia, asesoramiento y atención personalizada." },
+      { property: "og:title", content: "Fortux — Precisión técnica para cuidar tu equipo" },
+      { property: "og:description", content: "Reparación, mantenimiento, grips, fitting, personalización y academy. Servicios integrales de golf." },
       { property: "og:url", content: "/" },
-      { property: "og:image", content: teamPhoto },
-      { name: "twitter:image", content: teamPhoto },
+      { property: "og:image", content: heroImg },
+      { name: "twitter:image", content: heroImg },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
   component: Home,
 });
 
-const SERVICES = [
-  { icon: Wrench, key: "1" },
-  { icon: Hammer, key: "2" },
-  { icon: Sparkles, key: "3" },
-  { icon: ShoppingBag, key: "4" },
-  { icon: GraduationCap, key: "5" },
-  { icon: Trophy, key: "6" },
+const SERVICE_INDEX = [
+  { n: "01", label: "Reparación" },
+  { n: "02", label: "Mantenimiento" },
+  { n: "03", label: "Grips" },
+  { n: "04", label: "Fitting" },
+  { n: "05", label: "Personalización" },
+  { n: "06", label: "Academy" },
 ];
 
-const UPCOMING = ["1", "2", "3"];
-const PILLS = ["pill.repair", "pill.maintenance", "pill.custom", "pill.classes", "pill.sale"];
+const SERVICES = [
+  { title: "Reparación de palos", desc: "Devolvemos rendimiento y fiabilidad a tu material.", img: repairImg.url, to: "/servicios/reemplazo-del-grip" as const },
+  { title: "Mantenimiento completo", desc: "Revisión, ajuste y puesta a punto profesional.", img: varillasImg.url, to: "/servicios/ajustes-de-varillas" as const },
+  { title: "Grips premium", desc: "Mejora el agarre, el control y la confianza en cada golpe.", img: gripsImg.url, to: "/tienda" as const },
+  { title: "Fitting personalizado", desc: "Ajustes técnicos según tu juego y tus necesidades.", img: swingWeightImg.url, to: "/servicios/swing-weight" as const },
+  { title: "Personalización de palos", desc: "Adaptamos tu material a tu estilo de juego.", img: lieLoftImg.url, to: "/servicios/lie-loft" as const },
+  { title: "Academy y clases", desc: "Mejora tu técnica con nuestros profesionales.", img: academyImg.url, to: "/academia" as const },
+];
+
+const PROCESS = [
+  { n: "1", title: "Revisamos", desc: "Analizamos tu equipo y entendemos tus necesidades." },
+  { n: "2", title: "Asesoramos", desc: "Te recomendamos las mejores soluciones para tu juego." },
+  { n: "3", title: "Ajustamos", desc: "Realizamos los ajustes y reparaciones con precisión y materiales premium." },
+  { n: "4", title: "Entregamos listo para jugar", desc: "Probamos y validamos para que juegues con total confianza." },
+];
+
+const VALUES = [
+  { icon: Cpu, title: "Tecnología", desc: "Equipamiento avanzado para resultados precisos." },
+  { icon: MessageSquare, title: "Asesoramiento", desc: "Te guiamos para que tomes las mejores decisiones." },
+  { icon: Award, title: "Experiencia", desc: "Más de 20 años trabajando con golfistas exigentes." },
+  { icon: ShieldCheck, title: "Confianza", desc: "Transparencia, honestidad y resultados comprobados." },
+];
 
 function Home() {
-  const { t } = useI18n();
   const { data: reviews = [] } = useQuery({
     queryKey: ["reviews-home"],
     queryFn: async () => {
@@ -103,112 +125,187 @@ function Home() {
     },
   });
   return (
-    <>
+    <div className="bg-primary-deep text-primary-foreground">
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-gradient-hero text-primary-foreground">
-        {/* glow accents */}
-        {/* glow accents — green wash top-left, complementary glow bottom-right, plus halo behind silhouette */}
-        <div className="pointer-events-none absolute -top-40 -left-40 h-[34rem] w-[34rem] rounded-full bg-secondary/40 blur-3xl" />
-        <div className="pointer-events-none absolute top-1/3 -left-20 h-80 w-80 rounded-full bg-secondary/25 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 right-0 h-[28rem] w-[28rem] rounded-full bg-primary-glow/20 blur-3xl" />
-        <div className="pointer-events-none absolute right-0 top-1/4 h-[32rem] w-[32rem] rounded-full bg-secondary/20 blur-3xl" />
+      <section className="relative isolate overflow-hidden bg-gradient-hero">
+        <div className="pointer-events-none absolute -top-32 -right-40 h-[36rem] w-[36rem] rounded-full bg-secondary/10 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-40 -left-32 h-[28rem] w-[28rem] rounded-full bg-primary-glow/30 blur-3xl" />
 
-        <div className="container-fortux relative py-20 md:py-28 lg:py-32 animate-fade-up">
-          <div className="relative grid items-end gap-12 lg:grid-cols-12">
-            <div className="relative lg:col-span-7 z-10">
-              <span className="inline-block rounded-full bg-secondary/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-secondary-foreground">
-                {t("home.hero.eyebrow")}
-              </span>
-              <h1 className="mt-5 font-display text-5xl md:text-6xl lg:text-7xl font-bold text-balance">
-                {t("home.hero.title")}
-              </h1>
-              <p className="mt-6 max-w-xl text-lg md:text-xl text-primary-foreground/85">
-                {t("home.hero.subtitle")}
-              </p>
-              <div className="mt-9 flex flex-wrap gap-3">
-                <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
-                  <a href={waLink("Hola, querría reparar mi equipo.")} target="_blank" rel="noopener">
-                    {t("cta.repair")} <ArrowRight className="ml-1.5 h-4 w-4" />
-                  </a>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20">
-                  <a href={waLink("Hola, querría solicitar un presupuesto.")} target="_blank" rel="noopener">
-                    {t("cta.quote")}
-                  </a>
-                </Button>
-              </div>
-
-              <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-3 max-w-3xl">
-                <Link to="/servicios/reemplazo-del-grip" className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-primary-foreground/10">
-                  {t("pill.repair")}
-                </Link>
-                <Link to="/servicios/ajustes-de-varillas" className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-primary-foreground/10">
-                  {t("pill.maintenance")}
-                </Link>
-                <Link to="/servicios/lie-loft" className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-primary-foreground/10">
-                  {t("pill.custom")}
-                </Link>
-                <Link to="/academia" className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-primary-foreground/10">
-                  {t("pill.classes")}
-                </Link>
-                <Link to="/tienda" className="rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-primary-foreground/10">
-                  {t("pill.sale")}
-                </Link>
-              </div>
+        <div className="container-fortux relative grid items-center gap-10 py-16 md:py-24 lg:grid-cols-2 lg:gap-14 lg:py-28 animate-fade-up">
+          <div className="relative z-10">
+            <span className="inline-block text-xs font-semibold uppercase tracking-[0.25em] text-secondary">
+              Servicios integrales de golf
+            </span>
+            <h1 className="mt-5 font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] text-balance">
+              Precisión técnica para cuidar tu{" "}
+              <span className="text-secondary">equipo.</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-base md:text-lg text-primary-foreground/75 leading-relaxed">
+              Reparamos, ajustamos y optimizamos tu material con experiencia,
+              asesoramiento y atención personalizada.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold uppercase tracking-wide">
+                <a href={waLink("Hola, querría solicitar una revisión de mi equipo.")} target="_blank" rel="noopener">
+                  Solicitar revisión <ArrowRight className="ml-1.5 h-4 w-4" />
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-white/20 bg-white/5 text-primary-foreground hover:bg-white/10 font-semibold uppercase tracking-wide">
+                <Link to="/servicios">Ver servicios</Link>
+              </Button>
             </div>
+          </div>
 
-            {/* Team silhouette — no frame, large, blended into background */}
-            <div className="relative lg:col-span-5 lg:-mr-8 xl:-mr-16 self-end">
-              <div className="relative">
-                {/* soft halo behind the silhouette */}
-                <div className="pointer-events-none absolute inset-0 -z-10 mx-auto h-full w-[85%] translate-y-6 rounded-full bg-secondary/30 blur-3xl" />
-                <img
-                  src={teamPhoto}
-                  alt="Gerard y Marc — equipo Fortux"
-                  className="relative w-full h-auto max-w-none scale-110 lg:scale-125 origin-bottom drop-shadow-[0_25px_40px_rgba(0,0,0,0.45)] animate-fade-up"
-                />
-                {/* Names — directly below each person */}
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-around px-[8%] pb-2">
-                  <span className="font-display text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-primary-foreground drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-                    Gerard Rubio
-                  </span>
-                  <span className="font-display text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-primary-foreground drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-                    Marc Fortuny
-                  </span>
-                </div>
-              </div>
+          <div className="relative lg:justify-self-end">
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-elegant">
+              <img
+                src={heroImg}
+                alt="Ajuste técnico de un hierro de golf en máquina de fitting Fortux"
+                width={1536}
+                height={1280}
+                className="h-full w-full object-cover aspect-[5/4]"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary-deep/50 via-transparent to-transparent" />
             </div>
           </div>
         </div>
 
-        {/* angled divider to separate from next section */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-background [clip-path:polygon(0_100%,100%_100%,100%_0,0_60%)]" />
-      </section>
-
-      {/* PARTNERSHIP LOGOS */}
-      <section className="pt-12 md:pt-16">
-        <div className="container-fortux flex items-center justify-center gap-8 md:gap-16">
-          <img
-            src={fortuxLogo.url}
-            alt="Fortux — Golf Repairs & Solutions"
-            className="h-28 md:h-40 lg:h-48 w-auto object-contain"
-          />
-          <span className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-muted-foreground/70">×</span>
-          <img
-            src={mulliganLogo.url}
-            alt="Mulligan Pitch & Putt Club"
-            className="h-28 md:h-40 lg:h-48 w-auto object-contain"
-          />
+        {/* SERVICE INDEX STRIP */}
+        <div className="relative border-t border-white/10 bg-primary-deep/60 backdrop-blur">
+          <div className="container-fortux grid grid-cols-3 gap-y-6 py-8 md:grid-cols-6">
+            {SERVICE_INDEX.map((s) => (
+              <div key={s.n} className="flex flex-col items-start">
+                <span className="font-display text-2xl font-bold text-secondary">{s.n}</span>
+                <span className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/80">{s.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* CIRCUIT EMBED — live external site, navbar cropped */}
-      <section className="pb-12 md:pb-16 pt-8 md:pt-10">
+      {/* SERVICES */}
+      <section className="py-20 md:py-28">
         <div className="container-fortux">
-          <div
-            className="relative w-full overflow-hidden"
-            style={{ height: "1380px" }}
-          >
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-balance">
+              Nuestros servicios
+            </h2>
+            <Link to="/servicios" className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-secondary hover:text-secondary/80">
+              Ver todos los servicios <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {SERVICES.map((s) => (
+              <Link
+                key={s.title}
+                to={s.to}
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all hover:-translate-y-1 hover:border-secondary/40 hover:bg-white/[0.06]"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={s.img}
+                    alt={s.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/40 to-transparent" />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-display text-xl font-bold leading-snug">{s.title}</h3>
+                  <p className="mt-2 text-sm text-primary-foreground/70 leading-relaxed">{s.desc}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section className="border-y border-white/10 bg-primary/40 py-20 md:py-28">
+        <div className="container-fortux">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold">Así trabajamos</h2>
+          <div className="relative mt-14 grid gap-10 md:grid-cols-4">
+            <div className="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-gradient-to-r from-transparent via-secondary/40 to-transparent md:block" />
+            {PROCESS.map((p) => (
+              <div key={p.n} className="relative">
+                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-secondary/60 bg-primary-deep font-display text-lg font-bold text-secondary">
+                  {p.n}
+                </div>
+                <h3 className="mt-5 font-display text-lg font-bold">{p.title}</h3>
+                <p className="mt-2 text-sm text-primary-foreground/70 leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EXPERTS — Gerard y Marc */}
+      <section id="nosotros" className="py-20 md:py-28">
+        <div className="container-fortux grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary">
+              Expertos en los que puedes confiar
+            </span>
+            <h2 className="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance">
+              Gerard y Marc, experiencia y pasión por el golf
+            </h2>
+            <p className="mt-5 max-w-xl text-primary-foreground/75 leading-relaxed">
+              Más de 20 años de experiencia combinando conocimiento técnico,
+              asesoramiento y atención personalizada para cuidar cada detalle
+              de tu equipo.
+            </p>
+            <div className="mt-8">
+              <Button asChild size="lg" variant="outline" className="border-white/20 bg-white/5 text-primary-foreground hover:bg-white/10 font-semibold uppercase tracking-wide">
+                <Link to="/contacto">Conócenos</Link>
+              </Button>
+            </div>
+          </div>
+          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-primary to-primary-deep">
+            <img
+              src={teamPhoto}
+              alt="Gerard Rubio y Marc Fortuny — equipo Fortux"
+              loading="lazy"
+              className="relative mx-auto h-auto w-full max-w-xl object-contain"
+            />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-around px-[10%] pb-3 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground/80">
+              <span>Gerard Rubio</span>
+              <span>Marc Fortuny</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* VALUES ROW */}
+      <section className="border-y border-white/10 bg-primary-deep/80 py-14">
+        <div className="container-fortux grid gap-8 md:grid-cols-4">
+          {VALUES.map((v) => (
+            <div key={v.title} className="flex items-start gap-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-secondary/40 text-secondary">
+                <v.icon className="h-5 w-5" />
+              </span>
+              <div className="min-w-0">
+                <h3 className="font-display text-sm font-bold uppercase tracking-wide text-secondary">{v.title}</h3>
+                <p className="mt-1 text-sm text-primary-foreground/70 leading-relaxed">{v.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CIRCUIT */}
+      <section className="py-20 md:py-24">
+        <div className="container-fortux">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary">Torneos</span>
+              <h2 className="mt-3 font-display text-3xl md:text-4xl font-bold">Circuit Fortux × Mulligan 2026</h2>
+            </div>
+            <a href={SITE.circuitUrl} target="_blank" rel="noopener" className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-secondary hover:text-secondary/80">
+              Ver web del circuito <ExternalLink className="h-4 w-4" />
+            </a>
+          </div>
+          <div className="relative mt-8 w-full overflow-hidden rounded-2xl border border-white/10" style={{ height: "1380px" }}>
             <iframe
               src="https://fortux.fairwaystudio.ai/"
               title="Circuit Fortux x Mulligan 2026"
@@ -218,68 +315,28 @@ function Home() {
               style={{ top: "-90px", height: "calc(100% + 90px)" }}
             />
           </div>
-
-          {/* Quick access tabs */}
           <CircuitTabs />
         </div>
       </section>
 
-
-
-      {/* SERVICIOS */}
-      <section className="py-20 md:py-28">
+      {/* PARTNER COURSES */}
+      <section className="border-t border-white/10 py-20 md:py-24">
         <div className="container-fortux">
-          <SectionHeading
-            eyebrow={t("home.services.eyebrow")}
-            title={t("home.services.title")}
-            subtitle={t("home.services.subtitle")}
-          />
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((s) => (
-              <article
-                key={s.key}
-                className="group rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:shadow-elegant"
-              >
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-secondary/40 text-primary group-hover:bg-secondary transition-colors">
-                  <s.icon className="h-6 w-6" />
-                </div>
-                <h3 className="mt-5 font-display text-xl font-bold text-foreground whitespace-pre-line">{t(`home.svc.${s.key}.t`)}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t(`home.svc.${s.key}.d`)}</p>
-              </article>
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <Button asChild variant="outline">
-              <Link to="/servicios">{t("cta.viewAll")} <ArrowRight className="ml-1.5 h-4 w-4" /></Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* CAMPS COL·LABORADORS */}
-      <section className="relative overflow-hidden py-20 md:py-28 bg-gradient-to-br from-secondary/20 via-background to-primary/5">
-        <div className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-secondary/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
-        <div className="container-fortux relative">
-          <SectionHeading
-            eyebrow="Xarxa de camps"
-            title="Camps Col·laboradors"
-            subtitle="Treballem amb una àmplia xarxa de camps de golf arreu de Catalunya."
-            align="center"
-          />
-          <div className="mt-12 flex flex-wrap justify-center gap-4">
-            {PARTNER_COURSES.map((c, i) => (
+          <h2 className="text-center font-display text-3xl md:text-4xl font-bold">Camps Col·laboradors</h2>
+          <p className="mx-auto mt-3 max-w-xl text-center text-sm text-primary-foreground/65">
+            Treballem amb una àmplia xarxa de camps de golf arreu de Catalunya.
+          </p>
+          <div className="mt-12 flex flex-wrap justify-center gap-3">
+            {PARTNER_COURSES.map((c) => (
               <div
                 key={c.name}
-                className="group relative flex w-[calc(50%-0.5rem)] aspect-square items-center justify-center rounded-2xl border border-border/60 bg-card/80 p-5 shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-elegant hover:border-primary/40 sm:w-[calc(33.333%-0.75rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)]"
-                style={{ animationDelay: `${i * 40}ms` }}
+                className="group relative flex aspect-square w-[calc(50%-0.5rem)] items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] p-4 transition-all hover:border-secondary/40 hover:bg-white/[0.06] sm:w-[calc(33.333%-0.75rem)] md:w-[calc(20%-0.75rem)] lg:w-[calc(14.2857%-0.75rem)]"
               >
-                <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/0 via-primary/0 to-secondary/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 <img
                   src={c.url}
                   alt={`Camp de golf ${c.name}`}
                   loading="lazy"
-                  className="relative max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-110"
+                  className="max-h-full max-w-full object-contain brightness-0 invert opacity-70 transition-all duration-300 group-hover:opacity-100"
                 />
               </div>
             ))}
@@ -287,69 +344,64 @@ function Home() {
         </div>
       </section>
 
-      {/* RESEÑAS */}
-      <section className="py-20 md:py-28">
-        <div className="container-fortux">
-          <SectionHeading
-            eyebrow={t("home.reviews.eyebrow")}
-            title={t("home.reviews.title")}
-            align="center"
-          />
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {reviews.map((r) => (
-              <article key={r.id} className="rounded-2xl border border-border bg-card p-7 shadow-soft">
-                <div className="flex items-center gap-3">
-                  {r.avatar_url ? (
-                    <img src={r.avatar_url} alt={r.author_name} className="h-10 w-10 rounded-full object-cover" />
-                  ) : (
-                    <div className="h-10 w-10 rounded-full bg-muted flex items-center justify-center text-sm font-semibold text-muted-foreground">
-                      {r.author_name.slice(0, 2).toUpperCase()}
-                    </div>
-                  )}
-                  <div className="flex-1 min-w-0">
-                    <div className="font-semibold text-primary truncate">{r.author_name}</div>
-                    {r.author_location && (
-                      <div className="text-xs text-muted-foreground truncate">{r.author_location}</div>
+      {/* REVIEWS */}
+      {reviews.length > 0 && (
+        <section className="border-t border-white/10 py-20 md:py-24">
+          <div className="container-fortux">
+            <h2 className="text-center font-display text-3xl md:text-4xl font-bold">Lo que dicen nuestros clientes</h2>
+            <div className="mt-12 grid gap-5 md:grid-cols-3">
+              {reviews.slice(0, 3).map((r) => (
+                <article key={r.id} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+                  <div className="flex items-center gap-3">
+                    {r.avatar_url ? (
+                      <img src={r.avatar_url} alt={r.author_name} className="h-10 w-10 rounded-full object-cover" />
+                    ) : (
+                      <div className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center text-sm font-semibold">
+                        {r.author_name.slice(0, 2).toUpperCase()}
+                      </div>
                     )}
+                    <div className="flex-1 min-w-0">
+                      <div className="font-semibold truncate">{r.author_name}</div>
+                      {r.author_location && (
+                        <div className="text-xs text-primary-foreground/60 truncate">{r.author_location}</div>
+                      )}
+                    </div>
                   </div>
-                </div>
-                <div className="mt-4 flex gap-0.5 text-secondary-foreground">
-                  {Array.from({ length: r.rating }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-secondary text-secondary" />
-                  ))}
-                </div>
-                <p className="mt-3 text-foreground/90 leading-relaxed">"{r.content}"</p>
-                {r.review_date && (
-                  <div className="mt-4 text-xs text-muted-foreground">
-                    {new Date(r.review_date).toLocaleDateString("es-ES", { year: "numeric", month: "long" })}
+                  <div className="mt-4 flex gap-0.5">
+                    {Array.from({ length: r.rating }).map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-secondary text-secondary" />
+                    ))}
                   </div>
-                )}
-              </article>
-            ))}
+                  <p className="mt-3 text-primary-foreground/85 leading-relaxed">"{r.content}"</p>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* CTA FINAL */}
+      {/* FINAL CTA */}
       <section className="py-20 md:py-24">
         <div className="container-fortux">
-          <div className="rounded-3xl bg-gradient-hero p-10 md:p-16 text-primary-foreground text-center shadow-elegant">
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-balance">{t("home.cta.title")}</h2>
-            <p className="mt-4 max-w-xl mx-auto text-primary-foreground/85">
-              {t("home.cta.subtitle")}
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-primary to-primary-deep p-10 md:p-16 text-center shadow-elegant">
+            <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-secondary/20 blur-3xl" />
+            <h2 className="relative font-display text-3xl md:text-5xl font-bold text-balance">
+              ¿Listo para poner tu equipo a punto?
+            </h2>
+            <p className="relative mt-4 mx-auto max-w-xl text-primary-foreground/75">
+              Te ayudamos a revisarlo, ajustarlo y dejarlo listo para jugar con total confianza.
             </p>
-            <div className="mt-7 flex flex-wrap justify-center gap-3">
-              <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
-                <a href={waLink("Hola, querría solicitar un presupuesto.")} target="_blank" rel="noopener">{t("cta.quote")}</a>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20">
-                <Link to="/contacto">{t("cta.contact")}</Link>
+            <div className="relative mt-8 flex flex-wrap justify-center gap-3">
+              <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold uppercase tracking-wide">
+                <a href={waLink("Hola, querría solicitar una revisión de mi equipo.")} target="_blank" rel="noopener">
+                  Solicitar revisión <ArrowRight className="ml-1.5 h-4 w-4" />
+                </a>
               </Button>
             </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
@@ -373,8 +425,8 @@ function CircuitTabs() {
               onClick={() => setOpen(isOpen ? null : tab.key)}
               className={`inline-flex items-center justify-center gap-2 rounded-xl border px-4 py-4 text-sm font-semibold uppercase tracking-wider transition-colors ${
                 isOpen
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border bg-card text-foreground hover:bg-muted"
+                  ? "border-secondary bg-secondary text-secondary-foreground"
+                  : "border-white/10 bg-white/[0.04] text-primary-foreground hover:bg-white/[0.08]"
               }`}
             >
               <tab.icon className="h-4 w-4" />
@@ -397,7 +449,7 @@ function CircuitTabs() {
       {TABS.map((tab) => (
         <Collapsible key={tab.key} open={open === tab.key}>
           <CollapsibleContent className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
-            <div className="relative w-full overflow-hidden mt-4" style={{ height: "2000px" }}>
+            <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 mt-4" style={{ height: "2000px" }}>
               <iframe
                 src={tab.url}
                 title={tab.label}

@@ -20,6 +20,7 @@
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-glow: var(--primary-glow);
+  --color-primary-deep: var(--primary-deep);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-accent: var(--accent);
@@ -34,15 +35,15 @@
   --color-whatsapp: var(--whatsapp);
   --color-whatsapp-foreground: var(--whatsapp-foreground);
 
-  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   --radius: 1rem;
 
-  /* Brand: Fairway Studio — deep navy + lime accent on warm white */
-  --background: oklch(0.985 0.003 90);          /* warm off-white */
+  /* Brand: Fortux — dark premium technical (deep navy + lime accent) */
+  --background: oklch(0.985 0.003 90);          /* warm off-white (non-home pages) */
   --foreground: oklch(0.20 0.05 255);           /* deep navy ink */
 
   --card: oklch(1 0 0);
@@ -50,14 +51,15 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.20 0.05 255);
 
-  --primary: oklch(0.24 0.07 258);              /* deep navy #0C1F3D */
+  --primary: oklch(0.26 0.09 258);              /* Fortux navy #002F5F */
   --primary-foreground: oklch(0.985 0.003 90);
-  --primary-glow: oklch(0.32 0.09 258);
+  --primary-glow: oklch(0.34 0.10 258);
+  --primary-deep: oklch(0.18 0.06 258);         /* near-black navy */
 
-  --secondary: oklch(0.88 0.14 125);            /* lime/sage accent */
+  --secondary: oklch(0.87 0.14 128);            /* Fortux lime #B9D986 */
   --secondary-foreground: oklch(0.24 0.07 258);
 
-  --accent: oklch(0.88 0.14 125);
+  --accent: oklch(0.87 0.14 128);
   --accent-foreground: oklch(0.24 0.07 258);
 
   --muted: oklch(0.96 0.005 90);
@@ -73,9 +75,9 @@
   --whatsapp: oklch(0.68 0.17 150);
   --whatsapp-foreground: oklch(0.99 0 0);
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.20 0.06 258) 0%, oklch(0.24 0.07 258) 55%, oklch(0.30 0.08 258) 100%);
-  --gradient-accent: linear-gradient(135deg, oklch(0.88 0.14 125) 0%, oklch(0.82 0.15 130) 100%);
-  --gradient-overlay: linear-gradient(180deg, oklch(0.20 0.05 258 / 0.55) 0%, oklch(0.20 0.05 258 / 0.88) 100%);
+  --gradient-hero: linear-gradient(160deg, oklch(0.14 0.05 258) 0%, oklch(0.20 0.07 258) 55%, oklch(0.26 0.09 258) 100%);
+  --gradient-accent: linear-gradient(135deg, oklch(0.87 0.14 128) 0%, oklch(0.80 0.15 130) 100%);
+  --gradient-overlay: linear-gradient(180deg, oklch(0.12 0.05 258 / 0.55) 0%, oklch(0.12 0.05 258 / 0.92) 100%);
 
   --shadow-elegant: 0 24px 60px -24px oklch(0.20 0.05 258 / 0.35);
   --shadow-soft: 0 10px 30px -12px oklch(0.20 0.05 258 / 0.15);
