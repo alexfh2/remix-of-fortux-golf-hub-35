@@ -51,16 +51,18 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.20 0.05 255);
 
-  --primary: oklch(0.26 0.09 258);              /* Fortux navy #002F5F */
-  --primary-foreground: oklch(0.985 0.003 90);
-  --primary-glow: oklch(0.34 0.10 258);
-  --primary-deep: oklch(0.18 0.06 258);         /* near-black navy */
+  /* Dark premium technical: near-black with the faintest navy hint.
+     Fortux navy #002F5F is reserved for subtle accents only, not surfaces. */
+  --primary: oklch(0.13 0.012 258);             /* near-black graphite, ~#0A0D11 */
+  --primary-foreground: oklch(0.97 0.003 90);   /* off-white */
+  --primary-glow: oklch(0.20 0.02 258);         /* slightly lifted graphite */
+  --primary-deep: oklch(0.09 0.008 258);        /* almost black, ~#030609 */
 
   --secondary: oklch(0.87 0.14 128);            /* Fortux lime #B9D986 */
-  --secondary-foreground: oklch(0.24 0.07 258);
+  --secondary-foreground: oklch(0.12 0.01 258); /* near-black on lime CTA */
 
   --accent: oklch(0.87 0.14 128);
-  --accent-foreground: oklch(0.24 0.07 258);
+  --accent-foreground: oklch(0.12 0.01 258);
 
   --muted: oklch(0.96 0.005 90);
   --muted-foreground: oklch(0.50 0.02 258);
@@ -75,7 +77,7 @@
   --whatsapp: oklch(0.68 0.17 150);
   --whatsapp-foreground: oklch(0.99 0 0);
 
-  --gradient-hero: linear-gradient(160deg, oklch(0.14 0.05 258) 0%, oklch(0.20 0.07 258) 55%, oklch(0.26 0.09 258) 100%);
+  --gradient-hero: linear-gradient(160deg, oklch(0.06 0.005 258) 0%, oklch(0.09 0.008 258) 55%, oklch(0.13 0.012 258) 100%);
   --gradient-accent: linear-gradient(135deg, oklch(0.87 0.14 128) 0%, oklch(0.80 0.15 130) 100%);
   --gradient-overlay: linear-gradient(180deg, oklch(0.12 0.05 258 / 0.55) 0%, oklch(0.12 0.05 258 / 0.92) 100%);
 
