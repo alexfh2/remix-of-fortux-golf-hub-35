@@ -72,7 +72,7 @@ function Page() {
             consistencia e incluso forzar lesiones.
           </p>
         </ServiceProse>
-        <ServiceMedia src={secondaryImg} alt="Báscula de swing weight" caption="Medición sobre báscula profesional" />
+        <ServiceMedia src={secondaryImg.url} alt="Báscula de swing weight" caption="Medición sobre báscula profesional" />
       </ServiceSection>
 
       <ServiceSection eyebrow="Qué lo modifica" title="Factores que cambian el swing weight" tone="alt">
