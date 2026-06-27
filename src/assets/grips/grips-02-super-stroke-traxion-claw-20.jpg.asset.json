@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "39cb06c4-3426-4d6e-9d33-0afd9ea94a2d",
-  "project_id": "9e31c477-d17e-4d5a-86da-941ee01299f2",
-  "url": "/__l5e/assets-v1/39cb06c4-3426-4d6e-9d33-0afd9ea94a2d/grips-02-super-stroke-traxion-claw-20.jpg",
-  "r2_key": "a/v1/9e31c477-d17e-4d5a-86da-941ee01299f2/39cb06c4-3426-4d6e-9d33-0afd9ea94a2d/grips-02-super-stroke-traxion-claw-20.jpg",
-  "original_filename": "grips-02-super-stroke-traxion-claw-20.jpg",
-  "size": 13836,
   "content_type": "image/jpeg",
-  "created_at": "2026-06-08T14:50:19Z"
+  "created_at": "2026-06-08T14:50:19Z",
+  "original_filename": "grips-02-super-stroke-traxion-claw-20.jpg",
+  "project_id": "fc4e5fb5-6912-4468-ac11-6c211ebaafc1",
+  "r2_key": "a/v1/fc4e5fb5-6912-4468-ac11-6c211ebaafc1/39cb06c4-3426-4d6e-9d33-0afd9ea94a2d/grips-02-super-stroke-traxion-claw-20.jpg",
+  "size": 13836,
+  "url": "/__l5e/assets-v1/39cb06c4-3426-4d6e-9d33-0afd9ea94a2d/grips-02-super-stroke-traxion-claw-20.jpg",
+  "version": 1
 }

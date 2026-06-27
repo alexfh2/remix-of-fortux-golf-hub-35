@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "e7127c94-d336-4788-8a15-53f6c920c12a",
-  "project_id": "9e31c477-d17e-4d5a-86da-941ee01299f2",
-  "url": "/__l5e/assets-v1/e7127c94-d336-4788-8a15-53f6c920c12a/academia-fotos-06.jpg",
-  "r2_key": "a/v1/9e31c477-d17e-4d5a-86da-941ee01299f2/e7127c94-d336-4788-8a15-53f6c920c12a/academia-fotos-06.jpg",
-  "original_filename": "academia-fotos-06.jpg",
-  "size": 134227,
   "content_type": "image/jpeg",
-  "created_at": "2026-06-08T14:43:36Z"
+  "created_at": "2026-06-08T14:43:36Z",
+  "original_filename": "academia-fotos-06.jpg",
+  "project_id": "fc4e5fb5-6912-4468-ac11-6c211ebaafc1",
+  "r2_key": "a/v1/fc4e5fb5-6912-4468-ac11-6c211ebaafc1/e7127c94-d336-4788-8a15-53f6c920c12a/academia-fotos-06.jpg",
+  "size": 134227,
+  "url": "/__l5e/assets-v1/e7127c94-d336-4788-8a15-53f6c920c12a/academia-fotos-06.jpg",
+  "version": 1
 }

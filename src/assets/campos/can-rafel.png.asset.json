@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "8b6af9a9-7264-4340-81cf-82946956bcec",
-  "project_id": "9e31c477-d17e-4d5a-86da-941ee01299f2",
-  "url": "/__l5e/assets-v1/8b6af9a9-7264-4340-81cf-82946956bcec/can-rafel.png",
-  "r2_key": "a/v1/9e31c477-d17e-4d5a-86da-941ee01299f2/8b6af9a9-7264-4340-81cf-82946956bcec/can-rafel.png",
-  "original_filename": "can-rafel.png",
-  "size": 35875,
   "content_type": "image/png",
-  "created_at": "2026-06-08T14:44:02Z"
+  "created_at": "2026-06-08T14:44:02Z",
+  "original_filename": "can-rafel.png",
+  "project_id": "fc4e5fb5-6912-4468-ac11-6c211ebaafc1",
+  "r2_key": "a/v1/fc4e5fb5-6912-4468-ac11-6c211ebaafc1/8b6af9a9-7264-4340-81cf-82946956bcec/can-rafel.png",
+  "size": 35875,
+  "url": "/__l5e/assets-v1/8b6af9a9-7264-4340-81cf-82946956bcec/can-rafel.png",
+  "version": 1
 }

@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "dbfde815-6a70-47a2-8d2d-97803d424044",
-  "project_id": "9e31c477-d17e-4d5a-86da-941ee01299f2",
-  "url": "/__l5e/assets-v1/dbfde815-6a70-47a2-8d2d-97803d424044/grips-01-lamkin-crossline-360-standard-white-black.jpg",
-  "r2_key": "a/v1/9e31c477-d17e-4d5a-86da-941ee01299f2/dbfde815-6a70-47a2-8d2d-97803d424044/grips-01-lamkin-crossline-360-standard-white-black.jpg",
-  "original_filename": "grips-01-lamkin-crossline-360-standard-white-black.jpg",
-  "size": 14633,
   "content_type": "image/jpeg",
-  "created_at": "2026-06-08T14:50:13Z"
+  "created_at": "2026-06-08T14:50:13Z",
+  "original_filename": "grips-01-lamkin-crossline-360-standard-white-black.jpg",
+  "project_id": "fc4e5fb5-6912-4468-ac11-6c211ebaafc1",
+  "r2_key": "a/v1/fc4e5fb5-6912-4468-ac11-6c211ebaafc1/dbfde815-6a70-47a2-8d2d-97803d424044/grips-01-lamkin-crossline-360-standard-white-black.jpg",
+  "size": 14633,
+  "url": "/__l5e/assets-v1/dbfde815-6a70-47a2-8d2d-97803d424044/grips-01-lamkin-crossline-360-standard-white-black.jpg",
+  "version": 1
 }

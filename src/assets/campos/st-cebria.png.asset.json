@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "10daba8d-cb83-4dc0-ab5a-9456a351cd75",
-  "project_id": "9e31c477-d17e-4d5a-86da-941ee01299f2",
-  "url": "/__l5e/assets-v1/10daba8d-cb83-4dc0-ab5a-9456a351cd75/st-cebria.png",
-  "r2_key": "a/v1/9e31c477-d17e-4d5a-86da-941ee01299f2/10daba8d-cb83-4dc0-ab5a-9456a351cd75/st-cebria.png",
-  "original_filename": "st-cebria.png",
-  "size": 17270,
   "content_type": "image/png",
-  "created_at": "2026-06-08T14:44:07Z"
+  "created_at": "2026-06-08T14:44:07Z",
+  "original_filename": "st-cebria.png",
+  "project_id": "fc4e5fb5-6912-4468-ac11-6c211ebaafc1",
+  "r2_key": "a/v1/fc4e5fb5-6912-4468-ac11-6c211ebaafc1/10daba8d-cb83-4dc0-ab5a-9456a351cd75/st-cebria.png",
+  "size": 17270,
+  "url": "/__l5e/assets-v1/10daba8d-cb83-4dc0-ab5a-9456a351cd75/st-cebria.png",
+  "version": 1
 }

@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "12bd6f9b-3f89-4901-b935-8b87014e1e7f",
-  "project_id": "9e31c477-d17e-4d5a-86da-941ee01299f2",
-  "url": "/__l5e/assets-v1/12bd6f9b-3f89-4901-b935-8b87014e1e7f/grips-02-winn-wrap-long-red-black.jpg",
-  "r2_key": "a/v1/9e31c477-d17e-4d5a-86da-941ee01299f2/12bd6f9b-3f89-4901-b935-8b87014e1e7f/grips-02-winn-wrap-long-red-black.jpg",
-  "original_filename": "grips-02-winn-wrap-long-red-black.jpg",
-  "size": 7791,
   "content_type": "image/jpeg",
-  "created_at": "2026-06-08T14:50:29Z"
+  "created_at": "2026-06-08T14:50:29Z",
+  "original_filename": "grips-02-winn-wrap-long-red-black.jpg",
+  "project_id": "fc4e5fb5-6912-4468-ac11-6c211ebaafc1",
+  "r2_key": "a/v1/fc4e5fb5-6912-4468-ac11-6c211ebaafc1/12bd6f9b-3f89-4901-b935-8b87014e1e7f/grips-02-winn-wrap-long-red-black.jpg",
+  "size": 7791,
+  "url": "/__l5e/assets-v1/12bd6f9b-3f89-4901-b935-8b87014e1e7f/grips-02-winn-wrap-long-red-black.jpg",
+  "version": 1
 }

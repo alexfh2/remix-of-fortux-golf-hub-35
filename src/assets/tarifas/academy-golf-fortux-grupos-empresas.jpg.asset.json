@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "1e5302f4-cc3f-4367-abbb-ac29ff76c9f1",
-  "project_id": "9e31c477-d17e-4d5a-86da-941ee01299f2",
-  "url": "/__l5e/assets-v1/1e5302f4-cc3f-4367-abbb-ac29ff76c9f1/academy-golf-fortux-grupos-empresas.jpg",
-  "r2_key": "a/v1/9e31c477-d17e-4d5a-86da-941ee01299f2/1e5302f4-cc3f-4367-abbb-ac29ff76c9f1/academy-golf-fortux-grupos-empresas.jpg",
-  "original_filename": "academy-golf-fortux-grupos-empresas.jpg",
-  "size": 26229,
   "content_type": "image/jpeg",
-  "created_at": "2026-06-08T14:43:13Z"
+  "created_at": "2026-06-08T14:43:13Z",
+  "original_filename": "academy-golf-fortux-grupos-empresas.jpg",
+  "project_id": "fc4e5fb5-6912-4468-ac11-6c211ebaafc1",
+  "r2_key": "a/v1/fc4e5fb5-6912-4468-ac11-6c211ebaafc1/1e5302f4-cc3f-4367-abbb-ac29ff76c9f1/academy-golf-fortux-grupos-empresas.jpg",
+  "size": 26229,
+  "url": "/__l5e/assets-v1/1e5302f4-cc3f-4367-abbb-ac29ff76c9f1/academy-golf-fortux-grupos-empresas.jpg",
+  "version": 1
 }

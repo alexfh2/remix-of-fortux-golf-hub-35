@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "9fd29c37-b90e-4f75-a098-a08921f6fbfc",
-  "project_id": "9e31c477-d17e-4d5a-86da-941ee01299f2",
-  "url": "/__l5e/assets-v1/9fd29c37-b90e-4f75-a098-a08921f6fbfc/swing-weight.png",
-  "r2_key": "a/v1/9e31c477-d17e-4d5a-86da-941ee01299f2/9fd29c37-b90e-4f75-a098-a08921f6fbfc/swing-weight.png",
-  "original_filename": "swing-weight.png",
-  "size": 78320,
   "content_type": "image/png",
-  "created_at": "2026-06-08T15:40:25Z"
+  "created_at": "2026-06-08T15:40:25Z",
+  "original_filename": "swing-weight.png",
+  "project_id": "fc4e5fb5-6912-4468-ac11-6c211ebaafc1",
+  "r2_key": "a/v1/fc4e5fb5-6912-4468-ac11-6c211ebaafc1/9fd29c37-b90e-4f75-a098-a08921f6fbfc/swing-weight.png",
+  "size": 78320,
+  "url": "/__l5e/assets-v1/9fd29c37-b90e-4f75-a098-a08921f6fbfc/swing-weight.png",
+  "version": 1
 }
