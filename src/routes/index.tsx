@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { ArrowRight, Star, ChevronDown, ExternalLink, BarChart3, ListChecks, Users, Cpu, MessageSquare, Award, ShieldCheck } from "lucide-react";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
 import { SITE, waLink } from "@/lib/site";
 import { supabase } from "@/integrations/supabase/client";
