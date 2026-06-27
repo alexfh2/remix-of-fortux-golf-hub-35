@@ -127,9 +127,8 @@ function Home() {
   return (
     <div className="bg-primary-deep text-primary-foreground">
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-gradient-hero">
-        <div className="pointer-events-none absolute -top-32 -right-40 h-[36rem] w-[36rem] rounded-full bg-secondary/10 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-40 -left-32 h-[28rem] w-[28rem] rounded-full bg-primary-glow/30 blur-3xl" />
+      <section className="relative isolate overflow-hidden bg-[#050606]">
+        <div className="pointer-events-none absolute -top-40 -right-56 h-[40rem] w-[40rem] rounded-full bg-[#B9D986]/[0.04] blur-3xl" />
 
         <div className="container-fortux relative grid items-center gap-10 py-16 md:py-24 lg:grid-cols-2 lg:gap-14 lg:py-28 animate-fade-up">
           <div className="relative z-10">
@@ -145,19 +144,25 @@ function Home() {
               asesoramiento y atención personalizada.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold uppercase tracking-wide">
-                <a href={waLink("Hola, querría solicitar una revisión de mi equipo.")} target="_blank" rel="noopener">
-                  Solicitar revisión <ArrowRight className="ml-1.5 h-4 w-4" />
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-white/20 bg-white/5 text-primary-foreground hover:bg-white/10 font-semibold uppercase tracking-wide">
-                <Link to="/servicios">Ver servicios</Link>
-              </Button>
+              <a
+                href={waLink("Hola, querría solicitar una revisión de mi equipo.")}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex h-11 items-center gap-2 rounded-[6px] bg-[#B9D986] px-6 text-[12px] font-medium uppercase tracking-[0.12em] text-[#050606] transition-colors hover:bg-[#c5e294]"
+              >
+                Solicitar revisión <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
+              </a>
+              <Link
+                to="/servicios"
+                className="inline-flex h-11 items-center rounded-[6px] border border-white/[0.22] bg-transparent px-6 text-[12px] font-medium uppercase tracking-[0.12em] text-white/85 transition-colors hover:bg-white/[0.04] hover:text-white"
+              >
+                Ver servicios
+              </Link>
             </div>
           </div>
 
           <div className="relative lg:justify-self-end">
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-elegant">
+            <div className="relative overflow-hidden rounded-[10px] border border-white/[0.10]">
               <img
                 src={heroImg}
                 alt="Ajuste técnico de un hierro de golf en máquina de fitting Fortux"
@@ -165,13 +170,13 @@ function Home() {
                 height={1280}
                 className="h-full w-full object-cover aspect-[5/4]"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary-deep/50 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#050606]/60 via-transparent to-transparent" />
             </div>
           </div>
         </div>
 
         {/* SERVICE INDEX STRIP */}
-        <div className="relative border-t border-white/10 bg-primary-deep/60 backdrop-blur">
+        <div className="relative border-t border-white/[0.07]">
           <div className="container-fortux grid grid-cols-3 gap-y-6 py-8 md:grid-cols-6">
             {SERVICE_INDEX.map((s) => (
               <div key={s.n} className="flex flex-col items-start">
