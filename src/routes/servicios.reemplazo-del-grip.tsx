@@ -6,8 +6,11 @@ import {
   ServiceProse,
   ServiceFinalCTA,
   ServiceBackLink,
+  ServiceMedia,
 } from "@/components/site/ServiceShell";
 import heroImg from "@/assets/servicios-v2/03-grips.jpg.asset.json";
+import secondaryImg from "@/assets/servicios-v2/grip-secondary.jpg";
+import detailImg from "@/assets/servicios-v2/grip-detail.jpg";
 
 export const Route = createFileRoute("/servicios/reemplazo-del-grip")({
   head: () => ({
@@ -70,6 +73,7 @@ function Page() {
             cuenta, perjudicando tu swing, precisión y comodidad — e incluso provocando lesiones.
           </p>
         </ServiceProse>
+        <ServiceMedia src={secondaryImg} alt="Selección de grips premium" caption="Selección de grips premium — taller Fortux" />
       </ServiceSection>
 
       <ServiceSection eyebrow="Señales claras" title="¿Cuándo cambiar el grip?" tone="alt">
@@ -83,6 +87,7 @@ function Page() {
       </ServiceSection>
 
       <ServiceSection eyebrow="Proceso" title="Cómo trabajamos cada reemplazo">
+        <ServiceMedia src={detailImg} alt="Instalación profesional de grip" caption="Instalación precisa — paso a paso" ratio="3/2" />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {PROCESS.map((p, i) => (
             <ServiceCard key={p.t} index={String(i + 1).padStart(2, "0")} title={p.t}>

@@ -6,8 +6,11 @@ import {
   ServiceProse,
   ServiceFinalCTA,
   ServiceBackLink,
+  ServiceMedia,
 } from "@/components/site/ServiceShell";
 import heroImg from "@/assets/servicios-v2/04-fitting.jpg.asset.json";
+import secondaryImg from "@/assets/servicios-v2/ll-secondary.jpg";
+import detailImg from "@/assets/servicios-v2/ll-detail.jpg";
 
 export const Route = createFileRoute("/servicios/lie-loft")({
   head: () => ({
@@ -73,6 +76,7 @@ function Page() {
             control.
           </p>
         </ServiceProse>
+        <ServiceMedia src={secondaryImg} alt="Ajuste de lie & loft" caption="Ajuste de ángulo en máquina específica" />
         <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {EFFECTS.map((p, i) => (
             <ServiceCard key={p.t} index={String(i + 1).padStart(2, "0")} title={p.t}>
@@ -93,6 +97,7 @@ function Page() {
       </ServiceSection>
 
       <ServiceSection eyebrow="Proceso" title="Ajuste preciso en taller">
+        <ServiceMedia src={detailImg} alt="Calibre digital midiendo ángulos" caption="Medición digital de referencia" ratio="3/2" />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {PROCESS.map((p, i) => (
             <ServiceCard key={p.t} index={String(i + 1).padStart(2, "0")} title={p.t}>

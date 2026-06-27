@@ -57,15 +57,22 @@ function Page() {
         description="Reparación, mantenimiento, grips, fitting y personalización con atención experta y criterio profesional."
         image={varillasImg.url}
         imageAlt="Taller técnico Fortux"
+        compact
       />
 
       {/* SERVICE INDEX */}
       <section className="border-t border-white/[0.06] bg-[#050606]">
-        <div className="container-fortux grid grid-cols-2 gap-y-6 py-10 md:grid-cols-4">
+        <div className="container-fortux grid grid-cols-2 gap-y-4 py-6 md:grid-cols-4 md:py-7">
           {SERVICES.map((s) => (
-            <Link key={s.n} to={s.to} className="group flex flex-col items-start">
-              <span className="font-display text-2xl font-bold text-secondary">{s.n}</span>
-              <span className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary-foreground/80 group-hover:text-secondary">
+            <Link
+              key={s.n}
+              to={s.to}
+              className="group flex flex-col items-start border-l border-white/[0.06] pl-4 transition-colors hover:border-secondary/60"
+            >
+              <span className="font-display text-2xl font-bold text-secondary transition-opacity group-hover:opacity-90">
+                {s.n}
+              </span>
+              <span className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary-foreground/80 transition-colors group-hover:text-secondary">
                 {s.title}
               </span>
             </Link>
@@ -74,28 +81,28 @@ function Page() {
       </section>
 
       {/* SERVICE GRID */}
-      <section className="bg-[#050606] py-16 md:py-24">
+      <section className="bg-[#050606] py-10 md:py-14">
         <div className="container-fortux">
           <div className="grid gap-5 sm:grid-cols-2">
             {SERVICES.map((s) => (
               <Link
                 key={s.to}
                 to={s.to}
-                className="group relative flex flex-col overflow-hidden rounded-[10px] border border-white/10 bg-white/[0.03] transition-all hover:-translate-y-1 hover:border-secondary/40 hover:bg-white/[0.06]"
+                className="group relative flex flex-col overflow-hidden rounded-[10px] border border-white/10 bg-white/[0.03] transition-all duration-300 hover:-translate-y-1 hover:border-secondary/60 hover:bg-white/[0.06] hover:shadow-[0_18px_40px_-20px_rgba(185,217,134,0.18)]"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <img
                     src={s.img}
                     alt={s.title}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-all duration-500 group-hover:scale-[1.04] group-hover:brightness-110"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050606] via-[#050606]/30 to-transparent" />
                 </div>
                 <div className="p-6">
                   <div className="flex items-baseline gap-3">
                     <span className="font-display text-base font-bold text-secondary">{s.n}</span>
-                    <h3 className="font-display text-xl font-bold text-primary-foreground">
+                    <h3 className="font-display text-xl font-bold text-primary-foreground transition-colors group-hover:text-secondary">
                       {s.title}
                     </h3>
                   </div>
@@ -103,8 +110,10 @@ function Page() {
                     {s.desc}
                   </p>
                   <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary">
-                    Ver servicio{" "}
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                    <span className="bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-left-bottom bg-no-repeat pb-0.5 transition-[background-size] duration-300 group-hover:bg-[length:100%_1px]">
+                      Ver servicio
+                    </span>
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1.5" />
                   </span>
                 </div>
               </Link>
