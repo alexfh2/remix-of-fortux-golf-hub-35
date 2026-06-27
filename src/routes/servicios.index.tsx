@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Wrench, ArrowRight, Cog, Scale, Ruler } from "lucide-react";
-import { SectionHeading } from "@/components/site/SectionHeading";
-import heroImg from "@/assets/servicios/reemplazo-del-grip.png.asset.json";
-import varillasImg from "@/assets/servicios/ajustes-de-varillas.png.asset.json";
-import swingWeightImg from "@/assets/servicios/swing-weight.png.asset.json";
-import lieLoftImg from "@/assets/servicios/lie-loft.png.asset.json";
+import { ArrowRight } from "lucide-react";
+import { ServiceHero } from "@/components/site/ServiceShell";
+import gripsImg from "@/assets/servicios-v2/03-grips.jpg.asset.json";
+import varillasImg from "@/assets/servicios-v2/01-reparacion.jpg.asset.json";
+import swingWeightImg from "@/assets/servicios-v2/02-mantenimiento.jpg.asset.json";
+import lieLoftImg from "@/assets/servicios-v2/04-fitting.jpg.asset.json";
 
 export const Route = createFileRoute("/servicios/")({
   head: () => ({
@@ -19,76 +19,99 @@ export const Route = createFileRoute("/servicios/")({
 
 const SERVICES = [
   {
+    n: "01",
     to: "/servicios/reemplazo-del-grip" as const,
-    title: "Reemplazo del grip",
-    desc: "Servicio profesional de cambio de grips para recuperar control y sensación en cada swing.",
-    img: heroImg.url,
-    icon: Wrench,
+    title: "Reemplazo de grip",
+    desc: "Cambio profesional de grips para recuperar control, sensación y comodidad en cada swing.",
+    img: gripsImg.url,
   },
   {
+    n: "02",
     to: "/servicios/ajustes-de-varillas" as const,
-    title: "Ajustes de varillas",
+    title: "Ajuste de varillas",
     desc: "Reparamos, ajustamos y cambiamos varillas de driver, hierros y putters — grafito o acero.",
     img: varillasImg.url,
-    icon: Cog,
   },
   {
+    n: "03",
     to: "/servicios/swing-weight" as const,
     title: "Swing Weight",
     desc: "Ajustamos el equilibrio de tus palos para mejorar control, ritmo y prevenir lesiones.",
     img: swingWeightImg.url,
-    icon: Scale,
   },
   {
+    n: "04",
     to: "/servicios/lie-loft" as const,
     title: "Lie & Loft",
-    desc: "Ajustamos el lie y loft de tus palos para lograr precisión, control y distancia en cada golpe.",
+    desc: "Ajustamos el lie y loft para lograr precisión, dirección y consistencia en cada golpe.",
     img: lieLoftImg.url,
-    icon: Ruler,
   },
 ];
 
 function Page() {
   return (
-    <section className="py-20 md:py-28">
-      <div className="container-fortux">
-        <SectionHeading
-          eyebrow="Servicios"
-          title="Cuidamos tus palos de golf"
-          subtitle="Servicios profesionales pensados para que disfrutes al máximo de tu juego."
-          align="center"
-        />
-        <div className="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-2">
+    <div className="bg-[#050606] text-primary-foreground">
+      <ServiceHero
+        eyebrow="Servicios"
+        title="Servicios técnicos para cuidar tu equipo"
+        description="Reparación, mantenimiento, grips, fitting y personalización con atención experta y criterio profesional."
+        image={varillasImg.url}
+        imageAlt="Taller técnico Fortux"
+      />
+
+      {/* SERVICE INDEX */}
+      <section className="border-t border-white/[0.06] bg-[#050606]">
+        <div className="container-fortux grid grid-cols-2 gap-y-6 py-10 md:grid-cols-4">
           {SERVICES.map((s) => (
-            <Link
-              key={s.to}
-              to={s.to}
-              className="group overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant"
-            >
-              <div className="relative aspect-[16/9] overflow-hidden">
-                <img
-                  src={s.img}
-                  alt={s.title}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <div className="p-6">
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/40 text-primary">
-                    <s.icon className="h-5 w-5" />
-                  </span>
-                  <h3 className="font-display text-xl font-bold">{s.title}</h3>
-                </div>
-                <p className="mt-3 text-muted-foreground leading-relaxed">{s.desc}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-primary font-semibold">
-                  Ver más <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </div>
+            <Link key={s.n} to={s.to} className="group flex flex-col items-start">
+              <span className="font-display text-2xl font-bold text-secondary">{s.n}</span>
+              <span className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary-foreground/80 group-hover:text-secondary">
+                {s.title}
+              </span>
             </Link>
           ))}
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* SERVICE GRID */}
+      <section className="bg-[#050606] py-16 md:py-24">
+        <div className="container-fortux">
+          <div className="grid gap-5 sm:grid-cols-2">
+            {SERVICES.map((s) => (
+              <Link
+                key={s.to}
+                to={s.to}
+                className="group relative flex flex-col overflow-hidden rounded-[10px] border border-white/10 bg-white/[0.03] transition-all hover:-translate-y-1 hover:border-secondary/40 hover:bg-white/[0.06]"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src={s.img}
+                    alt={s.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050606] via-[#050606]/30 to-transparent" />
+                </div>
+                <div className="p-6">
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-display text-base font-bold text-secondary">{s.n}</span>
+                    <h3 className="font-display text-xl font-bold text-primary-foreground">
+                      {s.title}
+                    </h3>
+                  </div>
+                  <p className="mt-3 text-sm text-primary-foreground/70 leading-relaxed">
+                    {s.desc}
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary">
+                    Ver servicio{" "}
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
