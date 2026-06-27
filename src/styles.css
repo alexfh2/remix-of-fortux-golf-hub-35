@@ -131,6 +131,7 @@
 }
 
 @utility bg-gradient-hero { background-image: var(--gradient-hero); }
+@utility bg-gradient-first-fold { background-image: var(--gradient-first-fold); }
 @utility bg-gradient-accent { background-image: var(--gradient-accent); }
 @utility bg-gradient-overlay { background-image: var(--gradient-overlay); }
 @utility shadow-elegant { box-shadow: var(--shadow-elegant); }
