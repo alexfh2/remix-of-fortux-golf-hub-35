@@ -127,19 +127,20 @@ function Home() {
   return (
     <div className="bg-primary-deep text-primary-foreground">
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-[#050606]">
-        <div className="pointer-events-none absolute -top-40 -right-56 h-[40rem] w-[40rem] rounded-full bg-[#B9D986]/[0.04] blur-3xl" />
+      <section className="relative isolate overflow-hidden bg-gradient-first-fold">
+        {/* Subtle far-right green tint — extremely restrained */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_100%_50%,rgba(185,217,134,0.025),transparent_60%)]" />
 
         <div className="container-fortux relative grid items-center gap-10 py-16 md:py-24 lg:grid-cols-2 lg:gap-14 lg:py-28 animate-fade-up">
           <div className="relative z-10">
-            <span className="inline-block text-xs font-semibold uppercase tracking-[0.25em] text-secondary">
+            <span className="inline-block text-[12px] font-medium uppercase tracking-[0.22em] text-secondary">
               Servicios integrales de golf
             </span>
             <h1 className="mt-5 font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] text-balance">
               Precisión técnica para cuidar tu{" "}
               <span className="text-secondary">equipo.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base md:text-lg text-primary-foreground/75 leading-relaxed">
+            <p className="mt-6 max-w-xl text-[15px] md:text-[16px] text-primary-foreground/70 leading-[1.6]">
               Reparamos, ajustamos y optimizamos tu material con experiencia,
               asesoramiento y atención personalizada.
             </p>
@@ -176,7 +177,7 @@ function Home() {
         </div>
 
         {/* SERVICE INDEX STRIP */}
-        <div className="relative border-t border-white/[0.07]">
+        <div className="relative border-t border-white/[0.06]">
           <div className="container-fortux grid grid-cols-3 gap-y-6 py-8 md:grid-cols-6">
             {SERVICE_INDEX.map((s) => (
               <div key={s.n} className="flex flex-col items-start">
