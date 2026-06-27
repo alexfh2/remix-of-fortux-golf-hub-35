@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { waLink } from "@/lib/site";
 import { BRAND } from "@/assets/brand";
@@ -17,7 +16,14 @@ type NavItem = {
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { t } = useI18n();
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   const NAV: NavItem[] = [
     {
       to: "/servicios",
@@ -36,32 +42,44 @@ export function Navbar() {
     { to: "/contacto", label: "Contacto" },
   ];
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-primary-deep/90 text-primary-foreground backdrop-blur-md">
-      <div className="container-fortux flex h-16 items-center justify-between gap-4">
-        <Link to="/" className="flex items-center" onClick={() => setOpen(false)} aria-label="Fortux — Inicio">
-          <img src={BRAND.horizontalWhite} alt="Fortux" className="h-9 md:h-10 w-auto" />
+    <header
+      className={
+        "sticky top-0 z-50 w-full text-white/85 transition-colors duration-300 " +
+        (scrolled
+          ? "bg-[#0A0C0D]/85 backdrop-blur-xl border-b border-white/[0.08]"
+          : "bg-[#0A0C0D] border-b border-white/[0.06]")
+      }
+    >
+      <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between gap-10 px-6 lg:px-12">
+        <Link
+          to="/"
+          className="flex items-center shrink-0"
+          onClick={() => setOpen(false)}
+          aria-label="Fortux — Inicio"
+        >
+          <img src={BRAND.horizontalWhite} alt="Fortux" className="h-8 md:h-9 w-auto" />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
           {NAV.map((item) =>
             item.children && item.to ? (
               <div key={item.to} className="relative group">
                 <Link
                   to={item.to}
-                  className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-semibold tracking-wide uppercase text-primary-foreground/85 transition-colors hover:text-secondary"
-                  activeProps={{ className: "text-secondary" }}
+                  className="relative inline-flex items-center gap-1 py-2 text-[12px] font-normal uppercase tracking-[0.18em] text-white/70 transition-colors hover:text-white [&.active]:text-white [&.active]:after:scale-x-100 after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:mx-auto after:h-px after:w-6 after:scale-x-0 after:bg-[#B9D986] after:transition-transform after:duration-300"
+                  activeProps={{ className: "active" }}
                 >
                   {item.label}
-                  <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
+                  <ChevronDown className="h-3 w-3 opacity-60 transition-transform group-hover:rotate-180" />
                 </Link>
-                <div className="invisible absolute left-0 top-full pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100">
-                  <div className="min-w-[240px] rounded-xl border border-white/10 bg-primary-deep shadow-elegant p-2">
+                <div className="invisible absolute left-1/2 top-full -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                  <div className="min-w-[260px] rounded-xl border border-white/[0.08] bg-[#0A0C0D]/95 backdrop-blur-xl p-2 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]">
                     {item.children.map((c) => (
                       <Link
                         key={c.to}
                         to={c.to}
-                        className="block rounded-md px-3 py-2 text-sm font-medium text-primary-foreground/85 hover:bg-white/5 hover:text-secondary"
-                        activeProps={{ className: "text-secondary bg-white/5" }}
+                        className="block rounded-md px-3 py-2 text-[13px] font-normal text-white/70 tracking-wide transition-colors hover:text-white hover:bg-white/[0.04]"
+                        activeProps={{ className: "text-white bg-white/[0.04]" }}
                       >
                         {c.label}
                       </Link>
@@ -73,7 +91,7 @@ export function Navbar() {
               <a
                 key={item.href}
                 href={item.href}
-                className="rounded-md px-3 py-2 text-sm font-semibold tracking-wide uppercase text-primary-foreground/85 transition-colors hover:text-secondary"
+                className="relative py-2 text-[12px] font-normal uppercase tracking-[0.18em] text-white/70 transition-colors hover:text-white"
               >
                 {item.label}
               </a>
@@ -82,8 +100,8 @@ export function Navbar() {
                 key={item.to!}
                 to={item.to!}
                 activeOptions={{ exact: item.to === "/" }}
-                className="rounded-md px-3 py-2 text-sm font-semibold tracking-wide uppercase text-primary-foreground/85 transition-colors hover:text-secondary"
-                activeProps={{ className: "text-secondary" }}
+                className="relative py-2 text-[12px] font-normal uppercase tracking-[0.18em] text-white/70 transition-colors hover:text-white [&.active]:text-white [&.active]:after:scale-x-100 after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:mx-auto after:h-px after:w-6 after:scale-x-0 after:bg-[#B9D986] after:transition-transform after:duration-300"
+                activeProps={{ className: "active" }}
               >
                 {item.label}
               </Link>
@@ -91,18 +109,23 @@ export function Navbar() {
           )}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
-          <Button asChild className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold uppercase tracking-wide">
-            <a href={waLink("Hola, querría solicitar una revisión de mi equipo.")} target="_blank" rel="noopener">
-              Solicitar revisión →
-            </a>
-          </Button>
+        <div className="hidden lg:flex items-center gap-6 shrink-0">
           <LanguageSwitcher />
+          <span aria-hidden className="h-5 w-px bg-white/10" />
+          <a
+            href={waLink("Hola, querría solicitar una revisión de mi equipo.")}
+            target="_blank"
+            rel="noopener"
+            className="group inline-flex items-center gap-2 rounded-[10px] bg-[#B9D986] px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0A0C0D] transition-all hover:bg-[#c5e294] hover:shadow-[0_8px_24px_-8px_rgba(185,217,134,0.5)]"
+          >
+            Solicitar revisión
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2.25} />
+          </a>
         </div>
 
         <button
           aria-label="Menu"
-          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-md text-primary-foreground hover:bg-white/10"
+          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-md text-white/80 hover:bg-white/[0.06]"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -110,26 +133,26 @@ export function Navbar() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-white/10 bg-primary-deep text-primary-foreground">
-          <div className="container-fortux py-4 flex flex-col gap-1">
+        <div className="lg:hidden border-t border-white/[0.06] bg-[#0A0C0D] text-white/85">
+          <div className="mx-auto max-w-[1400px] px-6 py-5 flex flex-col gap-1">
             {NAV.map((item) =>
               item.children && item.to ? (
                 <div key={item.to} className="flex flex-col">
                   <button
                     type="button"
                     onClick={() => setMobileServicesOpen((v) => !v)}
-                    className="flex items-center justify-between rounded-md px-3 py-3 text-base font-semibold uppercase text-primary-foreground/90 hover:bg-white/5"
+                    className="flex items-center justify-between rounded-md px-3 py-3 text-[13px] font-normal uppercase tracking-[0.18em] text-white/80 hover:bg-white/[0.04]"
                   >
                     {item.label}
                     <ChevronDown className={`h-4 w-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
                   </button>
                   {mobileServicesOpen && (
-                    <div className="ml-3 flex flex-col border-l border-white/10 pl-3">
+                    <div className="ml-3 flex flex-col border-l border-white/[0.08] pl-3">
                       <Link
                         to={item.to}
                         onClick={() => setOpen(false)}
-                        className="rounded-md px-3 py-2 text-sm font-medium text-primary-foreground/80 hover:text-secondary"
-                        activeProps={{ className: "text-secondary" }}
+                        className="rounded-md px-3 py-2 text-[13px] font-normal text-white/70 hover:text-white"
+                        activeProps={{ className: "text-white" }}
                       >
                         Todos los servicios
                       </Link>
@@ -138,8 +161,8 @@ export function Navbar() {
                           key={c.to}
                           to={c.to}
                           onClick={() => setOpen(false)}
-                          className="rounded-md px-3 py-2 text-sm font-medium text-primary-foreground/80 hover:text-secondary"
-                          activeProps={{ className: "text-secondary" }}
+                          className="rounded-md px-3 py-2 text-[13px] font-normal text-white/70 hover:text-white"
+                          activeProps={{ className: "text-white" }}
                         >
                           {c.label}
                         </Link>
@@ -152,7 +175,7 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-md px-3 py-3 text-base font-semibold uppercase text-primary-foreground/90 hover:bg-white/5"
+                  className="rounded-md px-3 py-3 text-[13px] font-normal uppercase tracking-[0.18em] text-white/80 hover:bg-white/[0.04]"
                 >
                   {item.label}
                 </a>
@@ -161,20 +184,24 @@ export function Navbar() {
                   key={item.to!}
                   to={item.to!}
                   onClick={() => setOpen(false)}
-                  className="rounded-md px-3 py-3 text-base font-semibold uppercase text-primary-foreground/90 hover:bg-white/5"
-                  activeProps={{ className: "text-secondary" }}
+                  className="rounded-md px-3 py-3 text-[13px] font-normal uppercase tracking-[0.18em] text-white/80 hover:bg-white/[0.04]"
+                  activeProps={{ className: "text-white" }}
                 >
                   {item.label}
                 </Link>
               ),
             )}
-            <div className="mt-3 flex items-center justify-between gap-2">
-              <Button asChild className="flex-1 bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold uppercase">
-                <a href={waLink("Hola, querría solicitar una revisión de mi equipo.")} target="_blank" rel="noopener">
-                  Solicitar revisión
-                </a>
-              </Button>
+            <div className="mt-4 flex items-center justify-between gap-4 border-t border-white/[0.06] pt-4">
               <LanguageSwitcher />
+              <a
+                href={waLink("Hola, querría solicitar una revisión de mi equipo.")}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-2 rounded-[10px] bg-[#B9D986] px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0A0C0D]"
+              >
+                Solicitar revisión
+                <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.25} />
+              </a>
             </div>
           </div>
         </div>
