@@ -11,6 +11,7 @@ export function ServiceHero({
   imageAlt,
   cta = "Solicitar revisión",
   ctaMsg = "Hola, querría solicitar una revisión de mi equipo.",
+  compact = false,
 }: {
   eyebrow?: string;
   title: string;
@@ -19,6 +20,7 @@ export function ServiceHero({
   imageAlt: string;
   cta?: string;
   ctaMsg?: string;
+  compact?: boolean;
 }) {
   return (
     <section className="relative overflow-hidden bg-[#050606]">
@@ -41,18 +43,36 @@ export function ServiceHero({
       <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-[55%] bg-gradient-to-r from-[#0A0B0D] via-[#0A0B0D]/80 to-transparent" />
       <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-[#050606]/45 via-transparent to-[#050606]/35" />
 
-      <div className="container-fortux relative z-[2] py-20 md:py-28 lg:py-32">
+      <div
+        className={
+          compact
+            ? "container-fortux relative z-[2] py-12 md:py-16 lg:py-20"
+            : "container-fortux relative z-[2] py-20 md:py-28 lg:py-32"
+        }
+      >
         <div className="max-w-xl">
           <span className="inline-block text-[12px] font-medium uppercase tracking-[0.22em] text-secondary">
             {eyebrow}
           </span>
-          <h1 className="mt-5 font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] text-balance text-primary-foreground">
+          <h1
+            className={
+              compact
+                ? "mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.05] text-balance text-primary-foreground"
+                : "mt-5 font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] text-balance text-primary-foreground"
+            }
+          >
             {title}
           </h1>
-          <p className="mt-6 text-[15px] md:text-[16px] text-primary-foreground/70 leading-[1.6]">
+          <p
+            className={
+              compact
+                ? "mt-4 max-w-lg text-[14px] md:text-[15px] text-primary-foreground/70 leading-[1.6]"
+                : "mt-6 text-[15px] md:text-[16px] text-primary-foreground/70 leading-[1.6]"
+            }
+          >
             {description}
           </p>
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className={compact ? "mt-6 flex flex-wrap gap-3" : "mt-9 flex flex-wrap gap-3"}>
             <a
               href={waLink(ctaMsg)}
               target="_blank"
@@ -71,6 +91,45 @@ export function ServiceHero({
         </div>
       </div>
     </section>
+  );
+}
+
+export function ServiceMedia({
+  src,
+  alt,
+  caption,
+  ratio = "16/9",
+}: {
+  src: string;
+  alt: string;
+  caption?: string;
+  ratio?: "16/9" | "4/3" | "3/2" | "1/1";
+}) {
+  const aspect =
+    ratio === "4/3"
+      ? "aspect-[4/3]"
+      : ratio === "3/2"
+        ? "aspect-[3/2]"
+        : ratio === "1/1"
+          ? "aspect-square"
+          : "aspect-[16/9]";
+  return (
+    <figure className="my-8 overflow-hidden rounded-[10px] border border-white/[0.08] bg-[#0A0B0D]">
+      <div className={`relative ${aspect} overflow-hidden`}>
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          className="h-full w-full object-cover"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050606]/40 via-transparent to-transparent" />
+      </div>
+      {caption && (
+        <figcaption className="px-5 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-primary-foreground/55">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
   );
 }
 
