@@ -279,7 +279,7 @@ function Home() {
           </div>
           <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-primary to-primary-deep">
             <img
-              src={teamPhoto}
+              src={teamPhoto.url}
               alt="Gerard Rubio y Marc Fortuny — equipo Fortux"
               loading="lazy"
               className="relative mx-auto h-auto w-full max-w-xl object-contain"
