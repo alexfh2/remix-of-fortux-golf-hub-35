@@ -1,14 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { MessageCircle, X, ZoomIn, ArrowRight } from "lucide-react";
-import { SectionHeading } from "@/components/site/SectionHeading";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
+import { MessageCircle, Phone, X, ZoomIn, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
-import { waLink } from "@/lib/site";
+import { waLink, SITE } from "@/lib/site";
+import gripTextureDark from "@/assets/grips/grip-texture-dark.jpg";
 
 import g_Grips01GolfPrideCp2ProRedBlackJumbo from "@/assets/grips/grips-01-golf-pride-cp2-pro-red-black-jumbo.jpg.asset.json";
 import g_Grips01GolfPrideCp2ProWrapStandardRed from "@/assets/grips/grips-01-golf-pride-cp2-pro-wrap-standard-red.jpg.asset.json";
