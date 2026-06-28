@@ -380,8 +380,8 @@ function Page() {
                       src={b.img}
                       alt={b.name}
                       loading="lazy"
-                      className="max-h-[44px] max-w-[78%] object-contain opacity-55 transition-opacity duration-300 group-hover:opacity-90"
-                      style={{ filter: "grayscale(100%) brightness(1.05) contrast(1.02)", mixBlendMode: "luminosity" }}
+                      className="max-h-[44px] max-w-[78%] object-contain opacity-60 transition-opacity duration-300 group-hover:opacity-95"
+                      style={{ filter: "invert(1) grayscale(1) contrast(1.15) brightness(1.05)", mixBlendMode: "screen" }}
                     />
                   </div>
                 ))}
