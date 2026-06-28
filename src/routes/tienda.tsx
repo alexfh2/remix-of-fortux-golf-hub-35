@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { MessageCircle, Phone, X, ZoomIn, ArrowRight } from "lucide-react";
 import { waLink, SITE } from "@/lib/site";
 import gripTextureDark from "@/assets/grips/grip-texture-dark.jpg";
+import gripHeroMacro from "@/assets/grips/grip-hero-macro.jpg";
 
 import g_Grips01GolfPrideCp2ProRedBlackJumbo from "@/assets/grips/grips-01-golf-pride-cp2-pro-red-black-jumbo.jpg.asset.json";
 import g_Grips01GolfPrideCp2ProWrapStandardRed from "@/assets/grips/grips-01-golf-pride-cp2-pro-wrap-standard-red.jpg.asset.json";
@@ -263,23 +264,22 @@ function Page() {
       <section className="relative isolate overflow-hidden bg-[#050606] border-b border-white/[0.06]">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 right-0 w-[55%] opacity-[0.18]"
+          className="pointer-events-none absolute inset-y-0 right-0 w-[62%]"
           style={{
-            backgroundImage: `url(${IRONS[13]?.img ?? IRONS[0].img})`,
-            backgroundSize: "contain",
+            backgroundImage: `url(${gripHeroMacro})`,
+            backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "right center",
-            filter: "grayscale(100%) contrast(1.05)",
+            backgroundPosition: "center right",
             maskImage:
-              "linear-gradient(to left, rgba(0,0,0,0.95), rgba(0,0,0,0.6) 55%, rgba(0,0,0,0))",
+              "linear-gradient(to left, rgba(0,0,0,1) 35%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0))",
             WebkitMaskImage:
-              "linear-gradient(to left, rgba(0,0,0,0.95), rgba(0,0,0,0.6) 55%, rgba(0,0,0,0))",
+              "linear-gradient(to left, rgba(0,0,0,1) 35%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0))",
           }}
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-32 top-1/2 -translate-y-1/2 h-[480px] w-[480px] rounded-full"
-          style={{ background: "radial-gradient(closest-side, rgba(185,217,134,0.10), transparent 70%)" }}
+          className="pointer-events-none absolute -right-40 top-1/2 -translate-y-1/2 h-[520px] w-[520px] rounded-full"
+          style={{ background: "radial-gradient(closest-side, rgba(185,217,134,0.08), transparent 70%)" }}
         />
         <div className="container-fortux relative py-14 md:py-16">
           <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
@@ -354,36 +354,39 @@ function Page() {
       </section>
 
       {/* MARCAS */}
-      <section className="border-t border-white/[0.08] bg-[#070808] py-16 md:py-20">
+      <section className="relative border-t border-white/[0.06] bg-[#070808] py-20 md:py-24">
         <div className="container-fortux">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center justify-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
-              <span className="h-px w-6 bg-[#B9D986]" />
-              Partners
-              <span className="h-px w-6 bg-[#B9D986]" />
-            </span>
-            <h2 className="mt-4 font-display text-3xl md:text-[40px] font-semibold tracking-tight text-[#F4F5F0]">
-              Marcas colaboradoras
-            </h2>
-            <p className="mt-3 text-[15px] leading-relaxed text-white/60">
-              Trabajamos con algunas de las principales marcas de grips del mercado.
-            </p>
-          </div>
+          <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] md:items-center md:gap-16">
+            <div>
+              <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+                <span className="h-px w-6 bg-[#B9D986]" /> Partners
+              </span>
+              <h2 className="mt-4 font-display text-3xl md:text-[38px] leading-[1.05] font-semibold tracking-tight text-[#F4F5F0]">
+                Marcas<br className="hidden md:block" /> colaboradoras
+              </h2>
+              <p className="mt-5 max-w-md text-[14.5px] leading-relaxed text-white/55">
+                Trabajamos con las principales firmas del mercado para ofrecer el grip adecuado para cada jugador y cada estilo de juego.
+              </p>
+            </div>
 
-          <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
-            {BRANDS.map((b) => (
-              <div
-                key={b.name}
-                className="flex aspect-square items-center justify-center rounded-lg border border-white/[0.08] bg-[#F2F5EA] p-4 transition-transform duration-300 hover:-translate-y-1"
-              >
-                <img
-                  src={b.img}
-                  alt={b.name}
-                  loading="lazy"
-                  className="max-h-full max-w-full object-contain"
-                />
+            <div className="relative">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 divide-x divide-y divide-white/[0.06] border border-white/[0.06] rounded-[2px] overflow-hidden">
+                {BRANDS.map((b) => (
+                  <div
+                    key={b.name}
+                    className="group relative flex aspect-[5/3] items-center justify-center bg-white/[0.015] px-5 py-6 transition-colors duration-300 hover:bg-white/[0.04]"
+                  >
+                    <img
+                      src={b.img}
+                      alt={b.name}
+                      loading="lazy"
+                      className="max-h-[44px] max-w-[78%] object-contain opacity-60 transition-opacity duration-300 group-hover:opacity-95"
+                      style={{ filter: "invert(1) grayscale(1) contrast(1.15) brightness(1.05)", mixBlendMode: "screen" }}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
