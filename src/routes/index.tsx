@@ -6,7 +6,7 @@ import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
 import { SITE, waLink } from "@/lib/site";
 import { supabase } from "@/integrations/supabase/client";
-import teamPhoto from "@/assets/gerard-marc-cutout.png";
+import teamPhoto from "@/assets/gerard-marc-v2.png.asset.json";
 import heroImg from "@/assets/hero-fitting-lab.jpg";
 import repairImg from "@/assets/servicios-v2/01-reparacion.jpg.asset.json";
 import varillasImg from "@/assets/servicios-v2/02-mantenimiento.jpg.asset.json";
@@ -279,7 +279,7 @@ function Home() {
           </div>
           <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-primary to-primary-deep">
             <img
-              src={teamPhoto}
+              src={teamPhoto.url}
               alt="Gerard Rubio y Marc Fortuny — equipo Fortux"
               loading="lazy"
               className="relative mx-auto h-auto w-full max-w-xl object-contain"
