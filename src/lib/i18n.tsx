@@ -112,6 +112,7 @@ const es: Dict = {
   "con.form.send": "Enviar consulta",
   "con.form.ok": "Mensaje enviado",
   "con.form.okDesc": "Te responderemos en menos de 24 h.",
+  "con.form.heading": "Envíanos tu consulta",
   // Hero pills
   "pill.repair": "Reparación",
   "pill.maintenance": "Mantenimiento",
@@ -263,6 +264,7 @@ const ca: Dict = {
   "con.form.send": "Enviar consulta",
   "con.form.ok": "Missatge enviat",
   "con.form.okDesc": "Et respondrem en menys de 24 h.",
+  "con.form.heading": "Envia'ns la teva consulta",
   "pill.repair": "Reparació",
   "pill.maintenance": "Manteniment",
   "pill.custom": "Personalització",
