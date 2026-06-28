@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Phone, Check } from "lucide-react";
-import { SectionHeading } from "@/components/site/SectionHeading";
+import { Phone, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -35,8 +34,9 @@ export const Route = createFileRoute("/academia")({
   component: Page,
 });
 
-import bonosImg from "@/assets/academia/academy-tarifas-bonos-fortux-golf.png.asset.json";
-import teamImg from "@/assets/academia/team.png.asset.json";
+import heroCoaching from "@/assets/academia/hero-coaching.jpg.asset.json";
+import bonosImg from "@/assets/academia/bonos-coaching.jpg.asset.json";
+import teamImg from "@/assets/gerard-marc-v2.png.asset.json";
 import t1 from "@/assets/tarifas/academy-golf-fortux-1-persona.jpg.asset.json";
 import t2 from "@/assets/tarifas/academy-golf-fortux-1-persona-30-min.jpg.asset.json";
 import t3 from "@/assets/tarifas/academy-golf-fortux-2-personas.jpg.asset.json";
