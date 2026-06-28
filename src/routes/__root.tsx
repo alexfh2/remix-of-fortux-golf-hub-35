@@ -90,8 +90,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "Fortux — Reparación, mantenimiento y soluciones de golf" },
       { property: "og:description", content: "Expertos en reparación, mantenimiento, personalización y venta de material de golf. Clases, asesoramiento y Circuito Pitch & Putt." },
       { name: "twitter:description", content: "Expertos en reparación, mantenimiento, personalización y venta de material de golf. Clases, asesoramiento y Circuito Pitch & Putt." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/07ab8232-2255-4e6f-aaa8-9be7f8f74c80/id-preview-dd0a23ef--9e31c477-d17e-4d5a-86da-941ee01299f2.lovable.app-1780856450532.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/07ab8232-2255-4e6f-aaa8-9be7f8f74c80/id-preview-dd0a23ef--9e31c477-d17e-4d5a-86da-941ee01299f2.lovable.app-1780856450532.png" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/0339dbea-aca3-4344-841f-b74a8c57677a" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/0339dbea-aca3-4344-841f-b74a8c57677a" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
