@@ -307,7 +307,7 @@ function Page() {
       {/* CONTACTO DIRECTO */}
       <section className="bg-[#050606] py-20 md:py-24 border-b border-white/[0.06]">
         <div className="container-fortux grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-center lg:gap-16">
-          <div className="relative overflow-hidden rounded-[14px] border border-white/[0.08] bg-[#0A0B0D]">
+          <div className="relative overflow-hidden bg-[#050606]">
             <img
               src={teamImg.url}
               alt="Marc Fortuny y Gerard Rubio — instructores Fortux"
@@ -318,7 +318,15 @@ function Page() {
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0"
-              style={{ background: "linear-gradient(180deg, rgba(5,6,6,0) 55%, rgba(5,6,6,0.6) 100%)" }}
+              style={{ boxShadow: "inset 0 0 70px 45px rgba(5,6,6,0.72)" }}
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(5,6,6,0.28) 0%, transparent 12%, transparent 82%, rgba(5,6,6,0.55) 100%), linear-gradient(90deg, rgba(5,6,6,0.32) 0%, transparent 10%, transparent 90%, rgba(5,6,6,0.32) 100%)",
+              }}
             />
           </div>
           <div>
