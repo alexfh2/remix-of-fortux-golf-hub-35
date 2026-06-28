@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { MessageCircle, X, ZoomIn } from "lucide-react";
-import { SectionHeading } from "@/components/site/SectionHeading";
+import { MessageCircle, X, ZoomIn, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -161,44 +160,44 @@ type TabId = (typeof TABS)[number]["id"];
 
 function ProductGrid({ items, onImageClick }: { items: { name: string; price: string; img: string }[]; onImageClick: (img: string, name: string) => void }) {
   return (
-    <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {items.map((p, i) => (
         <article
           key={`${p.name}-${i}`}
-          className="group overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant"
+          className="group flex flex-col overflow-hidden rounded-[10px] border border-white/10 bg-[#0B0D0E] transition-colors duration-300 hover:border-[#B9D986]/70"
         >
           <button
             onClick={() => onImageClick(p.img, p.name)}
-            className="relative aspect-square w-full overflow-hidden bg-secondary/20 cursor-zoom-in"
+            className="relative aspect-[4/3] w-full overflow-hidden bg-[#F2F5EA] cursor-zoom-in"
             aria-label={`Ampliar imagen de ${p.name}`}
           >
             <img
               src={p.img}
               alt={p.name}
               loading="lazy"
-              className="absolute inset-0 h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+              className="absolute inset-0 h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.04]"
             />
+            <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
             <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/10">
-              <ZoomIn className="h-8 w-8 text-white opacity-0 drop-shadow-lg transition-opacity group-hover:opacity-100" />
+              <ZoomIn className="h-7 w-7 text-[#050606] opacity-0 transition-opacity group-hover:opacity-80" />
             </div>
           </button>
-          <div className="p-5">
-            <h3 className="font-display text-base font-bold leading-snug min-h-[2.6rem]">{p.name}</h3>
-            <div className="mt-3 flex items-center justify-between gap-2">
-              <span className="font-display text-lg font-bold text-primary">{p.price}</span>
-              <Button
-                asChild
-                size="sm"
-                className="bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp/90"
+          <div className="flex flex-1 flex-col justify-between gap-4 p-5">
+            <h3 className="font-display text-[15px] font-medium leading-snug text-[#F4F5F0] min-h-[2.8rem]">
+              {p.name}
+            </h3>
+            <div className="flex items-center justify-between gap-3 border-t border-white/[0.07] pt-4">
+              <span className="font-display text-lg font-semibold tracking-tight text-[#F4F5F0]">
+                {p.price}
+              </span>
+              <a
+                href={waLink(`Hola, querría información del grip: ${p.name} (${p.price}).`)}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-1.5 rounded-md border border-[#B9D986] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#B9D986] transition-colors hover:bg-[#B9D986] hover:text-[#050606]"
               >
-                <a
-                  href={waLink(`Hola, querría información del grip: ${p.name} (${p.price}).`)}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <MessageCircle className="mr-1.5 h-4 w-4" /> Pide info
-                </a>
-              </Button>
+                <MessageCircle className="h-3.5 w-3.5" /> Pedir info
+              </a>
             </div>
           </div>
         </article>
