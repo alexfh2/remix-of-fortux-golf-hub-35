@@ -112,13 +112,7 @@ function Page() {
         <div className="container-fortux relative">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
             <div className="flex flex-col">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#F4F5F0]/45">
-                {t("con.eyebrow")}
-              </span>
-              <h2 className="mt-3 font-display text-2xl font-bold text-[#F4F5F0] md:text-3xl">
-                {t("con.wa")} · {t("con.phone.desc").split(" ")[0]}
-              </h2>
-              <div className="mt-8 space-y-3.5">
+              <div className="space-y-3.5">
               <ContactCard
                 href={waLink()}
                 external
