@@ -97,8 +97,8 @@ const es: Dict = {
   "gal.loading": "Cargando galería…",
   // Contact
   "con.eyebrow": "Contacto",
-  "con.title": "Hablemos",
-  "con.subtitle": "Cuéntanos tu consulta y te responderemos en menos de 24 h.",
+  "con.title": "Hablemos de tu equipo",
+  "con.subtitle": "Cuéntanos qué necesitas y te ayudamos a encontrar la mejor solución para tu equipo, tus clases o tu próxima revisión.",
   "con.wa": "WhatsApp",
   "con.wa.desc": "Respuesta inmediata",
   "con.phone.desc": "L–V de 9:00 a 19:00",
@@ -109,7 +109,7 @@ const es: Dict = {
   "con.form.subject": "Asunto",
   "con.form.message": "Mensaje",
   "con.form.sending": "Enviando…",
-  "con.form.send": "Enviar mensaje",
+  "con.form.send": "Enviar consulta",
   "con.form.ok": "Mensaje enviado",
   "con.form.okDesc": "Te responderemos en menos de 24 h.",
   // Hero pills
