@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { MessageCircle, Phone, X, ZoomIn, ArrowRight } from "lucide-react";
 import { waLink, SITE } from "@/lib/site";
 import gripTextureDark from "@/assets/grips/grip-texture-dark.jpg";
+import gripHeroMacro from "@/assets/grips/grip-hero-macro.jpg";
 
 import g_Grips01GolfPrideCp2ProRedBlackJumbo from "@/assets/grips/grips-01-golf-pride-cp2-pro-red-black-jumbo.jpg.asset.json";
 import g_Grips01GolfPrideCp2ProWrapStandardRed from "@/assets/grips/grips-01-golf-pride-cp2-pro-wrap-standard-red.jpg.asset.json";
@@ -263,23 +264,22 @@ function Page() {
       <section className="relative isolate overflow-hidden bg-[#050606] border-b border-white/[0.06]">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 right-0 w-[55%] opacity-[0.18]"
+          className="pointer-events-none absolute inset-y-0 right-0 w-[62%]"
           style={{
-            backgroundImage: `url(${IRONS[13]?.img ?? IRONS[0].img})`,
-            backgroundSize: "contain",
+            backgroundImage: `url(${gripHeroMacro})`,
+            backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "right center",
-            filter: "grayscale(100%) contrast(1.05)",
+            backgroundPosition: "center right",
             maskImage:
-              "linear-gradient(to left, rgba(0,0,0,0.95), rgba(0,0,0,0.6) 55%, rgba(0,0,0,0))",
+              "linear-gradient(to left, rgba(0,0,0,1) 35%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0))",
             WebkitMaskImage:
-              "linear-gradient(to left, rgba(0,0,0,0.95), rgba(0,0,0,0.6) 55%, rgba(0,0,0,0))",
+              "linear-gradient(to left, rgba(0,0,0,1) 35%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0))",
           }}
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-32 top-1/2 -translate-y-1/2 h-[480px] w-[480px] rounded-full"
-          style={{ background: "radial-gradient(closest-side, rgba(185,217,134,0.10), transparent 70%)" }}
+          className="pointer-events-none absolute -right-40 top-1/2 -translate-y-1/2 h-[520px] w-[520px] rounded-full"
+          style={{ background: "radial-gradient(closest-side, rgba(185,217,134,0.08), transparent 70%)" }}
         />
         <div className="container-fortux relative py-14 md:py-16">
           <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
