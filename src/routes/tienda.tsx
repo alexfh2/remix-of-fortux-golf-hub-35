@@ -354,36 +354,39 @@ function Page() {
       </section>
 
       {/* MARCAS */}
-      <section className="border-t border-white/[0.08] bg-[#070808] py-16 md:py-20">
+      <section className="relative border-t border-white/[0.06] bg-[#070808] py-20 md:py-24">
         <div className="container-fortux">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center justify-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
-              <span className="h-px w-6 bg-[#B9D986]" />
-              Partners
-              <span className="h-px w-6 bg-[#B9D986]" />
-            </span>
-            <h2 className="mt-4 font-display text-3xl md:text-[40px] font-semibold tracking-tight text-[#F4F5F0]">
-              Marcas colaboradoras
-            </h2>
-            <p className="mt-3 text-[15px] leading-relaxed text-white/60">
-              Trabajamos con algunas de las principales marcas de grips del mercado.
-            </p>
-          </div>
+          <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] md:items-center md:gap-16">
+            <div>
+              <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+                <span className="h-px w-6 bg-[#B9D986]" /> Partners
+              </span>
+              <h2 className="mt-4 font-display text-3xl md:text-[38px] leading-[1.05] font-semibold tracking-tight text-[#F4F5F0]">
+                Marcas<br className="hidden md:block" /> colaboradoras
+              </h2>
+              <p className="mt-5 max-w-md text-[14.5px] leading-relaxed text-white/55">
+                Trabajamos con las principales firmas del mercado para ofrecer el grip adecuado para cada jugador y cada estilo de juego.
+              </p>
+            </div>
 
-          <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
-            {BRANDS.map((b) => (
-              <div
-                key={b.name}
-                className="flex aspect-square items-center justify-center rounded-lg border border-white/[0.08] bg-[#F2F5EA] p-4 transition-transform duration-300 hover:-translate-y-1"
-              >
-                <img
-                  src={b.img}
-                  alt={b.name}
-                  loading="lazy"
-                  className="max-h-full max-w-full object-contain"
-                />
+            <div className="relative">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 divide-x divide-y divide-white/[0.06] border border-white/[0.06] rounded-[2px] overflow-hidden">
+                {BRANDS.map((b) => (
+                  <div
+                    key={b.name}
+                    className="group relative flex aspect-[5/3] items-center justify-center bg-white/[0.015] px-5 py-6 transition-colors duration-300 hover:bg-white/[0.04]"
+                  >
+                    <img
+                      src={b.img}
+                      alt={b.name}
+                      loading="lazy"
+                      className="max-h-[44px] max-w-[78%] object-contain opacity-55 transition-opacity duration-300 group-hover:opacity-90"
+                      style={{ filter: "grayscale(100%) brightness(1.05) contrast(1.02)", mixBlendMode: "luminosity" }}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
