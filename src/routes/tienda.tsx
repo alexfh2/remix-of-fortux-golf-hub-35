@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { MessageCircle, X, ZoomIn } from "lucide-react";
+import { MessageCircle, X, ZoomIn, ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -161,44 +161,44 @@ type TabId = (typeof TABS)[number]["id"];
 
 function ProductGrid({ items, onImageClick }: { items: { name: string; price: string; img: string }[]; onImageClick: (img: string, name: string) => void }) {
   return (
-    <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {items.map((p, i) => (
         <article
           key={`${p.name}-${i}`}
-          className="group overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant"
+          className="group flex flex-col overflow-hidden rounded-[10px] border border-white/10 bg-[#0B0D0E] transition-colors duration-300 hover:border-[#B9D986]/70"
         >
           <button
             onClick={() => onImageClick(p.img, p.name)}
-            className="relative aspect-square w-full overflow-hidden bg-secondary/20 cursor-zoom-in"
+            className="relative aspect-[4/3] w-full overflow-hidden bg-[#F2F5EA] cursor-zoom-in"
             aria-label={`Ampliar imagen de ${p.name}`}
           >
             <img
               src={p.img}
               alt={p.name}
               loading="lazy"
-              className="absolute inset-0 h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+              className="absolute inset-0 h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.04]"
             />
+            <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
             <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/10">
-              <ZoomIn className="h-8 w-8 text-white opacity-0 drop-shadow-lg transition-opacity group-hover:opacity-100" />
+              <ZoomIn className="h-7 w-7 text-[#050606] opacity-0 transition-opacity group-hover:opacity-80" />
             </div>
           </button>
-          <div className="p-5">
-            <h3 className="font-display text-base font-bold leading-snug min-h-[2.6rem]">{p.name}</h3>
-            <div className="mt-3 flex items-center justify-between gap-2">
-              <span className="font-display text-lg font-bold text-primary">{p.price}</span>
-              <Button
-                asChild
-                size="sm"
-                className="bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp/90"
+          <div className="flex flex-1 flex-col justify-between gap-4 p-5">
+            <h3 className="font-display text-[15px] font-medium leading-snug text-[#F4F5F0] min-h-[2.8rem]">
+              {p.name}
+            </h3>
+            <div className="flex items-center justify-between gap-3 border-t border-white/[0.07] pt-4">
+              <span className="font-display text-lg font-semibold tracking-tight text-[#F4F5F0]">
+                {p.price}
+              </span>
+              <a
+                href={waLink(`Hola, querría información del grip: ${p.name} (${p.price}).`)}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-1.5 rounded-md border border-[#B9D986] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#B9D986] transition-colors hover:bg-[#B9D986] hover:text-[#050606]"
               >
-                <a
-                  href={waLink(`Hola, querría información del grip: ${p.name} (${p.price}).`)}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <MessageCircle className="mr-1.5 h-4 w-4" /> Pide info
-                </a>
-              </Button>
+                <MessageCircle className="h-3.5 w-3.5" /> Pedir info
+              </a>
             </div>
           </div>
         </article>
@@ -283,56 +283,93 @@ function Page() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-primary/90 to-primary">
-        <div className="container-fortux relative py-20 md:py-28 text-primary-foreground">
-          <span className="inline-block rounded-full bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary-foreground">
-            Tienda Fortux
+      {/* HERO — compact dark premium */}
+      <section className="relative isolate overflow-hidden bg-[#050606] border-b border-white/[0.06]">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 w-[55%] opacity-[0.18]"
+          style={{
+            backgroundImage: `url(${IRONS[13]?.img ?? IRONS[0].img})`,
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "right center",
+            filter: "grayscale(100%) contrast(1.05)",
+            maskImage:
+              "linear-gradient(to left, rgba(0,0,0,0.95), rgba(0,0,0,0.6) 55%, rgba(0,0,0,0))",
+            WebkitMaskImage:
+              "linear-gradient(to left, rgba(0,0,0,0.95), rgba(0,0,0,0.6) 55%, rgba(0,0,0,0))",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-32 top-1/2 -translate-y-1/2 h-[480px] w-[480px] rounded-full"
+          style={{ background: "radial-gradient(closest-side, rgba(185,217,134,0.10), transparent 70%)" }}
+        />
+        <div className="container-fortux relative py-14 md:py-16">
+          <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+            <span className="h-px w-6 bg-[#B9D986]" /> Catálogo Fortux
           </span>
-          <h1 className="mt-4 font-display text-4xl md:text-6xl font-bold text-balance max-w-3xl">
-            Nuestro catálogo de grips disponibles
+          <h1 className="mt-4 font-display text-3xl md:text-[44px] leading-[1.08] font-semibold tracking-tight text-[#F4F5F0] max-w-2xl">
+            Grips para mejorar agarre,<br className="hidden md:block" /> control y confianza
           </h1>
-          <p className="mt-5 max-w-2xl text-lg md:text-xl text-primary-foreground/90 leading-relaxed">
-            Mejora tu rendimiento en el campo con grips renovados y de calidad. Nuestro servicio de reparación de{" "}
-            <strong>grips para palos de golf</strong> asegura el mejor agarre y confort, adaptado a tu juego.
+          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/65">
+            Consulta nuestra selección de grips disponibles para hierro, madera y putter. Te asesoramos para elegir el modelo que mejor encaje con tu juego.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg" variant="secondary">
-              <a href="#contacto">Contáctanos</a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10">
-              <a href="#catalogo">Ver catálogo</a>
-            </Button>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <a
+              href="#catalogo"
+              className="inline-flex items-center gap-2 rounded-md bg-[#B9D986] px-5 py-2.5 text-[11.5px] font-semibold uppercase tracking-[0.16em] text-[#050606] transition-colors hover:bg-[#cce69b]"
+            >
+              Ver catálogo <ArrowRight className="h-3.5 w-3.5" />
+            </a>
+            <a
+              href="#contacto"
+              className="inline-flex items-center gap-2 rounded-md border border-white/20 px-5 py-2.5 text-[11.5px] font-semibold uppercase tracking-[0.16em] text-[#F4F5F0] transition-colors hover:border-[#B9D986] hover:text-[#B9D986]"
+            >
+              Pedir asesoramiento
+            </a>
           </div>
         </div>
       </section>
 
       {/* CATALOG */}
-      <section id="catalogo" className="py-20 md:py-28">
+      <section id="catalogo" className="bg-[#050606] py-16 md:py-20">
         <div className="container-fortux">
-          <SectionHeading
-            eyebrow={tab === "iron" ? "Hierro y Madera" : "Putters"}
-            title={tab === "iron" ? "Grips para Hierro y Madera" : "Grips para Putters"}
-            subtitle="La mano de obra está incluida en el precio."
-            align="center"
-          />
+          <div className="text-center">
+            <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+              <span className="h-px w-6 bg-[#B9D986]" />
+              {tab === "iron" ? "Hierro y madera" : "Putters"}
+              <span className="h-px w-6 bg-[#B9D986]" />
+            </span>
+            <h2 className="mt-4 font-display text-3xl md:text-[40px] font-semibold tracking-tight text-[#F4F5F0]">
+              {tab === "iron" ? "Grips para Hierro y Madera" : "Grips para Putters"}
+            </h2>
+            <p className="mt-3 text-sm md:text-base text-white/60">
+              La mano de obra está incluida en el precio.
+            </p>
+          </div>
 
-          <div className="mt-8 flex justify-center">
-            <div className="inline-flex rounded-full border border-border bg-card p-1 shadow-sm">
-              {TABS.map((t) => (
-                <button
-                  key={t.id}
-                  onClick={() => setTab(t.id)}
-                  className={`rounded-full px-5 py-2 text-sm font-semibold transition-all ${
-                    tab === t.id
-                      ? "bg-primary text-primary-foreground shadow"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {t.label}
-                  <span className="ml-2 text-xs opacity-70">{t.count}</span>
-                </button>
-              ))}
+          <div className="mt-9 flex justify-center">
+            <div className="inline-flex rounded-[8px] border border-white/[0.12] bg-[#0B0D0E] p-1">
+              {TABS.map((t) => {
+                const active = tab === t.id;
+                return (
+                  <button
+                    key={t.id}
+                    onClick={() => setTab(t.id)}
+                    className={`rounded-[6px] px-5 py-2 text-[11.5px] font-semibold uppercase tracking-[0.16em] transition-colors ${
+                      active
+                        ? "bg-[#B9D986] text-[#050606]"
+                        : "text-white/65 hover:text-[#F4F5F0]"
+                    }`}
+                  >
+                    {t.label}
+                    <span className={`ml-2 text-[10px] ${active ? "text-[#050606]/70" : "text-white/40"}`}>
+                      {t.count}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
