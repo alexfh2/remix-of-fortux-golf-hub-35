@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { SITE, waLink } from "@/lib/site";
 import { useI18n } from "@/lib/i18n";
+import contactoHero from "@/assets/contacto-hero.jpg.asset.json";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
@@ -23,10 +24,10 @@ export const Route = createFileRoute("/contacto")({
 });
 
 const inputClass =
-  "mt-1.5 h-11 bg-white/[0.04] border-white/[0.12] text-[#F4F5F0] placeholder:text-white/[0.38] rounded-lg px-4 transition-colors focus-visible:border-[#B9D986] focus-visible:ring-1 focus-visible:ring-[#B9D986]/20 focus-visible:outline-none";
+  "mt-1.5 h-11 bg-white/[0.03] border-white/10 text-[#F4F5F0] placeholder:text-white/[0.38] rounded-lg px-3.5 transition-colors focus-visible:border-[#B9D986] focus-visible:ring-1 focus-visible:ring-[#B9D986]/20 focus-visible:outline-none";
 
 const textareaClass =
-  "mt-1.5 min-h-[120px] bg-white/[0.04] border-white/[0.12] text-[#F4F5F0] placeholder:text-white/[0.38] rounded-lg px-4 py-3 transition-colors focus-visible:border-[#B9D986] focus-visible:ring-1 focus-visible:ring-[#B9D986]/20 focus-visible:outline-none resize-y";
+  "mt-1.5 min-h-[140px] bg-white/[0.03] border-white/10 text-[#F4F5F0] placeholder:text-white/[0.38] rounded-lg px-3.5 py-3 transition-colors focus-visible:border-[#B9D986] focus-visible:ring-1 focus-visible:ring-[#B9D986]/20 focus-visible:outline-none resize-y";
 
 function ContactCard({
   href,
@@ -74,21 +75,50 @@ function Page() {
   };
 
   return (
-    <section className="relative bg-[#050606] py-16 md:py-24">
-      <div className="container-fortux relative">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="flex flex-col">
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#B9D986]">
+    <div className="relative bg-[#050606]">
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-white/[0.06]">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_left,rgba(185,217,134,0.06),transparent_55%)]" />
+        <div className="container-fortux relative grid items-center gap-10 py-16 md:py-20 lg:grid-cols-2 lg:gap-12 min-h-[420px] md:min-h-[460px]">
+          <div className="relative z-10">
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#B9D986]">
               {t("con.eyebrow")}
             </span>
-            <h1 className="mt-4 font-display text-4xl font-bold text-[#F4F5F0] leading-[1.08] text-balance md:text-5xl">
+            <h1 className="mt-5 font-display text-4xl font-bold leading-[1.05] text-[#F4F5F0] text-balance md:text-5xl lg:text-6xl">
               {t("con.title")}
             </h1>
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-[#F4F5F0]/60 md:text-lg">
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-[#F4F5F0]/60 md:text-lg">
               {t("con.subtitle")}
             </p>
+          </div>
+          <div className="relative h-[260px] sm:h-[320px] lg:h-[420px]">
+            <img
+              src={contactoHero.url}
+              alt=""
+              width={1280}
+              height={896}
+              className="absolute inset-0 h-full w-full object-cover rounded-lg"
+            />
+            {/* Fade integration */}
+            <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#050606] via-[#050606]/70 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#050606] to-transparent" />
+            <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-[#050606]/80 to-transparent" />
+          </div>
+        </div>
+      </section>
 
-            <div className="mt-10 space-y-4">
+      {/* Main block */}
+      <section className="relative py-16 md:py-24">
+        <div className="container-fortux relative">
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+            <div className="flex flex-col">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#F4F5F0]/45">
+                {t("con.eyebrow")}
+              </span>
+              <h2 className="mt-3 font-display text-2xl font-bold text-[#F4F5F0] md:text-3xl">
+                {t("con.wa")} · {t("con.phone.desc").split(" ")[0]}
+              </h2>
+              <div className="mt-8 space-y-3.5">
               <ContactCard
                 href={waLink()}
                 external
@@ -111,9 +141,16 @@ function Page() {
             </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#0A0B0D] p-6 md:p-8">
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#B9D986]/25 to-transparent" />
-            <form onSubmit={submit} className="relative space-y-5">
+            <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#0A0B0D] p-6 md:p-8">
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#B9D986]/30 to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.04),transparent_60%)]" />
+              <div className="relative mb-7 flex items-center gap-3">
+                <span className="h-px w-8 bg-[#B9D986]" />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+                  {t("con.form.heading")}
+                </span>
+              </div>
+              <form onSubmit={submit} className="relative space-y-5">
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <Label htmlFor="name" className="text-sm font-medium text-[#F4F5F0]/75">
@@ -151,14 +188,15 @@ function Page() {
               <button
                 type="submit"
                 disabled={sending}
-                className="h-11 w-full rounded-md bg-[#B9D986] px-5 text-sm font-semibold text-[#050606] transition-colors duration-300 hover:bg-[#c8e49e] disabled:opacity-60"
+                className="h-12 w-full rounded-md bg-[#B9D986] px-5 text-sm font-semibold uppercase tracking-wider text-[#050606] transition-colors duration-300 hover:bg-[#c8e49e] disabled:opacity-60"
               >
                 {sending ? t("con.form.sending") : t("con.form.send")}
               </button>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
