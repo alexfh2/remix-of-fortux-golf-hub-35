@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { MessageCircle, Phone, X, ZoomIn, ArrowRight } from "lucide-react";
-import { toast } from "sonner";
 import { waLink, SITE } from "@/lib/site";
 import gripTextureDark from "@/assets/grips/grip-texture-dark.jpg";
 
