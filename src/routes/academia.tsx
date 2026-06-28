@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Phone, Check } from "lucide-react";
-import { SectionHeading } from "@/components/site/SectionHeading";
+import { Phone, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -35,8 +34,9 @@ export const Route = createFileRoute("/academia")({
   component: Page,
 });
 
-import bonosImg from "@/assets/academia/academy-tarifas-bonos-fortux-golf.png.asset.json";
-import teamImg from "@/assets/academia/team.png.asset.json";
+import heroCoaching from "@/assets/academia/hero-coaching.jpg.asset.json";
+import bonosImg from "@/assets/academia/bonos-coaching.jpg.asset.json";
+import teamImg from "@/assets/gerard-marc-v2.png.asset.json";
 import t1 from "@/assets/tarifas/academy-golf-fortux-1-persona.jpg.asset.json";
 import t2 from "@/assets/tarifas/academy-golf-fortux-1-persona-30-min.jpg.asset.json";
 import t3 from "@/assets/tarifas/academy-golf-fortux-2-personas.jpg.asset.json";
@@ -131,100 +131,164 @@ function Page() {
   return (
     <>
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-primary/90 to-primary">
-        <div className="container-fortux relative py-20 md:py-28 text-primary-foreground">
-          <span className="inline-block rounded-full bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary-foreground">
-            Academia Fortux
-          </span>
-          <h1 className="mt-4 font-display text-4xl md:text-6xl font-bold text-balance max-w-3xl">
-            Clases de golf personalizadas
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg md:text-xl text-primary-foreground/90 leading-relaxed">
-            Aprende de la mano de <strong>Marc Fortuny</strong> y <strong>Gerard Rubio</strong>, instructores apasionados y
-            cualificados, con clases individuales adaptadas a tu nivel y objetivos en el golf.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg" variant="secondary">
-              <a href="#contacto">Contáctanos</a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10">
-              <a href="#tarifas">Ver tarifas</a>
-            </Button>
+      <section className="relative isolate overflow-hidden bg-[#050606] border-b border-white/[0.06]">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 w-[62%]"
+          style={{
+            backgroundImage: `url(${heroCoaching.url})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center right",
+            maskImage:
+              "linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0))",
+            WebkitMaskImage:
+              "linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0))",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-32 top-1/3 h-[420px] w-[420px] rounded-full"
+          style={{ background: "radial-gradient(closest-side, rgba(185,217,134,0.07), transparent 70%)" }}
+        />
+        <div className="container-fortux relative py-16 md:py-20">
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+              <span className="h-px w-6 bg-[#B9D986]" /> Academia Fortux
+            </span>
+            <h1 className="mt-4 font-display text-4xl md:text-[56px] leading-[1.02] font-semibold tracking-tight text-[#F4F5F0]">
+              Clases de golf personalizadas
+            </h1>
+            <p className="mt-5 max-w-xl text-[15px] md:text-base leading-relaxed text-white/64">
+              Aprende de la mano de <span className="text-[#F4F5F0]">Marc Fortuny</span> y{" "}
+              <span className="text-[#F4F5F0]">Gerard Rubio</span> con clases individuales adaptadas a tu nivel, tus
+              objetivos y tu manera de jugar.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg" className="bg-[#B9D986] text-[#0A0B0D] hover:bg-[#cbe69b]">
+                <a href="#contacto">Reservar clase</a>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="bg-transparent border-white/20 text-[#F4F5F0] hover:bg-white/[0.04] hover:text-[#F4F5F0]"
+              >
+                <a href="#tarifas">Ver tarifas</a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* INTRO BONOS */}
-      <section className="py-20 md:py-28">
-        <div className="container-fortux grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
-            <SectionHeading
-              eyebrow="Bonos exclusivos"
-              title="¡Reserva tu bono y descubre una experiencia de aprendizaje única!"
-              subtitle="Explora el apasionante mundo del golf con nuestros bonos de clases exclusivas. Te ofrecemos una experiencia única y personalizada, diseñada para satisfacer tus necesidades y asegurar un aprendizaje excepcional."
-            />
-            <div className="mt-6 space-y-3 text-muted-foreground leading-relaxed">
-              <p>
-                Dedica tiempo a perfeccionar tu técnica y potencia tus habilidades en cada clase, descubriendo los secretos
-                para lograr golpes precisos y efectivos mientras disfrutas de una experiencia enriquecedora y motivadora.
-              </p>
-              <p>
-                <strong className="text-foreground">Elige tu tarifa</strong> y embárcate en esta aventura para descubrir el
-                mundo del golf de la mejor manera posible.
-              </p>
-            </div>
-            <Button asChild className="mt-8 bg-primary hover:bg-primary-glow">
-              <a href="#contacto">Contáctanos</a>
-            </Button>
-          </div>
-          <div className="relative">
+      {/* BONOS */}
+      <section className="bg-[#050606] py-20 md:py-24 border-b border-white/[0.06]">
+        <div className="container-fortux grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+          <div className="relative overflow-hidden rounded-[14px] border border-white/[0.08]">
             <img
               src={bonosImg.url}
-              alt="Bonos de clases de golf Fortux"
+              alt="Sesión de coaching personalizado Fortux"
               loading="lazy"
-              className="w-full rounded-2xl shadow-elegant"
+              className="aspect-[4/5] w-full object-cover"
+              style={{ filter: "saturate(0.9) contrast(1.05)" }}
             />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{ background: "linear-gradient(180deg, rgba(5,6,6,0) 55%, rgba(5,6,6,0.55) 100%)" }}
+            />
+          </div>
+          <div>
+            <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+              <span className="h-px w-6 bg-[#B9D986]" /> Bonos exclusivos
+            </span>
+            <h2 className="mt-4 font-display text-3xl md:text-[40px] leading-[1.05] font-semibold tracking-tight text-[#F4F5F0]">
+              Reserva tu bono y avanza con continuidad
+            </h2>
+            <p className="mt-5 text-[15px] leading-relaxed text-white/64">
+              Una experiencia de aprendizaje pensada para progresar de forma sostenida. Cada sesión se diseña a partir
+              de tu juego, tu ritmo y los objetivos que quieres alcanzar dentro y fuera del campo.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-white/64">
+              Trabajamos técnica, estrategia y mentalidad con un enfoque continuo, para que cada bono sea un paso real
+              hacia un golf más sólido, preciso y disfrutable.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild className="bg-[#B9D986] text-[#0A0B0D] hover:bg-[#cbe69b]">
+                <a href="#tarifas">Ver bonos</a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="bg-transparent border-white/20 text-[#F4F5F0] hover:bg-white/[0.04] hover:text-[#F4F5F0]"
+              >
+                <a href="#contacto">Contáctanos</a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* TARIFAS */}
-      <section id="tarifas" className="py-20 md:py-28 bg-secondary/20">
+      <section id="tarifas" className="bg-[#050606] py-20 md:py-24 border-b border-white/[0.06]">
         <div className="container-fortux">
-          <SectionHeading
-            eyebrow="Tarifas"
-            title="Tarifas y pack de clases"
-            subtitle="Se incluyen bolas de prácticas y material."
-            align="center"
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-xl">
+              <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+                <span className="h-px w-6 bg-[#B9D986]" /> Tarifas
+              </span>
+              <h2 className="mt-4 font-display text-3xl md:text-[40px] leading-[1.05] font-semibold tracking-tight text-[#F4F5F0]">
+                Tarifas y pack de clases
+              </h2>
+            </div>
+            <p className="text-[14px] leading-relaxed text-white/55 md:max-w-sm md:text-right">
+              Se incluyen bolas de prácticas y material. Mismo precio entre semana o en fin de semana.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {TARIFFS.map((t) => (
               <article
                 key={t.name}
-                className={`group overflow-hidden rounded-2xl border bg-card transition-all hover:-translate-y-1 hover:shadow-elegant ${
-                  t.highlight ? "border-primary ring-2 ring-primary/40" : "border-border"
+                className={`group relative flex flex-col overflow-hidden rounded-[10px] border bg-[#0B0D0E] transition-colors duration-300 ${
+                  t.highlight ? "border-[#B9D986]/40" : "border-white/[0.08] hover:border-white/[0.18]"
                 }`}
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden bg-black">
                   <img
                     src={t.img}
                     alt={t.name}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    style={{ filter: "saturate(0.9) contrast(1.05) brightness(0.92)" }}
+                  />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{ background: "linear-gradient(180deg, rgba(11,13,14,0) 45%, rgba(11,13,14,0.85) 100%)" }}
                   />
                   {t.highlight && (
-                    <span className="absolute top-3 right-3 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow">
-                      Más popular
+                    <span className="absolute top-3 left-3 rounded-full bg-[#B9D986] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#0A0B0D]">
+                      Más elegido
                     </span>
                   )}
                 </div>
-                <div className="p-6">
-                  <h3 className="font-display text-xl font-bold">{t.name}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{t.detail}</p>
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className="font-display text-2xl font-bold text-primary">{t.price}</span>
-                    <Button asChild size="sm" variant="outline">
-                      <a href="#contacto">Reservar</a>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="font-display text-[18px] font-semibold tracking-tight text-[#F4F5F0]">{t.name}</h3>
+                  <p className="mt-1.5 text-[13px] text-white/55">{t.detail}</p>
+                  <div className="mt-6 flex items-end justify-between gap-3">
+                    <span className="font-display text-[26px] font-semibold leading-none tracking-tight text-[#B9D986]">
+                      {t.price}
+                    </span>
+                    <Button
+                      asChild
+                      size="sm"
+                      variant="outline"
+                      className="h-9 rounded-full border-white/20 bg-transparent px-4 text-[11.5px] uppercase tracking-[0.16em] text-[#F4F5F0] hover:bg-white/[0.06] hover:text-[#F4F5F0]"
+                    >
+                      <a href="#contacto">
+                        Reservar <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+                      </a>
                     </Button>
                   </div>
                 </div>
@@ -234,22 +298,34 @@ function Page() {
         </div>
       </section>
 
-      {/* TEAM + LLAMADA */}
-      <section className="py-20 md:py-28">
-        <div className="container-fortux grid gap-12 lg:grid-cols-2 lg:items-center">
-          <img
-            src={teamImg.url}
-            alt="Equipo Fortux Golf — Marc Fortuny y Gerard Rubio"
-            loading="lazy"
-            className="w-full rounded-2xl shadow-elegant"
-          />
-          <div>
-            <SectionHeading
-              eyebrow="Contacto directo"
-              title="Si prefieres, llámanos directamente"
-              subtitle="Hablar con un instructor es la forma más rápida de resolver tus dudas y reservar tu primera clase."
+      {/* CONTACTO DIRECTO */}
+      <section className="bg-[#050606] py-20 md:py-24 border-b border-white/[0.06]">
+        <div className="container-fortux grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-center lg:gap-16">
+          <div className="relative overflow-hidden rounded-[14px] border border-white/[0.08] bg-[#0A0B0D]">
+            <img
+              src={teamImg.url}
+              alt="Marc Fortuny y Gerard Rubio — instructores Fortux"
+              loading="lazy"
+              className="aspect-[4/5] w-full object-cover"
+              style={{ filter: "saturate(0.92) contrast(1.05)" }}
             />
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{ background: "linear-gradient(180deg, rgba(5,6,6,0) 55%, rgba(5,6,6,0.6) 100%)" }}
+            />
+          </div>
+          <div>
+            <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+              <span className="h-px w-6 bg-[#B9D986]" /> Contacto directo
+            </span>
+            <h2 className="mt-4 font-display text-3xl md:text-[38px] leading-[1.05] font-semibold tracking-tight text-[#F4F5F0]">
+              Si prefieres, habla directamente con nosotros
+            </h2>
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/64">
+              La forma más rápida de resolver dudas y reservar tu primera clase.
+            </p>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {[
                 { name: "Gerard Rubio", phone: "689 731 369" },
                 { name: "Marc Fortuny", phone: "635 112 656" },
@@ -257,14 +333,16 @@ function Page() {
                 <a
                   key={p.name}
                   href={`tel:+34${p.phone.replace(/\s/g, "")}`}
-                  className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-1 hover:shadow-elegant"
+                  className="group flex items-center gap-4 rounded-[10px] border border-white/[0.08] bg-[#0B0D0E] p-5 transition-colors duration-300 hover:border-white/[0.2] hover:bg-[#0F1112]"
                 >
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-secondary/40 text-primary">
-                    <Phone className="h-5 w-5" />
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-[10px] border border-[#B9D986]/30 bg-[#B9D986]/[0.08] text-[#B9D986]">
+                    <Phone className="h-4 w-4" />
                   </span>
-                  <span>
-                    <span className="block text-sm text-muted-foreground">{p.name}</span>
-                    <span className="block font-display text-lg font-bold">{p.phone}</span>
+                  <span className="min-w-0">
+                    <span className="block text-[11.5px] uppercase tracking-[0.16em] text-white/55">{p.name}</span>
+                    <span className="mt-1 block font-display text-[17px] font-semibold tracking-tight text-[#F4F5F0]">
+                      {p.phone}
+                    </span>
                   </span>
                 </a>
               ))}
@@ -274,78 +352,135 @@ function Page() {
       </section>
 
       {/* FORM */}
-      <section id="contacto" className="py-20 md:py-28 bg-secondary/20">
+      <section id="contacto" className="bg-[#050606] py-20 md:py-24 border-b border-white/[0.06]">
         <div className="container-fortux max-w-3xl">
-          <SectionHeading
-            eyebrow="Contacto"
-            title="¡No esperes más para llevar tu juego al siguiente nivel!"
-            subtitle="Contáctanos y descubre cómo nuestras clases personalizadas pueden ayudarte a mejorar en el campo de golf."
-            align="center"
-          />
-          <form onSubmit={handleSubmit} className="mt-10 rounded-2xl border border-border bg-card p-6 md:p-8 shadow-elegant space-y-5">
+          <div className="text-center">
+            <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+              <span className="h-px w-6 bg-[#B9D986]" /> Contacto
+            </span>
+            <h2 className="mt-4 font-display text-3xl md:text-[40px] leading-[1.05] font-semibold tracking-tight text-[#F4F5F0]">
+              Lleva tu juego al siguiente nivel
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-white/64">
+              Cuéntanos cómo es tu juego y qué quieres mejorar. Te respondemos con una propuesta personalizada.
+            </p>
+          </div>
+          <form
+            onSubmit={handleSubmit}
+            className="mt-10 space-y-5 rounded-[14px] border border-white/[0.08] bg-[#0A0B0D] p-6 md:p-8"
+          >
             <div className="grid gap-5 md:grid-cols-2">
               <div>
-                <Label htmlFor="name">Nombre *</Label>
-                <Input id="name" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="mt-2" />
+                <Label htmlFor="name" className="text-white/64">
+                  Nombre *
+                </Label>
+                <Input
+                  id="name"
+                  required
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className="mt-2 border-white/10 bg-[#0B0D0E] text-[#F4F5F0] placeholder:text-white/30"
+                />
               </div>
               <div>
-                <Label htmlFor="email">E-mail *</Label>
-                <Input id="email" type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="mt-2" />
+                <Label htmlFor="email" className="text-white/64">
+                  E-mail *
+                </Label>
+                <Input
+                  id="email"
+                  type="email"
+                  required
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  className="mt-2 border-white/10 bg-[#0B0D0E] text-[#F4F5F0] placeholder:text-white/30"
+                />
               </div>
             </div>
             <div>
-              <Label htmlFor="phone">Teléfono *</Label>
-              <Input id="phone" type="tel" required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="mt-2" />
+              <Label htmlFor="phone" className="text-white/64">
+                Teléfono *
+              </Label>
+              <Input
+                id="phone"
+                type="tel"
+                required
+                value={form.phone}
+                onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                className="mt-2 border-white/10 bg-[#0B0D0E] text-[#F4F5F0] placeholder:text-white/30"
+              />
             </div>
             <div>
-              <Label htmlFor="message">Consulta *</Label>
-              <Textarea id="message" required rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="mt-2" />
+              <Label htmlFor="message" className="text-white/64">
+                Consulta *
+              </Label>
+              <Textarea
+                id="message"
+                required
+                rows={5}
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                className="mt-2 border-white/10 bg-[#0B0D0E] text-[#F4F5F0] placeholder:text-white/30"
+              />
             </div>
             <div className="flex items-start gap-3">
-              <Checkbox id="accept" checked={form.accept} onCheckedChange={(c) => setForm({ ...form, accept: Boolean(c) })} className="mt-1" />
-              <Label htmlFor="accept" className="text-sm text-muted-foreground font-normal leading-relaxed">
+              <Checkbox
+                id="accept"
+                checked={form.accept}
+                onCheckedChange={(c) => setForm({ ...form, accept: Boolean(c) })}
+                className="mt-1 border-white/30"
+              />
+              <Label htmlFor="accept" className="text-[13px] font-normal leading-relaxed text-white/55">
                 Acepto la{" "}
-                <a href="https://fortuxgolf.com/politica-de-privacidad/" target="_blank" rel="noopener" className="text-primary underline">
+                <a
+                  href="https://fortuxgolf.com/politica-de-privacidad/"
+                  target="_blank"
+                  rel="noopener"
+                  className="text-[#B9D986] underline-offset-2 hover:underline"
+                >
                   Política de Privacidad
                 </a>
               </Label>
             </div>
-            <Button type="submit" size="lg" disabled={sending} className="w-full bg-primary hover:bg-primary-glow">
-              {sending ? "Enviando…" : "ENVIAR"}
+            <Button
+              type="submit"
+              size="lg"
+              disabled={sending}
+              className="w-full bg-[#B9D986] text-[#0A0B0D] hover:bg-[#cbe69b]"
+            >
+              {sending ? "Enviando…" : "ENVIAR CONSULTA"}
             </Button>
           </form>
         </div>
       </section>
 
       {/* ALUMNOS */}
-      <section className="py-20 md:py-28">
+      <section className="bg-[#050606] py-20 md:py-24 border-b border-white/[0.06]">
         <div className="container-fortux">
-          <SectionHeading eyebrow="Comunidad" title="Algunos de nuestros alumnos y alumnas" align="center" />
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+              <span className="h-px w-6 bg-[#B9D986]" /> Comunidad
+            </span>
+            <h2 className="mt-4 font-display text-3xl md:text-[38px] leading-[1.05] font-semibold tracking-tight text-[#F4F5F0]">
+              Algunos de nuestros alumnos y alumnas
+            </h2>
+            <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/64">
+              Clases reales, progresos reales y una manera cercana de aprender golf.
+            </p>
+          </div>
           <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {STUDENTS.map((src, i) => (
-              <div key={src} className={`overflow-hidden rounded-xl shadow ${i === 9 ? "col-span-2 sm:col-span-1" : ""}`}>
-                <img src={src} alt={`Alumno Fortux ${i + 1}`} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CAMPOS */}
-      <section className="py-20 md:py-28 bg-secondary/20">
-        <div className="container-fortux">
-          <SectionHeading eyebrow="Red de campos" title="Campos colaboradores" align="center" />
-          <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-            {COURSES.map((c) => (
               <div
-                key={c.name}
-                className="flex aspect-square items-center justify-center rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-1 hover:shadow-elegant"
+                key={src}
+                className={`group overflow-hidden rounded-[10px] border border-white/[0.08] bg-[#0B0D0E] transition-colors duration-300 hover:border-white/[0.18] ${
+                  i === 9 ? "col-span-2 sm:col-span-1" : ""
+                }`}
               >
                 <img
-                  src={c.url}
-                  alt={`Campo de golf ${c.name}`}
+                  src={src}
+                  alt={`Alumno Fortux ${i + 1}`}
                   loading="lazy"
-                  className="max-h-full max-w-full object-contain"
+                  className="aspect-square h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  style={{ filter: "saturate(0.85) contrast(1.05) brightness(0.95)" }}
                 />
               </div>
             ))}
@@ -353,21 +488,62 @@ function Page() {
         </div>
       </section>
 
-      {/* CTA FINAL */}
-      <section className="py-20">
+      {/* CAMPOS */}
+      <section className="bg-[#050606] py-20 md:py-24 border-b border-white/[0.06]">
         <div className="container-fortux">
-          <div className="rounded-3xl bg-gradient-to-br from-primary to-primary-glow p-10 md:p-14 text-primary-foreground text-center shadow-elegant">
-            <h2 className="font-display text-3xl md:text-4xl font-bold">¿Listo para empezar?</h2>
-            <p className="mt-3 text-lg text-primary-foreground/90 max-w-2xl mx-auto">
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+              <span className="h-px w-6 bg-[#B9D986]" /> Red de campos
+            </span>
+            <h2 className="mt-4 font-display text-3xl md:text-[38px] leading-[1.05] font-semibold tracking-tight text-[#F4F5F0]">
+              Campos colaboradores
+            </h2>
+            <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/64">
+              Damos clase en una red de campos seleccionados en toda Cataluña.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {COURSES.map((c) => (
+              <div
+                key={c.name}
+                className="flex aspect-square items-center justify-center rounded-[10px] border border-white/[0.06] bg-white/[0.02] p-5 transition-colors duration-300 hover:border-white/[0.16] hover:bg-white/[0.04]"
+              >
+                <img
+                  src={c.url}
+                  alt={`Campo de golf ${c.name}`}
+                  loading="lazy"
+                  className="max-h-[60%] max-w-[80%] object-contain opacity-70 transition-opacity duration-300 hover:opacity-100"
+                  style={{ filter: "grayscale(1) brightness(1.6) contrast(0.95)" }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="bg-[#050606] py-16 md:py-20">
+        <div className="container-fortux max-w-4xl">
+          <div className="rounded-[14px] border border-white/[0.10] bg-[#0A0B0D] p-10 md:p-14 text-center">
+            <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+              <span className="h-px w-6 bg-[#B9D986]" /> Empieza hoy
+            </span>
+            <h2 className="mt-4 font-display text-3xl md:text-[40px] leading-[1.05] font-semibold tracking-tight text-[#F4F5F0]">
+              ¿Listo para empezar?
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-white/64">
               Reserva tu primera clase y descubre por qué nuestros alumnos confían en Fortux Golf.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Button asChild size="lg" variant="secondary">
-                <a href="#contacto">
-                  <Check className="mr-2 h-4 w-4" /> Reservar ahora
-                </a>
+              <Button asChild size="lg" className="bg-[#B9D986] text-[#0A0B0D] hover:bg-[#cbe69b]">
+                <a href="#contacto">Reservar ahora</a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="bg-transparent border-white/20 text-[#F4F5F0] hover:bg-white/[0.04] hover:text-[#F4F5F0]"
+              >
                 <a href={waLink("Hola, querría información sobre las clases de golf.")} target="_blank" rel="noopener">
                   WhatsApp
                 </a>
