@@ -37,12 +37,12 @@ export const Route = createFileRoute("/academia")({
 import heroCoaching from "@/assets/academia/hero-coaching.jpg.asset.json";
 import bonosImg from "@/assets/academia/bonos-coaching.jpg.asset.json";
 import teamImg from "@/assets/gerard-marc-v2.png.asset.json";
-import t1 from "@/assets/tarifas/academy-golf-fortux-1-persona.jpg.asset.json";
-import t2 from "@/assets/tarifas/academy-golf-fortux-1-persona-30-min.jpg.asset.json";
-import t3 from "@/assets/tarifas/academy-golf-fortux-2-personas.jpg.asset.json";
-import t4 from "@/assets/tarifas/academy-golf-fortux-grupos-empresas.jpg.asset.json";
-import t5 from "@/assets/tarifas/academy-golf-fortux-bono-10-clases.jpg.asset.json";
-import t6 from "@/assets/tarifas/academy-golf-fortux-3-personas.jpg.asset.json";
+import t1 from "@/assets/tarifas-v2/tarifa-1.jpg.asset.json";
+import t2 from "@/assets/tarifas-v2/tarifa-2.jpg.asset.json";
+import t3 from "@/assets/tarifas-v2/tarifa-3.jpg.asset.json";
+import t4 from "@/assets/tarifas-v2/tarifa-4.jpg.asset.json";
+import t5 from "@/assets/tarifas-v2/tarifa-5.jpg.asset.json";
+import t6 from "@/assets/tarifas-v2/tarifa-6.jpg.asset.json";
 import a01 from "@/assets/alumnos/academia-fotos-01.jpg.asset.json";
 import a02 from "@/assets/alumnos/academia-fotos-02.jpg.asset.json";
 import a03 from "@/assets/alumnos/academia-fotos-03.jpg.asset.json";
@@ -230,28 +230,28 @@ function Page() {
       </section>
 
       {/* TARIFAS */}
-      <section id="tarifas" className="bg-[#050606] py-20 md:py-24 border-b border-white/[0.06]">
+      <section id="tarifas" className="bg-[#050606] py-24 md:py-32 border-b border-white/[0.06]">
         <div className="container-fortux">
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-xl">
-              <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
-                <span className="h-px w-6 bg-[#B9D986]" /> Tarifas
-              </span>
-              <h2 className="mt-4 font-display text-3xl md:text-[40px] leading-[1.05] font-semibold tracking-tight text-[#F4F5F0]">
-                Tarifas y pack de clases
-              </h2>
-            </div>
-            <p className="text-[14px] leading-relaxed text-white/55 md:max-w-sm md:text-right">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+              <span className="h-px w-6 bg-[#B9D986]" /> Tarifas <span className="h-px w-6 bg-[#B9D986]" />
+            </span>
+            <h2 className="mt-5 font-display text-3xl md:text-[44px] leading-[1.05] font-semibold tracking-tight text-[#F4F5F0]">
+              Tarifas y pack de clases
+            </h2>
+            <p className="mt-5 text-[15px] leading-relaxed text-white/64">
               Se incluyen bolas de prácticas y material. Mismo precio entre semana o en fin de semana.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 md:mt-20 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {TARIFFS.map((t) => (
               <article
                 key={t.name}
-                className={`group relative flex flex-col overflow-hidden rounded-[10px] border bg-[#0B0D0E] transition-colors duration-300 ${
-                  t.highlight ? "border-[#B9D986]/40" : "border-white/[0.08] hover:border-white/[0.18]"
+                className={`group relative flex flex-col overflow-hidden rounded-[12px] border bg-[#0B0D0E] transition-all duration-500 hover:-translate-y-0.5 ${
+                  t.highlight
+                    ? "border-[#B9D986]/45 hover:border-[#B9D986]/70"
+                    : "border-white/[0.08] hover:border-[#B9D986]/40"
                 }`}
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-black">
@@ -259,37 +259,43 @@ function Page() {
                     src={t.img}
                     alt={t.name}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    style={{ filter: "saturate(0.9) contrast(1.05) brightness(0.92)" }}
+                    width={1024}
+                    height={768}
+                    className="h-full w-full object-cover transition-all duration-700 group-hover:scale-[1.04] group-hover:brightness-110"
+                    style={{ filter: "saturate(0.88) contrast(1.06) brightness(0.88)" }}
                   />
                   <div
                     aria-hidden
                     className="pointer-events-none absolute inset-0"
-                    style={{ background: "linear-gradient(180deg, rgba(11,13,14,0) 45%, rgba(11,13,14,0.85) 100%)" }}
+                    style={{
+                      background:
+                        "linear-gradient(180deg, rgba(11,13,14,0.15) 0%, rgba(11,13,14,0) 40%, rgba(11,13,14,0.92) 100%)",
+                    }}
                   />
                   {t.highlight && (
-                    <span className="absolute top-3 left-3 rounded-full bg-[#B9D986] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#0A0B0D]">
-                      Más elegido
+                    <span className="absolute top-3.5 left-3.5 inline-flex items-center gap-1.5 rounded-full bg-[#B9D986]/95 px-2.5 py-1 text-[9.5px] font-semibold uppercase tracking-[0.2em] text-[#0A0B0D]">
+                      <span className="h-1 w-1 rounded-full bg-[#0A0B0D]" /> Más elegido
                     </span>
                   )}
                 </div>
-                <div className="flex flex-1 flex-col p-6">
+                <div className="flex flex-1 flex-col p-6 md:p-7">
                   <h3 className="font-display text-[18px] font-semibold tracking-tight text-[#F4F5F0]">{t.name}</h3>
-                  <p className="mt-1.5 text-[13px] text-white/55">{t.detail}</p>
-                  <div className="mt-6 flex items-end justify-between gap-3">
-                    <span className="font-display text-[26px] font-semibold leading-none tracking-tight text-[#B9D986]">
-                      {t.price}
-                    </span>
-                    <Button
-                      asChild
-                      size="sm"
-                      variant="outline"
-                      className="h-9 rounded-full border-white/20 bg-transparent px-4 text-[11.5px] uppercase tracking-[0.16em] text-[#F4F5F0] hover:bg-white/[0.06] hover:text-[#F4F5F0]"
+                  <p className="mt-1.5 text-[13px] leading-relaxed text-white/60">{t.detail}</p>
+                  <div className="my-6 h-px w-full bg-white/[0.07]" />
+                  <div className="mt-auto flex items-end justify-between gap-3">
+                    <div className="flex flex-col">
+                      <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/40">Desde</span>
+                      <span className="mt-1 font-display text-[28px] font-semibold leading-none tracking-tight text-[#B9D986]">
+                        {t.price}
+                      </span>
+                    </div>
+                    <a
+                      href="#contacto"
+                      className="group/cta inline-flex items-center gap-1.5 text-[11.5px] font-semibold uppercase tracking-[0.18em] text-[#F4F5F0] transition-colors hover:text-[#B9D986]"
                     >
-                      <a href="#contacto">
-                        Reservar <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
-                      </a>
-                    </Button>
+                      Reservar
+                      <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
+                    </a>
                   </div>
                 </div>
               </article>
