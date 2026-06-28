@@ -373,18 +373,31 @@ function Page() {
       </section>
 
       {/* MARCAS */}
-      <section className="py-20 md:py-28 bg-secondary/20">
+      <section className="border-t border-white/[0.08] bg-[#070808] py-16 md:py-20">
         <div className="container-fortux">
-          <SectionHeading eyebrow="Partners" title="Marcas colaboradoras" align="center" />
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="inline-flex items-center justify-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+              <span className="h-px w-6 bg-[#B9D986]" />
+              Partners
+              <span className="h-px w-6 bg-[#B9D986]" />
+            </span>
+            <h2 className="mt-4 font-display text-3xl md:text-[40px] font-semibold tracking-tight text-[#F4F5F0]">
+              Marcas colaboradoras
+            </h2>
+            <p className="mt-3 text-[15px] leading-relaxed text-white/60">
+              Trabajamos con algunas de las principales marcas de grips del mercado.
+            </p>
+          </div>
+
           <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
             {BRANDS.map((b) => (
               <div
                 key={b.name}
-                className="flex aspect-square items-center justify-center rounded-2xl border border-border bg-card p-5 transition-all hover:-translate-y-1 hover:shadow-elegant"
+                className="flex aspect-square items-center justify-center rounded-lg border border-white/[0.08] bg-[#F2F5EA] p-4 transition-transform duration-300 hover:-translate-y-1"
               >
                 <img
                   src={b.img}
-                  alt={`Marca ${b.name}`}
+                  alt={b.name}
                   loading="lazy"
                   className="max-h-full max-w-full object-contain"
                 />
@@ -394,46 +407,61 @@ function Page() {
         </div>
       </section>
 
-      {/* FORM */}
-      <section id="contacto" className="py-20 md:py-28">
-        <div className="container-fortux max-w-3xl">
-          <SectionHeading
-            eyebrow="Contacto"
-            title="¿Necesitas un grip nuevo? Déjanos un mensaje y te asesoramos"
-            align="center"
-          />
-          <form onSubmit={handleSubmit} className="mt-10 rounded-2xl border border-border bg-card p-6 md:p-8 shadow-elegant space-y-5">
-            <div className="grid gap-5 md:grid-cols-2">
-              <div>
-                <Label htmlFor="name">Nombre *</Label>
-                <Input id="name" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="mt-2" />
-              </div>
-              <div>
-                <Label htmlFor="email">E-mail *</Label>
-                <Input id="email" type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="mt-2" />
-              </div>
-            </div>
-            <div>
-              <Label htmlFor="phone">Teléfono *</Label>
-              <Input id="phone" type="tel" required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="mt-2" />
-            </div>
-            <div>
-              <Label htmlFor="message">Consulta *</Label>
-              <Textarea id="message" required rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="mt-2" />
-            </div>
-            <div className="flex items-start gap-3">
-              <Checkbox id="accept" checked={form.accept} onCheckedChange={(c) => setForm({ ...form, accept: Boolean(c) })} className="mt-1" />
-              <Label htmlFor="accept" className="text-sm text-muted-foreground font-normal leading-relaxed">
-                Acepto la{" "}
-                <a href="https://fortuxgolf.com/politica-de-privacidad/" target="_blank" rel="noopener" className="text-primary underline">
-                  Política de Privacidad
+      {/* FINAL CTA */}
+      <section id="contacto" className="bg-[#050606] py-16 md:py-20">
+        <div className="container-fortux max-w-4xl">
+          <div className="relative isolate overflow-hidden rounded-2xl border border-white/[0.10] bg-[#0A0B0D]">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 opacity-[0.12]"
+              style={{
+                backgroundImage: `url(${gripTextureDark})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(10,11,13,0.92) 0%, rgba(10,11,13,0.70) 50%, rgba(10,11,13,0.92) 100%)",
+              }}
+            />
+            <div className="relative px-6 py-12 text-center md:px-12 md:py-16">
+              <span className="inline-flex items-center justify-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[#B9D986]">
+                <span className="h-px w-6 bg-[#B9D986]" />
+                Asesoramiento
+                <span className="h-px w-6 bg-[#B9D986]" />
+              </span>
+              <h2 className="mt-4 font-display text-3xl md:text-[40px] font-semibold tracking-tight text-[#F4F5F0]">
+                ¿No sabes qué grip elegir?
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-white/60">
+                Te ayudamos a encontrar el modelo adecuado para tu juego, tu agarre y tus sensaciones en el campo.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+                <a
+                  href={waLink(
+                    "Hola, quisiera asesoramiento para elegir el grip adecuado."
+                  )}
+                  target="_blank"
+                  rel="noopener"
+                  className="inline-flex items-center gap-2 rounded-md bg-[#B9D986] px-6 py-3 text-[11.5px] font-semibold uppercase tracking-[0.16em] text-[#050606] transition-colors hover:bg-[#cce69b]"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  Pedir asesoramiento
                 </a>
-              </Label>
+                <a
+                  href={`tel:${SITE.phone.replace(/\s/g, "")}`}
+                  className="inline-flex items-center gap-2 rounded-md border border-white/20 px-6 py-3 text-[11.5px] font-semibold uppercase tracking-[0.16em] text-[#F4F5F0] transition-colors hover:border-[#B9D986] hover:text-[#B9D986]"
+                >
+                  <Phone className="h-4 w-4" />
+                  Llamar ahora
+                </a>
+              </div>
             </div>
-            <Button type="submit" size="lg" disabled={sending} className="w-full bg-primary hover:bg-primary-glow">
-              {sending ? "Enviando…" : "ENVIAR"}
-            </Button>
-          </form>
+          </div>
         </div>
       </section>
 
