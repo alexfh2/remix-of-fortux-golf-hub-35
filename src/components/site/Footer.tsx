@@ -7,7 +7,7 @@ import { useI18n } from "@/lib/i18n";
 export function Footer() {
   const { t } = useI18n();
   return (
-    <footer className="mt-20 bg-primary text-primary-foreground">
+    <footer className="bg-[#050606] text-primary-foreground">
       <div className="container-fortux py-14 grid gap-10 md:grid-cols-4">
         <div className="md:col-span-2">
           <Link to="/" className="inline-flex mb-5" aria-label="Fortux — Inicio">
