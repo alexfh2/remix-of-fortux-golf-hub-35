@@ -254,25 +254,7 @@ function ImageModal({
 
 function Page() {
   const [tab, setTab] = useState<TabId>("iron");
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "", accept: false });
-  const [sending, setSending] = useState(false);
   const [selectedImage, setSelectedImage] = useState<{ img: string; name: string } | null>(null);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.accept) {
-      toast.error("Debes aceptar la Política de Privacidad");
-      return;
-    }
-    setSending(true);
-    const msg = `Hola, soy ${form.name} (${form.email} · ${form.phone}).\n\n${form.message}`;
-    window.open(waLink(msg), "_blank");
-    setTimeout(() => {
-      toast.success("Consulta preparada", { description: "Te hemos abierto WhatsApp para enviarla." });
-      setForm({ name: "", email: "", phone: "", message: "", accept: false });
-      setSending(false);
-    }, 400);
-  };
 
   const items = tab === "iron" ? IRONS : PUTTERS;
 
